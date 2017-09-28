@@ -6,7 +6,7 @@
 package cs245p1;
 /**
  *
- * @author andrewtek
+ * @author 
  */
 public class CS245P1 {
 
@@ -14,12 +14,7 @@ public class CS245P1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Andrew inserted this!");
-        
-        // nick 3
-        //THIS IS ANOTHER CHANGE 
-        
-        // Nick's second attempt
+      //Fresh and clean
     }
     
 }
