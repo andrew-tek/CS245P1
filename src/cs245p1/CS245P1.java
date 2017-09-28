@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package cs245p1;
-
+//Chris was here suckas!
+//Chris made a second change!
 /**
  *
  * @author andrewtek
@@ -15,9 +16,7 @@ public class CS245P1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        
-        // nick
+        System.out.println("Andrew inserted this!");
     }
     
 }
