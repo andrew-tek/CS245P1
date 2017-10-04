@@ -17,6 +17,9 @@ public class StartPanel extends javax.swing.JPanel {
     public StartPanel() {
         initComponents();
     }
+    public StartPanel getPanel() {
+        return this;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
