@@ -35,6 +35,7 @@ public class CreditsPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
+        setPreferredSize(new java.awt.Dimension(600, 400));
 
         jLabel1.setBackground(java.awt.Color.black);
         jLabel1.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
