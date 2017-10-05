@@ -70,17 +70,12 @@ public class HangManGame {
     //(chosen at random when the game is instantiated) to see what the positons in the word (if any) are for
     //the guessed letter. An arraylist is returned, so if the letter is not found anywhere in the word it will
     //return an empty arraylist. Otherwise, the arraylist will contain all the index values of the word.
-    //Additionally, if the letter exists even a single time in the word, correctGuesses is incremented. Otherwise, 10 points
-    //are removed from the players score (they made an incorrect guess)
+    //Additionally, this method invokes the private "adjustScore" method which examines the initially found index
+    //to see how to modify the game state
     public ArrayList<Integer> checkLetter(String theLetter){
         ArrayList foundIndices = new ArrayList();
         int foundIndex = gameWord.indexOf(theLetter);
-        
-        if(foundIndex >= 0){
-            correctGuesses++;
-        }else{
-            points -= 10;
-        }
+        adjustScore(foundIndex);
         
         while(foundIndex >= 0){
             foundIndices.add(foundIndex);
@@ -88,6 +83,18 @@ public class HangManGame {
         }
         
         return foundIndices;
+    }
+    
+    //method: adjustScore
+    //purpose: This method works with "checkLetter" by examining the index of the first found letter.
+    //If the letter exists even a single time in the word, correctGuesses is incremented. Otherwise, 10 points
+    //are removed from the players score (they made an incorrect guess)
+    private void adjustScore(int foundIndex){
+        if(foundIndex >= 0){
+            correctGuesses++;
+        }else{
+            points -= 10;
+        }
     }
     
 }
