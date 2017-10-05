@@ -27,76 +27,94 @@ public class CreditsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        creditsTitle = new javax.swing.JLabel();
+        nameAndrew = new javax.swing.JLabel();
+        nameChristopher = new javax.swing.JLabel();
+        nameNicholas = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
 
-        jLabel1.setBackground(java.awt.Color.black);
-        jLabel1.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
-        jLabel1.setForeground(java.awt.Color.white);
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CREDITS");
-        jLabel1.setToolTipText("creditsTitle");
-        jLabel1.setAlignmentY(0.0F);
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        creditsTitle.setBackground(java.awt.Color.black);
+        creditsTitle.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
+        creditsTitle.setForeground(java.awt.Color.white);
+        creditsTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        creditsTitle.setText("CREDITS");
+        creditsTitle.setToolTipText("creditsTitle");
+        creditsTitle.setAlignmentY(0.0F);
+        creditsTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setBackground(java.awt.Color.black);
-        jLabel2.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
-        jLabel2.setForeground(java.awt.Color.white);
-        jLabel2.setText("Andrew Tek");
-        jLabel2.setToolTipText("creditsAndrew");
+        nameAndrew.setBackground(java.awt.Color.black);
+        nameAndrew.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        nameAndrew.setForeground(java.awt.Color.white);
+        nameAndrew.setText("Andrew Tek");
+        nameAndrew.setToolTipText("nameAndrew");
 
-        jLabel3.setBackground(java.awt.Color.black);
-        jLabel3.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
-        jLabel3.setForeground(java.awt.Color.white);
-        jLabel3.setText("Christopher Kilian");
-        jLabel3.setToolTipText("creditsChristopher");
+        nameChristopher.setBackground(java.awt.Color.black);
+        nameChristopher.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        nameChristopher.setForeground(java.awt.Color.white);
+        nameChristopher.setText("Christopher Kilian");
+        nameChristopher.setToolTipText("nameChristopher");
 
-        jLabel4.setBackground(java.awt.Color.black);
-        jLabel4.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
-        jLabel4.setForeground(java.awt.Color.white);
-        jLabel4.setText("Nicholas Pham");
-        jLabel4.setToolTipText("creditsNicholas");
+        nameNicholas.setBackground(java.awt.Color.black);
+        nameNicholas.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        nameNicholas.setForeground(java.awt.Color.white);
+        nameNicholas.setText("Nicholas Pham");
+        nameNicholas.setToolTipText("nameNicholas");
+
+        backButton.setText("Back");
+        backButton.setActionCommand("");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(212, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(creditsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameAndrew)
+                    .addComponent(nameChristopher)
+                    .addComponent(nameNicholas))
                 .addContainerGap(212, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(backButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(creditsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(nameChristopher)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(nameAndrew)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addComponent(nameNicholas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // Go back to main menu
+        
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel creditsTitle;
+    private javax.swing.JLabel nameAndrew;
+    private javax.swing.JLabel nameChristopher;
+    private javax.swing.JLabel nameNicholas;
     // End of variables declaration//GEN-END:variables
 }
