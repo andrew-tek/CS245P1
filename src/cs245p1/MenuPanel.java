@@ -28,6 +28,7 @@ public class MenuPanel extends javax.swing.JPanel {
      */
     public MenuPanel() {
         initComponents();
+        /*
         CreditsPanel creditsPanel = new CreditsPanel();
         creditsButton = new JButton("auto");
         add(creditsButton);
@@ -40,6 +41,7 @@ public class MenuPanel extends javax.swing.JPanel {
                 System.out.println("HERE");
             }
         });
+        */
         
     }
 
@@ -58,38 +60,26 @@ public class MenuPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(51, 51, 51));
 
+        playButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         playButton.setText("Play");
         playButton.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 playButtonComponentHidden(evt);
             }
         });
-        playButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                playButtonActionPerformed(evt);
-            }
-        });
 
+        highscoreButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highscoreButton.setText("Highscore");
-        highscoreButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                highscoreButtonActionPerformed(evt);
-            }
-        });
 
+        creditsButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         creditsButton.setText("Credits");
-        creditsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                creditsButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(499, Short.MAX_VALUE)
+                .addContainerGap(463, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(creditsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(playButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -99,7 +89,7 @@ public class MenuPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(298, Short.MAX_VALUE)
+                .addContainerGap(280, Short.MAX_VALUE)
                 .addComponent(playButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(highscoreButton)
@@ -112,21 +102,18 @@ public class MenuPanel extends javax.swing.JPanel {
     private void playButtonComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_playButtonComponentHidden
         System.out.println("BUTTON CLICKED");
     }//GEN-LAST:event_playButtonComponentHidden
-
-    private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        System.out.println("Play button pushed");
-    }//GEN-LAST:event_playButtonActionPerformed
-
-    private void highscoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highscoreButtonActionPerformed
-        System.out.println("High score button pushed");
-    }//GEN-LAST:event_highscoreButtonActionPerformed
-
-    private void creditsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditsButtonActionPerformed
-        System.out.println("Credits button pushed");
-    }//GEN-LAST:event_creditsButtonActionPerformed
-    public JButton getCreditsButton () {
+    public JButton getCreditsButton() {
         return creditsButton;
     }
+    
+    public JButton getHighscoreButton() {
+        return highscoreButton;
+    }
+    
+    public JButton getPlayButton() {
+        return playButton;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton creditsButton;

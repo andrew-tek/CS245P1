@@ -7,6 +7,7 @@ package cs245p1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import javax.swing.JButton;
 
 /**
  *
@@ -50,7 +51,7 @@ public class HighScoresPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         scoresTitle = new javax.swing.JLabel();
-        backButton = new javax.swing.JButton();
+        highScoresBackButton = new javax.swing.JButton();
         scoreList = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
@@ -65,13 +66,9 @@ public class HighScoresPanel extends javax.swing.JPanel {
         scoresTitle.setAlignmentY(0.0F);
         scoresTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        backButton.setText("Back");
-        backButton.setActionCommand("");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
+        highScoresBackButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        highScoresBackButton.setText("Back");
+        highScoresBackButton.setActionCommand("");
 
         scoreList.setBackground(new java.awt.Color(0, 0, 0));
         scoreList.setToolTipText("scoreList");
@@ -91,7 +88,7 @@ public class HighScoresPanel extends javax.swing.JPanel {
                         .addComponent(scoresTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(backButton))
+                        .addComponent(highScoresBackButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(160, 160, 160)
                         .addComponent(scoreList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -105,19 +102,17 @@ public class HighScoresPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scoreList, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backButton)
+                .addComponent(highScoresBackButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // Go back to main menu
-
-    }//GEN-LAST:event_backButtonActionPerformed
-
+    public JButton getBackButton() {
+        return highScoresBackButton;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
+    private javax.swing.JButton highScoresBackButton;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane scoreList;
     private javax.swing.JLabel scoresTitle;

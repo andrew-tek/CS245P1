@@ -5,6 +5,8 @@
  */
 package cs245p1;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author andrewtek
@@ -100,6 +102,9 @@ public class CreditsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getBackButton() {
+        return backButton;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel andrewNameLabel;
