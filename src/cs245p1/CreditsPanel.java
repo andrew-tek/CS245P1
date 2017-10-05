@@ -32,6 +32,8 @@ public class CreditsPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(600, 400));
+
         jLabel4.setBackground(java.awt.Color.black);
         jLabel4.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         jLabel4.setForeground(java.awt.Color.white);
@@ -83,7 +85,7 @@ public class CreditsPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
