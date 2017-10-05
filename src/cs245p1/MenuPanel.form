@@ -51,16 +51,26 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Play"/>
       </Properties>
+      <Events>
+        <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="playButtonComponentHidden"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="highscoreButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Highscore"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="highscoreButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="creditsButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Credits"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="creditsButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

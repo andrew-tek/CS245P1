@@ -12,6 +12,11 @@
 ****************************************************************/
 package cs245p1;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Chris
@@ -23,6 +28,19 @@ public class MenuPanel extends javax.swing.JPanel {
      */
     public MenuPanel() {
         initComponents();
+        CreditsPanel creditsPanel = new CreditsPanel();
+        creditsButton = new JButton("auto");
+        add(creditsButton);
+        creditsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame creditsPage = new JFrame();
+                creditsPage.add(creditsPanel);
+                creditsPage.setVisible(true);
+                System.out.println("HERE");
+            }
+        });
+        
     }
 
     /**
@@ -41,10 +59,30 @@ public class MenuPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(51, 51, 51));
 
         playButton.setText("Play");
+        playButton.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                playButtonComponentHidden(evt);
+            }
+        });
+        playButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playButtonActionPerformed(evt);
+            }
+        });
 
         highscoreButton.setText("Highscore");
+        highscoreButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                highscoreButtonActionPerformed(evt);
+            }
+        });
 
         creditsButton.setText("Credits");
+        creditsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -71,6 +109,24 @@ public class MenuPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void playButtonComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_playButtonComponentHidden
+        System.out.println("BUTTON CLICKED");
+    }//GEN-LAST:event_playButtonComponentHidden
+
+    private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
+        System.out.println("Play button pushed");
+    }//GEN-LAST:event_playButtonActionPerformed
+
+    private void highscoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highscoreButtonActionPerformed
+        System.out.println("High score button pushed");
+    }//GEN-LAST:event_highscoreButtonActionPerformed
+
+    private void creditsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditsButtonActionPerformed
+        System.out.println("Credits button pushed");
+    }//GEN-LAST:event_creditsButtonActionPerformed
+    public JButton getCreditsButton () {
+        return creditsButton;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton creditsButton;
