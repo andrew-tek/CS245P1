@@ -90,10 +90,4 @@ public class HangManGame {
         return foundIndices;
     }
     
-    public static void main(String[] args){
-        int pointsA = 100;
-        pointsA -= 10;
-        System.out.println(pointsA);
-    }
-    
 }
