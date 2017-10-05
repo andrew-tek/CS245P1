@@ -12,6 +12,8 @@
 ****************************************************************/
 package cs245p1;
 
+import javax.swing.JButton;
+
 public class GameOverPanel extends javax.swing.JPanel {
 
     /**
@@ -76,6 +78,9 @@ public class GameOverPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getEndButton() {
+        return endButton;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton endButton;

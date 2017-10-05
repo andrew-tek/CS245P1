@@ -29,7 +29,7 @@ public class HangManGame {
     //purpose: Builds the game environment by initializing score and correct points, randomly choosing a word from the database,
     //and initializing the number of correct guesses needed for a win by checking how many unique characters exist in the chosen word
     public HangManGame(){
-        int randomNum = ThreadLocalRandom.current().nextInt(0, WORD_DB.length+1);
+        int randomNum = ThreadLocalRandom.current().nextInt(0, WORD_DB.length);
         gameWord = WORD_DB[randomNum];
         correctGuesses = 0;
         points = 100;

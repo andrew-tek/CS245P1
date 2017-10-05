@@ -13,12 +13,14 @@
 ****************************************************************/
 package cs245p1;
 
+import javax.swing.JButton;
+
+    
 /**
  *
  * @author Chris
  */
 public class MainGamePanel extends javax.swing.JPanel {
-
     /**
      * Creates new form testPanel
      */
@@ -56,7 +58,7 @@ public class MainGamePanel extends javax.swing.JPanel {
         jButtonZ = new javax.swing.JButton();
         clockLabel = new javax.swing.JLabel();
         hangmanPanel = new javax.swing.JPanel();
-        jButtonSkip = new javax.swing.JButton();
+        skipButton = new javax.swing.JButton();
         jButtonE = new javax.swing.JButton();
         jButtonF = new javax.swing.JButton();
         jButtonG = new javax.swing.JButton();
@@ -106,6 +108,11 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonA.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonA.setText("A");
+        jButtonA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aButtonPush(evt);
+            }
+        });
 
         jButtonW.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonW.setText("W");
@@ -145,8 +152,8 @@ public class MainGamePanel extends javax.swing.JPanel {
             .addGap(0, 165, Short.MAX_VALUE)
         );
 
-        jButtonSkip.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonSkip.setText("Skip");
+        skipButton.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
+        skipButton.setText("Skip");
 
         jButtonE.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonE.setText("E");
@@ -247,7 +254,7 @@ public class MainGamePanel extends javax.swing.JPanel {
                                 .addComponent(jButtonU)
                                 .addGap(21, 21, 21)))
                         .addGap(0, 57, Short.MAX_VALUE))
-                    .addComponent(hangmanPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                    .addComponent(hangmanPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +264,7 @@ public class MainGamePanel extends javax.swing.JPanel {
                                 .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButtonSkip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(skipButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(wordPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -269,7 +276,7 @@ public class MainGamePanel extends javax.swing.JPanel {
                     .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonSkip)
+                .addComponent(skipButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hangmanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -310,6 +317,14 @@ public class MainGamePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void aButtonPush(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aButtonPush
+        CS245P1.getGame().checkLetter("a");
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_aButtonPush
+
+    public JButton getSkipButton() {
+        return skipButton;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;
@@ -333,7 +348,6 @@ public class MainGamePanel extends javax.swing.JPanel {
     private javax.swing.JButton jButtonQ;
     private javax.swing.JButton jButtonR;
     private javax.swing.JButton jButtonS;
-    private javax.swing.JButton jButtonSkip;
     private javax.swing.JButton jButtonT;
     private javax.swing.JButton jButtonU;
     private javax.swing.JButton jButtonV;
@@ -341,9 +355,7 @@ public class MainGamePanel extends javax.swing.JPanel {
     private javax.swing.JButton jButtonX;
     private javax.swing.JButton jButtonY;
     private javax.swing.JButton jButtonZ;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton skipButton;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JPanel wordPanel;
     // End of variables declaration//GEN-END:variables

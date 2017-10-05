@@ -22,7 +22,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="499" max="32767" attributes="0"/>
+              <EmptySpace pref="463" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="creditsButton" alignment="0" max="32767" attributes="0"/>
                   <Component id="playButton" alignment="1" max="32767" attributes="0"/>
@@ -35,7 +35,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="298" max="32767" attributes="0"/>
+              <EmptySpace pref="280" max="32767" attributes="0"/>
               <Component id="playButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="highscoreButton" min="-2" max="-2" attributes="0"/>
@@ -49,28 +49,30 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="playButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Play"/>
       </Properties>
       <Events>
         <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="playButtonComponentHidden"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="highscoreButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Highscore"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="highscoreButtonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="creditsButton">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Century" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Credits"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="creditsButtonActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
