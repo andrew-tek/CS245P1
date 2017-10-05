@@ -31,7 +31,7 @@ public class GameOverPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         gameOverLabel = new javax.swing.JLabel();
-        jButtonEnd = new javax.swing.JButton();
+        endButton = new javax.swing.JButton();
         scoreLabel = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(600, 400));
@@ -40,8 +40,8 @@ public class GameOverPanel extends javax.swing.JPanel {
         gameOverLabel.setForeground(new java.awt.Color(255, 51, 0));
         gameOverLabel.setText("Game Over");
 
-        jButtonEnd.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
-        jButtonEnd.setText("End");
+        endButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        endButton.setText("End");
 
         scoreLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         scoreLabel.setText("Your Score: ");
@@ -52,7 +52,7 @@ public class GameOverPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonEnd)
+                .addComponent(endButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -71,15 +71,15 @@ public class GameOverPanel extends javax.swing.JPanel {
                 .addGap(53, 53, 53)
                 .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(jButtonEnd)
+                .addComponent(endButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton endButton;
     private javax.swing.JLabel gameOverLabel;
-    private javax.swing.JButton jButtonEnd;
     private javax.swing.JLabel scoreLabel;
     // End of variables declaration//GEN-END:variables
 }
