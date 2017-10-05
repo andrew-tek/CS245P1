@@ -1,8 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: MainGamePanel.java
+* author: Christopher Kilian
+* class: CS 245 – Programming Graphical User Interfaces
+*
+* assignment: Point and Click Game – v.1.0
+* date last modified: 10/04/2017
+*
+* purpose: This class defines the panel from which the game is actually played
+* along with the buttons necessary to do so, as well as the display of the word
+* and the hangman.
+*
+****************************************************************/
 package cs245p1;
 
 /**
@@ -47,7 +55,7 @@ public class MainGamePanel extends javax.swing.JPanel {
         jButtonY = new javax.swing.JButton();
         jButtonZ = new javax.swing.JButton();
         clockLabel = new javax.swing.JLabel();
-        gamePanel = new javax.swing.JPanel();
+        hangmanPanel = new javax.swing.JPanel();
         jButtonSkip = new javax.swing.JButton();
         jButtonE = new javax.swing.JButton();
         jButtonF = new javax.swing.JButton();
@@ -57,6 +65,7 @@ public class MainGamePanel extends javax.swing.JPanel {
         jButtonJ = new javax.swing.JButton();
         jButtonK = new javax.swing.JButton();
         jButtonL = new javax.swing.JButton();
+        wordPanel = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(600, 400));
 
@@ -123,15 +132,17 @@ public class MainGamePanel extends javax.swing.JPanel {
         clockLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), null));
         clockLabel.setPreferredSize(new java.awt.Dimension(150, 25));
 
-        javax.swing.GroupLayout gamePanelLayout = new javax.swing.GroupLayout(gamePanel);
-        gamePanel.setLayout(gamePanelLayout);
-        gamePanelLayout.setHorizontalGroup(
-            gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        hangmanPanel.setPreferredSize(new java.awt.Dimension(0, 165));
+
+        javax.swing.GroupLayout hangmanPanelLayout = new javax.swing.GroupLayout(hangmanPanel);
+        hangmanPanel.setLayout(hangmanPanelLayout);
+        hangmanPanelLayout.setHorizontalGroup(
+            hangmanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        gamePanelLayout.setVerticalGroup(
-            gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 214, Short.MAX_VALUE)
+        hangmanPanelLayout.setVerticalGroup(
+            hangmanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 165, Short.MAX_VALUE)
         );
 
         jButtonSkip.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
@@ -161,6 +172,17 @@ public class MainGamePanel extends javax.swing.JPanel {
         jButtonL.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonL.setText("L");
 
+        javax.swing.GroupLayout wordPanelLayout = new javax.swing.GroupLayout(wordPanel);
+        wordPanel.setLayout(wordPanelLayout);
+        wordPanelLayout.setHorizontalGroup(
+            wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        wordPanelLayout.setVerticalGroup(
+            wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 45, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,7 +190,7 @@ public class MainGamePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(34, Short.MAX_VALUE)
+                        .addContainerGap(67, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButtonA)
@@ -224,18 +246,19 @@ public class MainGamePanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonU)
                                 .addGap(21, 21, 21)))
-                        .addGap(0, 23, Short.MAX_VALUE))
+                        .addGap(0, 57, Short.MAX_VALUE))
+                    .addComponent(hangmanPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButtonSkip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jButtonSkip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(wordPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -248,7 +271,9 @@ public class MainGamePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonSkip)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(hangmanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(wordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonA)
@@ -288,7 +313,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;
-    private javax.swing.JPanel gamePanel;
+    private javax.swing.JPanel hangmanPanel;
     private javax.swing.JButton jButtonA;
     private javax.swing.JButton jButtonB;
     private javax.swing.JButton jButtonC;
@@ -316,6 +341,10 @@ public class MainGamePanel extends javax.swing.JPanel {
     private javax.swing.JButton jButtonX;
     private javax.swing.JButton jButtonY;
     private javax.swing.JButton jButtonZ;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JPanel wordPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,8 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: StartPanel.java
+* author: Andrew Tek
+* class: CS 245 – Programming Graphical User Interfaces
+*
+* assignment: Point and Click Game – v.1.0
+* date last modified: 10/04/2017
+*
+* purpose: This class defines the splash screen players see when they first load the game
+*
+****************************************************************/
 package cs245p1;
 
 /**
