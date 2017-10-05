@@ -12,13 +12,16 @@
 ****************************************************************/
 package cs245p1;
 
+import static cs245p1.MainGamePanel.wordsList;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class HangManGame {
     
     //Constants and instance variables
-    private static final String[] WORD_DB = {"abstract", "cemetery", "nurse", "pharmacy", "climbing"};
+    private List wordList;
     private static final int FAIL_SCORE = 40;
     private int correctGuesses;
     private int points;
@@ -29,17 +32,28 @@ public class HangManGame {
     //purpose: Builds the game environment by initializing score and correct points, randomly choosing a word from the database,
     //and initializing the number of correct guesses needed for a win by checking how many unique characters exist in the chosen word
     public HangManGame(){
-        int randomNum = ThreadLocalRandom.current().nextInt(0, WORD_DB.length);
-        gameWord = WORD_DB[randomNum];
+        wordsList = new ArrayList<String> ();
+        wordsList.add("cemetery");
+        wordsList.add("nurse");
+        wordsList.add("abstract");
+        wordsList.add("pharmacy");
+        wordsList.add("climbing");
+        Collections.shuffle(wordsList);
         correctGuesses = 0;
         points = 100;
-        correctNeeded = (int)gameWord.chars().distinct().count();
+//        correctNeeded = (int)gameWord.chars().distinct().count();
     }
     
     //method: getPoints
     //purpose: Getter which returns the players score
     public int getPoints(){
         return points;
+    }
+    
+    public String getWord () {
+        String word = wordsList.get(0);
+        wordsList.remove(0);
+        return word;
     }
     
     //method: getWordLength

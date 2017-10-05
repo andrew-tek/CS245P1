@@ -32,6 +32,7 @@ public class CS245P1 {
      */
     public CS245P1(){
         JFrame mainFrame = new JFrame();
+        currentGame = new HangManGame();
         CardLayout cardLayout = new CardLayout();
         JPanel cardHolder = new JPanel(cardLayout);
         CreditsPanel creditPanel = new CreditsPanel();
@@ -40,6 +41,7 @@ public class CS245P1 {
         MainGamePanel mainGamePanel = new MainGamePanel();
         MenuPanel menuPanel = new MenuPanel();
         StartPanel startPanel = new StartPanel();
+        
         
         cardHolder.add(creditPanel, CREDITS_SCREEN);
         cardHolder.add(gameOverPanel, GAME_OVER);
