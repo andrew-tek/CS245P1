@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: CreditsPanel.java
+* author: Nicholas Pham
+* class: CS 245 – Programming Graphical User Interfaces
+*
+* assignment: Point and Click Game – v.1.0
+* date last modified: 10/04/2017
+*
+* purpose: This class defines the panel which displays the game credits
+*
+****************************************************************/
 package cs245p1;
 
-/**
- *
- * @author Chris
- */
 public class CreditsPanel extends javax.swing.JPanel {
 
     /**
@@ -34,6 +36,7 @@ public class CreditsPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
+        setPreferredSize(new java.awt.Dimension(600, 400));
 
         creditsTitle.setBackground(java.awt.Color.black);
         creditsTitle.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
@@ -75,6 +78,7 @@ public class CreditsPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+//Nick
                 .addContainerGap(212, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(creditsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -85,6 +89,14 @@ public class CreditsPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backButton)
+//End Nick
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+//Master
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,10 +109,15 @@ public class CreditsPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nameAndrew)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+//Nick
                 .addComponent(nameNicholas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addContainerGap())
+//end nick
+                .addComponent(jLabel4)
+                .addContainerGap(179, Short.MAX_VALUE))
+//master
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -1,14 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: GameOverPanel.java
+* author: Christopher Kilian
+* class: CS 245 – Programming Graphical User Interfaces
+*
+* assignment: Point and Click Game – v.1.0
+* date last modified: 10/04/2017
+*
+* purpose: This class defines the panel which displays the game over screen
+* and the players score for the game
+*
+****************************************************************/
 package cs245p1;
 
-/**
- *
- * @author Chris
- */
 public class GameOverPanel extends javax.swing.JPanel {
 
     /**
