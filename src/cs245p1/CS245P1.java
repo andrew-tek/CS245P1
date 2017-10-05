@@ -24,8 +24,6 @@ public class CS245P1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JPanel cardContainer = new JPanel(new CardLayout()); 
-        /*
         StartPanel startPanel = new StartPanel();
         MenuPanel menuPanel = new MenuPanel();
         MainGamePanel mainGamePanel = new MainGamePanel();
@@ -51,7 +49,7 @@ public class CS245P1 {
         Timer timer = new Timer (4000, showMenuScreen);
         timer.setRepeats(false);
         timer.start(); 
-*/
+
     }
 //    void static creditsButtonListener (JFrame mainFrame, JPanel creditsPanel) {
 //        creditsPanel.getCreditsButton = new JButton("auto");
