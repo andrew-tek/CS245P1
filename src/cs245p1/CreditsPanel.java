@@ -1,8 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: CreditsPanel.java
+* author: Nicholas Pham
+* class: CS 245 – Programming Graphical User Interfaces
+*
+* assignment: Point and Click Game – v.1.0
+* date last modified: 10/05/2017
+*
+* purpose: This class builds the panel which displays the game credits
+*
+****************************************************************/
 package cs245p1;
 
 import javax.swing.JButton;
