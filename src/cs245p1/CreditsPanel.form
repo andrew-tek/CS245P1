@@ -25,19 +25,29 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="212" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="creditsLabel" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="andrewNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="chrisNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="nickNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="212" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="backButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="chrisNameLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                      <Component id="creditsLabel" min="-2" pref="150" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="nickNameLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="199" max="32767" attributes="0"/>
+              <Component id="andrewNameLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,7 +62,7 @@
               <Component id="andrewNameLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="nickNameLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="133" max="32767" attributes="0"/>
+              <EmptySpace pref="137" max="32767" attributes="0"/>
               <Component id="backButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -71,7 +81,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nicholas Pham"/>
+        <Property name="text" type="java.lang.String" value="Nicholas Pham, 010186410"/>
         <Property name="toolTipText" type="java.lang.String" value="creditsNicholas"/>
       </Properties>
     </Component>
@@ -104,7 +114,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Andrew Tek"/>
+        <Property name="text" type="java.lang.String" value="Andrew Tek, 009604621"/>
         <Property name="toolTipText" type="java.lang.String" value="creditsAndrew"/>
       </Properties>
     </Component>
@@ -119,7 +129,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Christopher Kilian"/>
+        <Property name="text" type="java.lang.String" value="Christopher Kilian, 012122383"/>
         <Property name="toolTipText" type="java.lang.String" value="creditsChristopher"/>
       </Properties>
     </Component>

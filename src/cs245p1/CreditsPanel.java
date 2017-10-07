@@ -47,7 +47,7 @@ public class CreditsPanel extends javax.swing.JPanel {
         nickNameLabel.setBackground(java.awt.Color.black);
         nickNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         nickNameLabel.setForeground(java.awt.Color.white);
-        nickNameLabel.setText("Nicholas Pham");
+        nickNameLabel.setText("Nicholas Pham, 010186410");
         nickNameLabel.setToolTipText("creditsNicholas");
 
         creditsLabel.setBackground(java.awt.Color.black);
@@ -62,13 +62,13 @@ public class CreditsPanel extends javax.swing.JPanel {
         andrewNameLabel.setBackground(java.awt.Color.black);
         andrewNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         andrewNameLabel.setForeground(java.awt.Color.white);
-        andrewNameLabel.setText("Andrew Tek");
+        andrewNameLabel.setText("Andrew Tek, 009604621");
         andrewNameLabel.setToolTipText("creditsAndrew");
 
         chrisNameLabel.setBackground(java.awt.Color.black);
         chrisNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         chrisNameLabel.setForeground(java.awt.Color.white);
-        chrisNameLabel.setText("Christopher Kilian");
+        chrisNameLabel.setText("Christopher Kilian, 012122383");
         chrisNameLabel.setToolTipText("creditsChristopher");
 
         backButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
@@ -79,17 +79,24 @@ public class CreditsPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(212, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(creditsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(andrewNameLabel)
-                    .addComponent(chrisNameLabel)
-                    .addComponent(nickNameLabel))
-                .addContainerGap(212, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chrisNameLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(creditsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(nickNameLabel)
+                        .addGap(11, 11, 11)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(199, Short.MAX_VALUE)
+                .addComponent(andrewNameLabel)
+                .addGap(178, 178, 178))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +109,7 @@ public class CreditsPanel extends javax.swing.JPanel {
                 .addComponent(andrewNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nickNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addContainerGap())
         );
