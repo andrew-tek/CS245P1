@@ -1,44 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: HighScoresPanel.java
+* author: Nicholas Pham
+* class: CS 245 – Programming Graphical User Interfaces
+*
+* assignment: Point and Click Game – v.1.0
+* date last modified: 10/07/2017
+*
+* purpose: This class builds the panel which displays the high scores
+*
+****************************************************************/
+
 package cs245p1;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.util.ArrayList;
 import javax.swing.JButton;
 
 /**
- *
- * @author minhthuc
+ * This class is the panel that displays the top five high scores
  */
 public class HighScoresPanel extends javax.swing.JPanel {
-
-//    private BufferedReader br;
+    
+    // High scores list
+    HighScoresList highScoresList = new HighScoresList();
 
     /**
      * Creates new form HighScoresPanel
      */
     public HighScoresPanel() {
         initComponents();
-//        String scores = "";
-//        try {
-//            FileReader fr = new FileReader("highscores.txt");
-//            br = new BufferedReader(fr);
-//            StringBuilder sb = new StringBuilder();
-//            String line = br.readLine();
-//            
-//            while (line != null) {
-//                sb.append(line);
-//                line = br.readLine();
-//            }
-//            scores = sb.toString();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        scoreList.setText(scores);
-
     }
 
     /**
@@ -51,11 +40,15 @@ public class HighScoresPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         scoresTitle = new javax.swing.JLabel();
+        highScore1 = new javax.swing.JLabel();
+        highScore2 = new javax.swing.JLabel();
+        highScore3 = new javax.swing.JLabel();
+        highScore4 = new javax.swing.JLabel();
+        highScore5 = new javax.swing.JLabel();
         highScoresBackButton = new javax.swing.JButton();
-        scoreList = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBackground(new java.awt.Color(51, 51, 51));
+        setPreferredSize(new java.awt.Dimension(600, 400));
 
         scoresTitle.setBackground(java.awt.Color.black);
         scoresTitle.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
@@ -66,55 +59,103 @@ public class HighScoresPanel extends javax.swing.JPanel {
         scoresTitle.setAlignmentY(0.0F);
         scoresTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        highScore1.setBackground(java.awt.Color.black);
+        highScore1.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        highScore1.setForeground(java.awt.Color.white);
+        highScore1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        // Reads first in high scores list, which is sorted to be the highest and prints the player name and their score
+        highScore1.setText(highScoresList.getScores().get(0).getPlayer() + ": " + String.format("%06d", highScoresList.getScores().get(0).getScore()));
+        highScore1.setToolTipText("highScore1");
+
+        highScore2.setBackground(java.awt.Color.black);
+        highScore2.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        highScore2.setForeground(java.awt.Color.white);
+        highScore2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        // Reads second in high scores list, which is sorted to be the highest and prints the player name and their score
+        highScore2.setText(highScoresList.getScores().get(1).getPlayer() + ": " + String.format("%06d", highScoresList.getScores().get(1).getScore()));
+        highScore2.setToolTipText("highScore2");
+
+        highScore3.setBackground(java.awt.Color.black);
+        highScore3.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        highScore3.setForeground(java.awt.Color.white);
+        highScore3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        // Reads third in high scores list, which is sorted to be the highest and prints the player name and their score
+        highScore3.setText(highScoresList.getScores().get(2).getPlayer() + ": " + String.format("%06d", highScoresList.getScores().get(2).getScore()));
+        highScore3.setToolTipText("highScore3");
+
+        highScore4.setBackground(java.awt.Color.black);
+        highScore4.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        highScore4.setForeground(java.awt.Color.white);
+        highScore4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        // Reads fourth in high scores list, which is sorted to be the highest and prints the player name and their score
+        highScore4.setText(highScoresList.getScores().get(3).getPlayer() + ": " + String.format("%06d", highScoresList.getScores().get(3).getScore()));
+        highScore4.setToolTipText("highScore4");
+
+        highScore5.setBackground(java.awt.Color.black);
+        highScore5.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        highScore5.setForeground(java.awt.Color.white);
+        highScore5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        // Reads fifth in high scores list, which is sorted to be the highest and prints the player name and their score
+        highScore5.setText(highScoresList.getScores().get(4).getPlayer() + ": " + String.format("%06d", highScoresList.getScores().get(4).getScore()));
+        highScore5.setToolTipText("highScore5");
+
         highScoresBackButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScoresBackButton.setText("Back");
         highScoresBackButton.setActionCommand("");
-
-        scoreList.setBackground(new java.awt.Color(0, 0, 0));
-        scoreList.setToolTipText("scoreList");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        scoreList.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scoresTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(scoresTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(highScoresBackButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(scoreList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                        .addComponent(highScoresBackButton)
+                        .addGap(0, 477, Short.MAX_VALUE))
+                    .addComponent(highScore1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                    .addComponent(highScore2, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                    .addComponent(highScore3, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                    .addComponent(highScore4, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                    .addComponent(highScore5, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(127, 127, 127)
                 .addComponent(scoresTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(highScore1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scoreList, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(highScore2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(highScore3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(highScore4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(highScore5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(highScoresBackButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This button returns the user from the high scores panel, back to the main menu panel.
+     */
     public JButton getBackButton() {
         return highScoresBackButton;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel highScore1;
+    private javax.swing.JLabel highScore2;
+    private javax.swing.JLabel highScore3;
+    private javax.swing.JLabel highScore4;
+    private javax.swing.JLabel highScore5;
     private javax.swing.JButton highScoresBackButton;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JScrollPane scoreList;
     private javax.swing.JLabel scoresTitle;
     // End of variables declaration//GEN-END:variables
 }
