@@ -34,13 +34,16 @@ public class MainGamePanel extends javax.swing.JPanel {
     public MainGamePanel() {
         initComponents();
         word = CS245P1.getGame().getWord().toCharArray();
+        word = "abstract".toCharArray();
         wordGuessed = new char [word.length];
-        StringBuilder currentWord = new StringBuilder();
+        StringBuilder dashLines = new StringBuilder();
         for (int i = 0; i < word.length; i++) {
-            wordGuessed[i] = '_';
-            currentWord.append(wordGuessed[i] + " ");
+            wordGuessed[i] = ' ';
+            dashLines.append("_" + " ");
         }
-        labelWordGuessed.setText(currentWord.toString());
+        System.out.println(dashLines.toString());
+        jLabelDashedLines.setText(dashLines.toString());
+        System.out.println(word);
     }
 
     /**
@@ -83,8 +86,8 @@ public class MainGamePanel extends javax.swing.JPanel {
         jButtonK = new javax.swing.JButton();
         jButtonL = new javax.swing.JButton();
         wordPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        labelWordGuessed = new javax.swing.JLabel();
+        jLabelGuessWord = new javax.swing.JLabel();
+        jLabelDashedLines = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(600, 400));
 
@@ -196,26 +199,15 @@ public class MainGamePanel extends javax.swing.JPanel {
         jButtonL.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonL.setText("L");
 
-        labelWordGuessed.setFont(new java.awt.Font("Century", 1, 36)); // NOI18N
-        labelWordGuessed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelWordGuessed.setText("labelWordGuessed");
+        jLabelGuessWord.setFont(new java.awt.Font("Century", 0, 36)); // NOI18N
+        jLabelGuessWord.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelGuessWord.setText("a b s t r a c t");
+        jLabelGuessWord.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelWordGuessed, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelWordGuessed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jLabelDashedLines.setFont(new java.awt.Font("Century", 0, 36)); // NOI18N
+        jLabelDashedLines.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelDashedLines.setText("_ _ _ _ _ _ _ _");
+        jLabelDashedLines.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout wordPanelLayout = new javax.swing.GroupLayout(wordPanel);
         wordPanel.setLayout(wordPanelLayout);
@@ -223,16 +215,23 @@ public class MainGamePanel extends javax.swing.JPanel {
             wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wordPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabelGuessWord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(wordPanelLayout.createSequentialGroup()
+                .addComponent(jLabelDashedLines, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         wordPanelLayout.setVerticalGroup(
             wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wordPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelGuessWord, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelDashedLines, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
+
+        jLabelGuessWord.getAccessibleContext().setAccessibleName("a b s t r a c t ");
+        jLabelDashedLines.getAccessibleContext().setAccessibleName("_ _ _ _ _ _ _ _ ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -298,7 +297,7 @@ public class MainGamePanel extends javax.swing.JPanel {
                                 .addComponent(jButtonU)
                                 .addGap(21, 21, 21)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(hangmanPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
+                    .addComponent(hangmanPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 891, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,8 +322,8 @@ public class MainGamePanel extends javax.swing.JPanel {
                 .addComponent(skipButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hangmanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(wordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(wordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonA)
@@ -362,7 +361,19 @@ public class MainGamePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aButtonPush(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aButtonPush
-        CS245P1.getGame().checkLetter("a");
+        List <Integer> index = new ArrayList(CS245P1.getGame().checkLetter("a"));
+        if (index.isEmpty()) {
+            System.out.println("Letter not in word");
+            //Add next picture
+        }
+        else {
+            System.out.println(index.size());
+            for (int i = 0; i < index.size(); i++) {
+                wordGuessed[index.get(i)] = 'a';
+            }
+            updateGuessedWord();
+        }
+        jButtonA.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_aButtonPush
 
@@ -370,11 +381,16 @@ public class MainGamePanel extends javax.swing.JPanel {
     public JButton getSkipButton() {
         return skipButton;
     }
-    public void updateDashedLines() {
+    public void updateGuessedWord() {
         StringBuilder str = new StringBuilder();
+        
         for (int i = 0; i < wordGuessed.length; i++) {
-            str.append(wordGuessed[i] + " ");
+//            str.append(wordGuessed[i] + " ");
+            str.append('a' + " ");
+
         }
+        System.out.println(str.toString());
+        jLabelGuessWord.setText(str.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -406,8 +422,8 @@ public class MainGamePanel extends javax.swing.JPanel {
     private javax.swing.JButton jButtonX;
     private javax.swing.JButton jButtonY;
     private javax.swing.JButton jButtonZ;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel labelWordGuessed;
+    private javax.swing.JLabel jLabelDashedLines;
+    private javax.swing.JLabel jLabelGuessWord;
     private javax.swing.JButton skipButton;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JPanel wordPanel;
