@@ -4,18 +4,18 @@
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.0
-* date last modified: 10/05/2017
+* date last modified: 10/07/2017
 *
 * purpose: This class builds the panel which displays the game credits
 *
 ****************************************************************/
+
 package cs245p1;
 
 import javax.swing.JButton;
 
 /**
- *
- * @author andrewtek
+ * This class is the panel that displays who created the game/project
  */
 public class CreditsPanel extends javax.swing.JPanel {
 
@@ -35,20 +35,14 @@ public class CreditsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nickNameLabel = new javax.swing.JLabel();
         creditsLabel = new javax.swing.JLabel();
-        andrewNameLabel = new javax.swing.JLabel();
         chrisNameLabel = new javax.swing.JLabel();
+        andrewNameLabel = new javax.swing.JLabel();
+        nickNameLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setPreferredSize(new java.awt.Dimension(600, 400));
-
-        nickNameLabel.setBackground(java.awt.Color.black);
-        nickNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
-        nickNameLabel.setForeground(java.awt.Color.white);
-        nickNameLabel.setText("Nicholas Pham, 010186410");
-        nickNameLabel.setToolTipText("creditsNicholas");
 
         creditsLabel.setBackground(java.awt.Color.black);
         creditsLabel.setFont(new java.awt.Font("Century", 1, 24)); // NOI18N
@@ -58,18 +52,28 @@ public class CreditsPanel extends javax.swing.JPanel {
         creditsLabel.setToolTipText("creditsTitle");
         creditsLabel.setAlignmentY(0.0F);
         creditsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        andrewNameLabel.setBackground(java.awt.Color.black);
-        andrewNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
-        andrewNameLabel.setForeground(java.awt.Color.white);
-        andrewNameLabel.setText("Andrew Tek, 009604621");
-        andrewNameLabel.setToolTipText("creditsAndrew");
+        creditsLabel.setVerifyInputWhenFocusTarget(false);
 
         chrisNameLabel.setBackground(java.awt.Color.black);
         chrisNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         chrisNameLabel.setForeground(java.awt.Color.white);
-        chrisNameLabel.setText("Christopher Kilian, 012122383");
+        chrisNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        chrisNameLabel.setText("Christopher Kilian, #012122383");
         chrisNameLabel.setToolTipText("creditsChristopher");
+
+        andrewNameLabel.setBackground(java.awt.Color.black);
+        andrewNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        andrewNameLabel.setForeground(java.awt.Color.white);
+        andrewNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        andrewNameLabel.setText("Andrew Tek, #009604621");
+        andrewNameLabel.setToolTipText("creditsAndrew");
+
+        nickNameLabel.setBackground(java.awt.Color.black);
+        nickNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
+        nickNameLabel.setForeground(java.awt.Color.white);
+        nickNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nickNameLabel.setText("Nicholas Pham, #010186410");
+        nickNameLabel.setToolTipText("creditsNicholas");
 
         backButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         backButton.setText("Back");
@@ -78,30 +82,22 @@ public class CreditsPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(creditsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chrisNameLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(creditsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(nickNameLabel)
-                        .addGap(11, 11, 11)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
-                .addComponent(andrewNameLabel)
-                .addGap(178, 178, 178))
+                        .addComponent(backButton)
+                        .addGap(0, 501, Short.MAX_VALUE))
+                    .addComponent(chrisNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                    .addComponent(andrewNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nickNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addContainerGap(125, Short.MAX_VALUE)
                 .addComponent(creditsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(chrisNameLabel)
@@ -109,12 +105,15 @@ public class CreditsPanel extends javax.swing.JPanel {
                 .addComponent(andrewNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nickNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addGap(87, 87, 87)
                 .addComponent(backButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This button returns the user from the credits panel, back to the main menu panel.
+     */
     public JButton getBackButton() {
         return backButton;
     }
