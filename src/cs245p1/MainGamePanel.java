@@ -35,7 +35,6 @@ public class MainGamePanel extends javax.swing.JPanel {
     public MainGamePanel() {
         initComponents();
         word = CS245P1.getGame().getWord().toCharArray();
-        word = "abstract".toCharArray();
         wordGuessed = new char [word.length];
         StringBuilder dashLines = new StringBuilder();
         for (int i = 0; i < word.length; i++) {
@@ -44,7 +43,6 @@ public class MainGamePanel extends javax.swing.JPanel {
         }
         System.out.println(dashLines.toString());
         jLabelDashedLines.setText(dashLines.toString());
-        System.out.println(word);
     }
 
     /**
@@ -94,30 +92,75 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonM.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonM.setText("M");
+        jButtonM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMActionPerformed(evt);
+            }
+        });
 
         jButtonN.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonN.setText("N");
+        jButtonN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNActionPerformed(evt);
+            }
+        });
 
         jButtonO.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonO.setText("O");
+        jButtonO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOActionPerformed(evt);
+            }
+        });
 
         jButtonP.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonP.setText("P");
+        jButtonP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPActionPerformed(evt);
+            }
+        });
 
         jButtonQ.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonQ.setText("Q");
+        jButtonQ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonQActionPerformed(evt);
+            }
+        });
 
         jButtonR.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonR.setText("R");
+        jButtonR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRActionPerformed(evt);
+            }
+        });
 
         jButtonS.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonS.setText("S");
+        jButtonS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSActionPerformed(evt);
+            }
+        });
 
         jButtonT.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonT.setText("T");
+        jButtonT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTActionPerformed(evt);
+            }
+        });
 
         jButtonU.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonU.setText("U");
+        jButtonU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUActionPerformed(evt);
+            }
+        });
 
         titleLabel.setFont(new java.awt.Font("Papyrus", 3, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 51, 51));
@@ -126,6 +169,11 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonV.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonV.setText("V");
+        jButtonV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVActionPerformed(evt);
+            }
+        });
 
         jButtonA.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonA.setText("A");
@@ -137,24 +185,59 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonW.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonW.setText("W");
+        jButtonW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonWActionPerformed(evt);
+            }
+        });
 
         jButtonB.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonB.setText("B");
+        jButtonB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBActionPerformed(evt);
+            }
+        });
 
         jButtonX.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonX.setText("X");
+        jButtonX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonXActionPerformed(evt);
+            }
+        });
 
         jButtonC.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonC.setText("C");
+        jButtonC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCActionPerformed(evt);
+            }
+        });
 
         jButtonD.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonD.setText("D");
+        jButtonD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDActionPerformed(evt);
+            }
+        });
 
         jButtonY.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonY.setText("Y");
+        jButtonY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonYActionPerformed(evt);
+            }
+        });
 
         jButtonZ.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonZ.setText("Z");
+        jButtonZ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonZActionPerformed(evt);
+            }
+        });
 
         clockLabel.setText("Clock Here");
         clockLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), null));
@@ -178,27 +261,67 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonE.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonE.setText("E");
+        jButtonE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEActionPerformed(evt);
+            }
+        });
 
         jButtonF.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonF.setText("F");
+        jButtonF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFActionPerformed(evt);
+            }
+        });
 
         jButtonG.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonG.setText("G");
+        jButtonG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGActionPerformed(evt);
+            }
+        });
 
         jButtonH.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonH.setText("H");
+        jButtonH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHActionPerformed(evt);
+            }
+        });
 
         jButtonI.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonI.setText("I");
+        jButtonI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIActionPerformed(evt);
+            }
+        });
 
         jButtonJ.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonJ.setText("J");
+        jButtonJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonJActionPerformed(evt);
+            }
+        });
 
         jButtonK.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonK.setText("K");
+        jButtonK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonKActionPerformed(evt);
+            }
+        });
 
         jButtonL.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         jButtonL.setText("L");
+        jButtonL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLActionPerformed(evt);
+            }
+        });
 
         jLabelGuessWord.setFont(new java.awt.Font("Century", 0, 36)); // NOI18N
         jLabelGuessWord.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -216,7 +339,7 @@ public class MainGamePanel extends javax.swing.JPanel {
             wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wordPanelLayout.createSequentialGroup()
                 .addGroup(wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelDashedLines, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                    .addComponent(jLabelDashedLines, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelGuessWord, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -297,7 +420,7 @@ public class MainGamePanel extends javax.swing.JPanel {
                                 .addComponent(jButtonU)
                                 .addGap(21, 21, 21)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(hangmanPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                    .addComponent(hangmanPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 891, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,7 +484,164 @@ public class MainGamePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aButtonPush(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aButtonPush
-        List <Integer> index = new ArrayList(CS245P1.getGame().checkLetter("a"));
+        updateGuessedWord("a");
+        jButtonA.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_aButtonPush
+
+    private void jButtonBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBActionPerformed
+        updateGuessedWord("b");
+        jButtonB.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonBActionPerformed
+
+    private void jButtonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCActionPerformed
+        updateGuessedWord("c");
+        jButtonC.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonCActionPerformed
+
+    private void jButtonDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDActionPerformed
+        updateGuessedWord("d");
+        jButtonD.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonDActionPerformed
+
+    private void jButtonEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEActionPerformed
+        updateGuessedWord("e");
+        jButtonE.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());       
+    }//GEN-LAST:event_jButtonEActionPerformed
+
+    private void jButtonFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFActionPerformed
+        updateGuessedWord("f");
+        jButtonF.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonFActionPerformed
+
+    private void jButtonGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGActionPerformed
+        updateGuessedWord("g");
+        jButtonG.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonGActionPerformed
+
+    private void jButtonHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHActionPerformed
+        updateGuessedWord("h");
+        jButtonH.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonHActionPerformed
+
+    private void jButtonIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIActionPerformed
+        updateGuessedWord("i");
+        jButtonI.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonIActionPerformed
+
+    private void jButtonJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJActionPerformed
+        updateGuessedWord("j");
+        jButtonJ.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonJActionPerformed
+
+    private void jButtonKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKActionPerformed
+        updateGuessedWord("k");
+        jButtonK.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonKActionPerformed
+
+    private void jButtonLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLActionPerformed
+        updateGuessedWord("l");
+        jButtonL.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonLActionPerformed
+
+    private void jButtonMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMActionPerformed
+        updateGuessedWord("m");
+        jButtonM.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonMActionPerformed
+
+    private void jButtonNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNActionPerformed
+        updateGuessedWord("n");
+        jButtonN.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonNActionPerformed
+
+    private void jButtonOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOActionPerformed
+        updateGuessedWord("o");
+        jButtonO.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonOActionPerformed
+
+    private void jButtonPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPActionPerformed
+        updateGuessedWord("p");
+        jButtonP.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonPActionPerformed
+
+    private void jButtonQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQActionPerformed
+        updateGuessedWord("q");
+        jButtonQ.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonQActionPerformed
+
+    private void jButtonRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRActionPerformed
+        updateGuessedWord("r");
+        jButtonR.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonRActionPerformed
+
+    private void jButtonSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSActionPerformed
+        updateGuessedWord("s");
+        jButtonS.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonSActionPerformed
+
+    private void jButtonTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTActionPerformed
+        updateGuessedWord("t");
+        jButtonT.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonTActionPerformed
+
+    private void jButtonUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUActionPerformed
+        updateGuessedWord("u");
+        jButtonU.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonUActionPerformed
+
+    private void jButtonVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVActionPerformed
+        updateGuessedWord("v");
+        jButtonV.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonVActionPerformed
+
+    private void jButtonWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWActionPerformed
+        updateGuessedWord("w");
+        jButtonW.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonWActionPerformed
+
+    private void jButtonXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXActionPerformed
+        updateGuessedWord("x");
+        jButtonX.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonXActionPerformed
+
+    private void jButtonYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonYActionPerformed
+        updateGuessedWord("y");
+        jButtonY.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonYActionPerformed
+
+    private void jButtonZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZActionPerformed
+        updateGuessedWord("z");
+        jButtonZ.setEnabled(false);
+        System.out.println(CS245P1.getGame().getPoints());
+    }//GEN-LAST:event_jButtonZActionPerformed
+
+
+    public void updateGuessedWord(String letterPushed) {
+         List <Integer> index = new ArrayList(CS245P1.getGame().checkLetter(letterPushed));
         if (index.isEmpty()) {
             System.out.println("Letter not in word");
             //Add next picture
@@ -369,15 +649,11 @@ public class MainGamePanel extends javax.swing.JPanel {
         else {
             System.out.println(index.size());
             for (int i = 0; i < index.size(); i++) {
-                wordGuessed[index.get(i)] = 'a';
+                wordGuessed[index.get(i)] = letterPushed.charAt(0);
             }
             updateGuessedWord();
         }
-        jButtonA.setEnabled(false);
-        System.out.println(CS245P1.getGame().getPoints());
-    }//GEN-LAST:event_aButtonPush
-
-
+    }
     public JButton getSkipButton() {
         return skipButton;
     }
@@ -386,11 +662,9 @@ public class MainGamePanel extends javax.swing.JPanel {
         jLabelGuessWord.setFont(new Font("Century 24", Font.PLAIN, 35));
         
         for (int i = 0; i < wordGuessed.length; i++) {
-//            str.append(wordGuessed[i] + " ");
-            str.append('a' + " ");
+            str.append(wordGuessed[i] + " ");
 
         }
-//        System.out.println(str.toString());
         jLabelGuessWord.setText(str.toString());
     }
 
