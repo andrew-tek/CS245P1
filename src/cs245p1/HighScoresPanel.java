@@ -16,16 +16,15 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 
 /**
- * This class is the panel that displays the top five high scores
+ * this class is the panel that displays the top five high scores
  */
 public class HighScoresPanel extends javax.swing.JPanel {
     
-    // High scores list
+    // high scores list
     HighScoresList highScoresList = new HighScoresList();
 
-    /**
-     * Creates new form HighScoresPanel
-     */
+    // method: highScoresPanel
+    // purpose: build panel to display high scores
     public HighScoresPanel() {
         initComponents();
     }
@@ -142,9 +141,8 @@ public class HighScoresPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * This button returns the user from the high scores panel, back to the main menu panel.
-     */
+    // method: getBackButton
+    // purpose: return to main menu
     public JButton getBackButton() {
         return highScoresBackButton;
     }
