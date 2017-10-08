@@ -57,6 +57,7 @@ public class MainGamePanel extends javax.swing.JPanel {
         }
         
         jLabelDashedLines.setText(dashLines.toString());
+        jLabelGuessWord.setText("");
         ActionListener updateClock = new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             DateFormat dateFormat = new SimpleDateFormat("MMMM dd,yy hh:mm:ss");

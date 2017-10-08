@@ -40,10 +40,9 @@ public class HangManGame {
         Collections.shuffle(wordsList);
         gameWord = wordsList.get(0);
         wordsList.remove(0);
-        gameWord = "nurse";
         correctGuesses = 0;
         points = 100;
-//        correctNeeded = (int)gameWord.chars().distinct().count();
+//      correctNeeded = (int)gameWord.chars().distinct().count();
     }
     
     //method: getPoints
