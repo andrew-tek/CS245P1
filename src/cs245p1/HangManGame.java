@@ -39,7 +39,9 @@ public class HangManGame {
         wordsList.add("pharmacy");
         wordsList.add("climbing");
         Collections.shuffle(wordsList);
-        gameWord = "abstract";
+        gameWord = wordsList.get(0);
+        wordsList.remove(0);
+        gameWord = "nurse";
         correctGuesses = 0;
         points = 100;
 //        correctNeeded = (int)gameWord.chars().distinct().count();
@@ -69,17 +71,21 @@ public class HangManGame {
     public void skipGame(){
         points = 0;
     }
+
     
     //method: checkForWin
     //purpose: A method returning a boolean which indicates whether the player has won the game or not
-    public boolean checkForWin(){
+    public boolean checkForWin(String s){
         boolean win = false;
-        if((points > FAIL_SCORE) && (correctGuesses == correctNeeded)){
+        if((points > FAIL_SCORE) && (gameWord.equals(s))){
             win = true;
         }
         return win;
     }
-    
+
+    public int getCorrectGuesses() {
+        return correctGuesses;
+    }
     //method: checkLetter
     //purpose: This method accepts a letter (in the form of a string) and checks the "game word"
     //(chosen at random when the game is instantiated) to see what the positons in the word (if any) are for
