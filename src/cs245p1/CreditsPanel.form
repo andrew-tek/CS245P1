@@ -32,7 +32,7 @@
                       <Component id="backButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="501" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="chrisNameLabel" alignment="0" pref="580" max="32767" attributes="0"/>
+                  <Component id="chrisNameLabel" alignment="0" pref="588" max="32767" attributes="0"/>
                   <Component id="andrewNameLabel" alignment="0" max="32767" attributes="0"/>
                   <Component id="nickNameLabel" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -43,15 +43,15 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="125" max="32767" attributes="0"/>
+              <EmptySpace pref="85" max="32767" attributes="0"/>
               <Component id="creditsLabel" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="chrisNameLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="andrewNameLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="nickNameLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
               <Component id="backButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
