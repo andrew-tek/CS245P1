@@ -18,6 +18,12 @@ import java.util.Collections;
 import java.util.List;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
 
     
 /**
@@ -31,9 +37,17 @@ public class MainGamePanel extends javax.swing.JPanel {
     public static List <String> wordsList;
     public static char [] word;
     public static char [] wordGuessed;
-    
+    public static String [] gallowPaths = {"../gallows1.jpg", "../gallows2.jpg",
+    "../gallows3.jpg", "../gallows4.jpg", "../gallows5.jpg",
+    "../gallows6.jpg", "../gallows7.jpg"};
+    public static int incorrectGuesses;
+  
+    //method: MainGamePanel
+    //purpose: initialize components get the word and prepare the dashed lines
+    // and also set up the clock.    
     public MainGamePanel() {
         initComponents();
+        incorrectGuesses = 0;
         word = CS245P1.getGame().getWord().toCharArray();
         wordGuessed = new char [word.length];
         StringBuilder dashLines = new StringBuilder();
@@ -41,8 +55,18 @@ public class MainGamePanel extends javax.swing.JPanel {
             wordGuessed[i] = ' ';
             dashLines.append("_" + " ");
         }
-        System.out.println(dashLines.toString());
+        
         jLabelDashedLines.setText(dashLines.toString());
+        ActionListener updateClock = new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            DateFormat dateFormat = new SimpleDateFormat("MMMM dd,yy hh:mm:ss");
+            Date date = new Date();
+            clockLabel.setText(dateFormat.format(date).toString());
+        }
+    };
+        Timer timer = new Timer (1000, updateClock);
+        timer.setRepeats(true);
+        timer.start(); 
         
     }
 
@@ -435,7 +459,7 @@ public class MainGamePanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(skipButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -490,169 +514,199 @@ public class MainGamePanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void aButtonPush(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aButtonPush
         updateGuessedWord('a');
         jButtonA.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_aButtonPush
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBActionPerformed
         updateGuessedWord('b');
         jButtonB.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonBActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCActionPerformed
         updateGuessedWord('c');
         jButtonC.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonCActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDActionPerformed
         updateGuessedWord('d');
         jButtonD.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonDActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEActionPerformed
         updateGuessedWord('e');
         jButtonE.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());       
     }//GEN-LAST:event_jButtonEActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFActionPerformed
         updateGuessedWord('f');
         jButtonF.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonFActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGActionPerformed
         updateGuessedWord('g');
         jButtonG.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonGActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHActionPerformed
         updateGuessedWord('h');
         jButtonH.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonHActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIActionPerformed
         updateGuessedWord('i');
         jButtonI.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonIActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJActionPerformed
         updateGuessedWord('j');
         jButtonJ.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonJActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKActionPerformed
         updateGuessedWord('k');
         jButtonK.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonKActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLActionPerformed
         updateGuessedWord('l');
         jButtonL.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonLActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMActionPerformed
         updateGuessedWord('m');
         jButtonM.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonMActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNActionPerformed
         updateGuessedWord('n');
         jButtonN.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonNActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOActionPerformed
         updateGuessedWord('o');
         jButtonO.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonOActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPActionPerformed
         updateGuessedWord('p');
         jButtonP.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonPActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQActionPerformed
         updateGuessedWord('q');
         jButtonQ.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonQActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRActionPerformed
         updateGuessedWord('r');
         jButtonR.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonRActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSActionPerformed
         updateGuessedWord('s');
         jButtonS.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonSActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTActionPerformed
         updateGuessedWord('t');
         jButtonT.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonTActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUActionPerformed
         updateGuessedWord('u');
         jButtonU.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonUActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVActionPerformed
         updateGuessedWord('v');
         jButtonV.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonVActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonWActionPerformed
         updateGuessedWord('w');
         jButtonW.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonWActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXActionPerformed
         updateGuessedWord('x');
         jButtonX.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonXActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonYActionPerformed
         updateGuessedWord('y');
         jButtonY.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonYActionPerformed
-
+    //method: ButtonPush
+    //purpose: call update guessedWord and disable the button
     private void jButtonZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZActionPerformed
         updateGuessedWord('z');
         jButtonZ.setEnabled(false);
         System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonZActionPerformed
 
-
+    //method: updateGuessedWord
+    //purpose: check if the gussed letter is in the word and update the guessed word
+    //Will also update the UI    
     public void updateGuessedWord(char letterPushed) {
          List <Integer> index = new ArrayList(CS245P1.getGame().checkLetter(String.valueOf(letterPushed)));
         if (index.isEmpty()) {
             System.out.println("Letter not in word");
-            //Add next picture
+            incorrectGuesses++;
+            jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().
+                    getResource(gallowPaths[incorrectGuesses]))); 
         }
         else {
             System.out.println(index.size());
@@ -668,9 +722,13 @@ public class MainGamePanel extends javax.swing.JPanel {
         System.out.println(CS245P1.getGame().getPoints());
         System.out.println(CS245P1.getGame().getCorrectGuesses());
     }
+    //method: getSkipButton
+    //purpose: return skip button
     public JButton getSkipButton() {
         return skipButton;
     }
+    //method: updateGussedWord
+    //purpose: update the UI above the dashed lines
     public void updateGuessedWord() {
         StringBuilder str = new StringBuilder();
         jLabelGuessWord.setFont(new Font("Century 24", Font.PLAIN, 35));
@@ -681,6 +739,8 @@ public class MainGamePanel extends javax.swing.JPanel {
         }
         jLabelGuessWord.setText(str.toString());
     }
+
+                
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;

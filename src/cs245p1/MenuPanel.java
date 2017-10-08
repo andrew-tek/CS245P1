@@ -28,21 +28,6 @@ public class MenuPanel extends javax.swing.JPanel {
      */
     public MenuPanel() {
         initComponents();
-        /*
-        CreditsPanel creditsPanel = new CreditsPanel();
-        creditsButton = new JButton("auto");
-        add(creditsButton);
-        creditsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame creditsPage = new JFrame();
-                creditsPage.add(creditsPanel);
-                creditsPage.setVisible(true);
-                System.out.println("HERE");
-            }
-        });
-        */
-        
     }
 
     /**

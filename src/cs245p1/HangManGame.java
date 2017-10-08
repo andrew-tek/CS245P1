@@ -27,7 +27,6 @@ public class HangManGame {
     private int points;
     private int correctNeeded;
     private String gameWord;
-    
     //method: constructor
     //purpose: Builds the game environment by initializing score and correct points, randomly choosing a word from the database,
     //and initializing the number of correct guesses needed for a win by checking how many unique characters exist in the chosen word

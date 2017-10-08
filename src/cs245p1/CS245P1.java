@@ -1,8 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: CS245P1.java
+* author: Christopher Kilian, Nicholas Pham, Andrew Tek
+* class: CS 245 – Programming Graphical User Interfaces
+*
+* assignment: Point and Click Game – v.1.0
+* date last modified: 10/04/2017
+*
+* purpose: Sets up the card holder, panels, and jFrame.
+* 
+* 
+*
+****************************************************************/
 package cs245p1;
 
 import java.awt.*;
