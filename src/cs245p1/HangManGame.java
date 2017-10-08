@@ -39,6 +39,7 @@ public class HangManGame {
         wordsList.add("pharmacy");
         wordsList.add("climbing");
         Collections.shuffle(wordsList);
+        gameWord = "abstract";
         correctGuesses = 0;
         points = 100;
 //        correctNeeded = (int)gameWord.chars().distinct().count();
