@@ -17,33 +17,30 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 /**
- * This class stores the high scores list to display on its respective panel.
+ * this class stores the high scores list to display on its respective panel.
  */
 public class HighScoresList {
     
-    // List of high scores (see: Scores)
+    // list of high scores (see: Scores)
     private ArrayList<Scores> highScores;
-    // Reader to read file
+    // reader to read file
     private BufferedReader br;
     
-    /**
-     * Constructor to initialize the list
-     */
+    // method: HighScoresList
+    // purpose: constructor
     public HighScoresList() {
         highScores = new ArrayList<Scores>();
     }
     
-    /**
-     * Returns the list of high scores
-     */
+    // method: getScores
+    // purpose: return list of high scores
     public ArrayList<Scores> getScores() {
         loadFile();
         return highScores;
     }
     
-    /**
-     * Loads data from file (highscores.txt)
-     */
+    // method: loadFile
+    // purpose: read in names and scores from file
     public void loadFile() {
         try {
             try {

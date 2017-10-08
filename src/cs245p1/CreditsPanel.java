@@ -15,13 +15,12 @@ package cs245p1;
 import javax.swing.JButton;
 
 /**
- * This class is the panel that displays who created the game/project
+ * this class is the panel that displays who created the game/project
  */
 public class CreditsPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CreditsPanel
-     */
+    // method: CreditsPanel
+    // purpose: constructor
     public CreditsPanel() {
         initComponents();
     }
@@ -111,9 +110,8 @@ public class CreditsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * This button returns the user from the credits panel, back to the main menu panel.
-     */
+    // method: getBackButton
+    // purpose: return to main menu
     public JButton getBackButton() {
         return backButton;
     }

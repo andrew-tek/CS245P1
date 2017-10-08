@@ -13,40 +13,36 @@
 package cs245p1;
 
 /**
- * This class stores the objects of each high score and allows for storage in the high scores list.
+ * this class stores the objects of each high score and allows for storage in the high scores list.
  */
 public class Scores {
     
-    // Name of player or user
+    // name of player or user
     private String player;
-    // Player's high score
+    // player's high score
     private int score;
 
-    /**
-     * Constructor for each player's name and score
-     */
+    // method: Scores
+    // purpose: constructor for player name and score
     public Scores(String player, int score) {
         this.player = player;
         this.score = score;
     }
     
-    /**
-     * Constructor for player's score
-     */
+    // method: Scores
+    // purpose: constructor for player name and score
     public Scores(int score) {
         this.score = score;
     }
     
-    /**
-     * This getter returns the player's name
-     */
+    // method: getPlayer
+    // purpose: return name of player (String)
     public String getPlayer() {
         return player;
     }
     
-    /**
-     * This getter returns the player's score
-     */
+    // method: getScore
+    // purpose: return score of player
     public int getScore() {
         return score;
     }
