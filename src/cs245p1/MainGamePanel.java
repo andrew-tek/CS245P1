@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.JButton;
+import java.awt.Font;
 
     
 /**
@@ -214,18 +215,17 @@ public class MainGamePanel extends javax.swing.JPanel {
         wordPanelLayout.setHorizontalGroup(
             wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wordPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelGuessWord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(wordPanelLayout.createSequentialGroup()
-                .addComponent(jLabelDashedLines, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDashedLines, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                    .addComponent(jLabelGuessWord, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         wordPanelLayout.setVerticalGroup(
             wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wordPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addComponent(jLabelGuessWord, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelDashedLines, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -297,7 +297,7 @@ public class MainGamePanel extends javax.swing.JPanel {
                                 .addComponent(jButtonU)
                                 .addGap(21, 21, 21)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(hangmanPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 891, Short.MAX_VALUE)
+                    .addComponent(hangmanPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,13 +383,14 @@ public class MainGamePanel extends javax.swing.JPanel {
     }
     public void updateGuessedWord() {
         StringBuilder str = new StringBuilder();
+        jLabelGuessWord.setFont(new Font("Century 24", Font.PLAIN, 35));
         
         for (int i = 0; i < wordGuessed.length; i++) {
 //            str.append(wordGuessed[i] + " ");
             str.append('a' + " ");
 
         }
-        System.out.println(str.toString());
+//        System.out.println(str.toString());
         jLabelGuessWord.setText(str.toString());
     }
 
