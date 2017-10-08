@@ -56,11 +56,12 @@ public class MainGamePanel extends javax.swing.JPanel {
             dashLines.append("_" + " ");
         }
         
+        jLabelDashedLines.setFont(new Font("Century 24", Font.PLAIN, 35));
         jLabelDashedLines.setText(dashLines.toString());
         jLabelGuessWord.setText("");
         ActionListener updateClock = new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
-            DateFormat dateFormat = new SimpleDateFormat("MMMM dd,yy hh:mm:ss");
+            DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
             Date date = new Date();
             clockLabel.setText(dateFormat.format(date).toString());
         }
@@ -80,6 +81,27 @@ public class MainGamePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        titleLabel = new javax.swing.JLabel();
+        clockLabel = new javax.swing.JLabel();
+        hangmanPanel = new javax.swing.JPanel();
+        jLabelGallow = new javax.swing.JLabel();
+        skipButton = new javax.swing.JButton();
+        wordPanel = new javax.swing.JPanel();
+        jLabelGuessWord = new javax.swing.JLabel();
+        jLabelDashedLines = new javax.swing.JLabel();
+        letterPanel = new javax.swing.JPanel();
+        jButtonA = new javax.swing.JButton();
+        jButtonB = new javax.swing.JButton();
+        jButtonC = new javax.swing.JButton();
+        jButtonD = new javax.swing.JButton();
+        jButtonE = new javax.swing.JButton();
+        jButtonF = new javax.swing.JButton();
+        jButtonG = new javax.swing.JButton();
+        jButtonH = new javax.swing.JButton();
+        jButtonI = new javax.swing.JButton();
+        jButtonJ = new javax.swing.JButton();
+        jButtonK = new javax.swing.JButton();
+        jButtonL = new javax.swing.JButton();
         jButtonM = new javax.swing.JButton();
         jButtonN = new javax.swing.JButton();
         jButtonO = new javax.swing.JButton();
@@ -89,182 +111,18 @@ public class MainGamePanel extends javax.swing.JPanel {
         jButtonS = new javax.swing.JButton();
         jButtonT = new javax.swing.JButton();
         jButtonU = new javax.swing.JButton();
-        titleLabel = new javax.swing.JLabel();
         jButtonV = new javax.swing.JButton();
-        jButtonA = new javax.swing.JButton();
         jButtonW = new javax.swing.JButton();
-        jButtonB = new javax.swing.JButton();
         jButtonX = new javax.swing.JButton();
-        jButtonC = new javax.swing.JButton();
-        jButtonD = new javax.swing.JButton();
         jButtonY = new javax.swing.JButton();
         jButtonZ = new javax.swing.JButton();
-        clockLabel = new javax.swing.JLabel();
-        hangmanPanel = new javax.swing.JPanel();
-        jLabelGallow = new javax.swing.JLabel();
-        skipButton = new javax.swing.JButton();
-        jButtonE = new javax.swing.JButton();
-        jButtonF = new javax.swing.JButton();
-        jButtonG = new javax.swing.JButton();
-        jButtonH = new javax.swing.JButton();
-        jButtonI = new javax.swing.JButton();
-        jButtonJ = new javax.swing.JButton();
-        jButtonK = new javax.swing.JButton();
-        jButtonL = new javax.swing.JButton();
-        wordPanel = new javax.swing.JPanel();
-        jLabelGuessWord = new javax.swing.JLabel();
-        jLabelDashedLines = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(600, 400));
-
-        jButtonM.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonM.setText("M");
-        jButtonM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMActionPerformed(evt);
-            }
-        });
-
-        jButtonN.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonN.setText("N");
-        jButtonN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNActionPerformed(evt);
-            }
-        });
-
-        jButtonO.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonO.setText("O");
-        jButtonO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOActionPerformed(evt);
-            }
-        });
-
-        jButtonP.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonP.setText("P");
-        jButtonP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPActionPerformed(evt);
-            }
-        });
-
-        jButtonQ.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonQ.setText("Q");
-        jButtonQ.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonQActionPerformed(evt);
-            }
-        });
-
-        jButtonR.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonR.setText("R");
-        jButtonR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRActionPerformed(evt);
-            }
-        });
-
-        jButtonS.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonS.setText("S");
-        jButtonS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSActionPerformed(evt);
-            }
-        });
-
-        jButtonT.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonT.setText("T");
-        jButtonT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTActionPerformed(evt);
-            }
-        });
-
-        jButtonU.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonU.setText("U");
-        jButtonU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUActionPerformed(evt);
-            }
-        });
 
         titleLabel.setFont(new java.awt.Font("Papyrus", 3, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 51, 51));
         titleLabel.setText("Hangman");
         titleLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jButtonV.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonV.setText("V");
-        jButtonV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVActionPerformed(evt);
-            }
-        });
-
-        jButtonA.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonA.setText("A");
-        jButtonA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aButtonPush(evt);
-            }
-        });
-
-        jButtonW.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonW.setText("W");
-        jButtonW.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonWActionPerformed(evt);
-            }
-        });
-
-        jButtonB.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonB.setText("B");
-        jButtonB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBActionPerformed(evt);
-            }
-        });
-
-        jButtonX.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonX.setText("X");
-        jButtonX.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonXActionPerformed(evt);
-            }
-        });
-
-        jButtonC.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonC.setText("C");
-        jButtonC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCActionPerformed(evt);
-            }
-        });
-
-        jButtonD.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonD.setText("D");
-        jButtonD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDActionPerformed(evt);
-            }
-        });
-
-        jButtonY.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonY.setText("Y");
-        jButtonY.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonYActionPerformed(evt);
-            }
-        });
-
-        jButtonZ.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonZ.setText("Z");
-        jButtonZ.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonZActionPerformed(evt);
-            }
-        });
 
         clockLabel.setText("Clock Here");
         clockLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), null));
@@ -279,82 +137,18 @@ public class MainGamePanel extends javax.swing.JPanel {
         hangmanPanel.setLayout(hangmanPanelLayout);
         hangmanPanelLayout.setHorizontalGroup(
             hangmanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(hangmanPanelLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabelGallow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hangmanPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelGallow)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         hangmanPanelLayout.setVerticalGroup(
             hangmanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelGallow, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+            .addComponent(jLabelGallow)
         );
 
         skipButton.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         skipButton.setText("Skip");
-
-        jButtonE.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonE.setText("E");
-        jButtonE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEActionPerformed(evt);
-            }
-        });
-
-        jButtonF.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonF.setText("F");
-        jButtonF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFActionPerformed(evt);
-            }
-        });
-
-        jButtonG.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonG.setText("G");
-        jButtonG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGActionPerformed(evt);
-            }
-        });
-
-        jButtonH.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonH.setText("H");
-        jButtonH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHActionPerformed(evt);
-            }
-        });
-
-        jButtonI.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonI.setText("I");
-        jButtonI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonIActionPerformed(evt);
-            }
-        });
-
-        jButtonJ.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonJ.setText("J");
-        jButtonJ.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonJActionPerformed(evt);
-            }
-        });
-
-        jButtonK.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonK.setText("K");
-        jButtonK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonKActionPerformed(evt);
-            }
-        });
-
-        jButtonL.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
-        jButtonL.setText("L");
-        jButtonL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLActionPerformed(evt);
-            }
-        });
 
         jLabelGuessWord.setFont(new java.awt.Font("Century", 0, 36)); // NOI18N
         jLabelGuessWord.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -372,147 +166,296 @@ public class MainGamePanel extends javax.swing.JPanel {
             wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wordPanelLayout.createSequentialGroup()
                 .addGroup(wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelDashedLines, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelGuessWord, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelGuessWord, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+                    .addComponent(jLabelDashedLines, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         wordPanelLayout.setVerticalGroup(
             wordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wordPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabelGuessWord, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelGuessWord, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelDashedLines, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(126, 126, 126))
         );
 
         jLabelGuessWord.getAccessibleContext().setAccessibleName("a b s t r a c t ");
         jLabelDashedLines.getAccessibleContext().setAccessibleName("_ _ _ _ _ _ _ _ ");
+
+        letterPanel.setPreferredSize(new java.awt.Dimension(590, 100));
+
+        jButtonA.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonA.setText("A");
+        jButtonA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aButtonPush(evt);
+            }
+        });
+        letterPanel.add(jButtonA);
+
+        jButtonB.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonB.setText("B");
+        jButtonB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonB);
+
+        jButtonC.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonC.setText("C");
+        jButtonC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonC);
+
+        jButtonD.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonD.setText("D");
+        jButtonD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonD);
+
+        jButtonE.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonE.setText("E");
+        jButtonE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonE);
+
+        jButtonF.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonF.setText("F");
+        jButtonF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonF);
+
+        jButtonG.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonG.setText("G");
+        jButtonG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonG);
+
+        jButtonH.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonH.setText("H");
+        jButtonH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonH);
+
+        jButtonI.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonI.setText("I");
+        jButtonI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonI);
+
+        jButtonJ.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonJ.setText("J");
+        jButtonJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonJActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonJ);
+
+        jButtonK.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonK.setText("K");
+        jButtonK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonKActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonK);
+
+        jButtonL.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonL.setText("L");
+        jButtonL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonL);
+
+        jButtonM.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonM.setText("M");
+        jButtonM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonM);
+
+        jButtonN.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonN.setText("N");
+        jButtonN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonN);
+
+        jButtonO.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonO.setText("O");
+        jButtonO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonO);
+
+        jButtonP.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonP.setText("P");
+        jButtonP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonP);
+
+        jButtonQ.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonQ.setText("Q");
+        jButtonQ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonQActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonQ);
+
+        jButtonR.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonR.setText("R");
+        jButtonR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonR);
+
+        jButtonS.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonS.setText("S");
+        jButtonS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonS);
+
+        jButtonT.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonT.setText("T");
+        jButtonT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonT);
+
+        jButtonU.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonU.setText("U");
+        jButtonU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonU);
+
+        jButtonV.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonV.setText("V");
+        jButtonV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonV);
+
+        jButtonW.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonW.setText("W");
+        jButtonW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonWActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonW);
+
+        jButtonX.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonX.setText("X");
+        jButtonX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonXActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonX);
+
+        jButtonY.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonY.setText("Y");
+        jButtonY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonYActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonY);
+
+        jButtonZ.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
+        jButtonZ.setText("Z");
+        jButtonZ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonZActionPerformed(evt);
+            }
+        });
+        letterPanel.add(jButtonZ);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(wordPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButtonA)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonB)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonC)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonD)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonG)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonH)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonI)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonJ)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonK))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButtonV)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonW)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonX)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonY)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonZ)
-                                .addGap(142, 142, 142))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButtonL)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonM)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonN)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonO)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonP)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonQ)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonR)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonT)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonU)
-                                .addGap(21, 21, 21)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(hangmanPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 891, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hangmanPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(skipButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(wordPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                                .addComponent(skipButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(56, 56, 56)
+                                .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(letterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(skipButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(skipButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hangmanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(wordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonA)
-                    .addComponent(jButtonB)
-                    .addComponent(jButtonC)
-                    .addComponent(jButtonD)
-                    .addComponent(jButtonE)
-                    .addComponent(jButtonF)
-                    .addComponent(jButtonG)
-                    .addComponent(jButtonH)
-                    .addComponent(jButtonI)
-                    .addComponent(jButtonJ)
-                    .addComponent(jButtonK))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonN)
-                    .addComponent(jButtonO)
-                    .addComponent(jButtonP)
-                    .addComponent(jButtonQ)
-                    .addComponent(jButtonR)
-                    .addComponent(jButtonS)
-                    .addComponent(jButtonT)
-                    .addComponent(jButtonU)
-                    .addComponent(jButtonM)
-                    .addComponent(jButtonL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonV)
-                    .addComponent(jButtonW)
-                    .addComponent(jButtonX)
-                    .addComponent(jButtonY)
-                    .addComponent(jButtonZ))
-                .addContainerGap())
+                .addComponent(hangmanPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(wordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(letterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     //method: ButtonPush
@@ -723,11 +666,7 @@ public class MainGamePanel extends javax.swing.JPanel {
         System.out.println(CS245P1.getGame().getPoints());
         System.out.println(CS245P1.getGame().getCorrectGuesses());
     }
-    //method: getSkipButton
-    //purpose: return skip button
-    public JButton getSkipButton() {
-        return skipButton;
-    }
+    
     //method: updateGussedWord
     //purpose: update the UI above the dashed lines
     public void updateGuessedWord() {
@@ -736,9 +675,14 @@ public class MainGamePanel extends javax.swing.JPanel {
         
         for (int i = 0; i < wordGuessed.length; i++) {
             str.append(wordGuessed[i] + " ");
-
         }
         jLabelGuessWord.setText(str.toString());
+    }
+    
+    //method: getSkipButton
+    //purpose: return skip button
+    public JButton getSkipButton() {
+        return skipButton;
     }
 
                 
@@ -775,6 +719,7 @@ public class MainGamePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelDashedLines;
     private javax.swing.JLabel jLabelGallow;
     private javax.swing.JLabel jLabelGuessWord;
+    private javax.swing.JPanel letterPanel;
     private javax.swing.JButton skipButton;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JPanel wordPanel;

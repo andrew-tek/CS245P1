@@ -42,7 +42,7 @@ public class HangManGame {
         wordsList.remove(0);
         correctGuesses = 0;
         points = 100;
-//      correctNeeded = (int)gameWord.chars().distinct().count();
+        correctNeeded = (int)gameWord.chars().distinct().count();
     }
     
     //method: getPoints
@@ -75,6 +75,9 @@ public class HangManGame {
     //purpose: A method returning a boolean which indicates whether the player has won the game or not
     public boolean checkForWin(String s){
         boolean win = false;
+//        if((points > FAIL_SCORE) && (correctGuesses == correctNeeded)){
+//            win = true;
+//        }
         if((points > FAIL_SCORE) && (gameWord.equals(s))){
             win = true;
         }

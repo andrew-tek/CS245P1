@@ -39,6 +39,7 @@ public class CS245P1 {
      * @param args the command line arguments
      */
     public CS245P1(){
+        initLookAndFeel();
         JFrame mainFrame = new JFrame();
         currentGame = new HangManGame();
         CardLayout cardLayout = new CardLayout();
@@ -86,6 +87,7 @@ public class CS245P1 {
                 }else if(e.getSource() == menuPanel.getCreditsButton()){
                     cardLayout.show(cardHolder, CREDITS_SCREEN);
                 }else if(e.getSource() == mainGamePanel.getSkipButton()){
+                    currentGame.skipGame();
                     cardLayout.show(cardHolder, GAME_OVER);
                 }else if((e.getSource() == gameOverPanel.getEndButton()) ||
                         (e.getSource() == creditPanel.getBackButton()) ||
@@ -103,12 +105,39 @@ public class CS245P1 {
         highScoresPanel.getBackButton().addActionListener(buttonHandler);
     }
     
+    private static void initLookAndFeel(){
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());       
+        } 
+        catch (UnsupportedLookAndFeelException e) {
+            System.err.println("There was an UnsupportedLookAndFeelException with the following L&F: " + UIManager.getCrossPlatformLookAndFeelClassName());
+            System.err.println("Using default look and feel.");
+        }
+        catch (ClassNotFoundException e) {
+            System.err.println("There was a ClassNotFoundException with the following L&F: " + UIManager.getCrossPlatformLookAndFeelClassName());
+            System.err.println("Using default look and feel.");
+        }
+        catch (InstantiationException e) {
+            System.err.println("There was an InstantiationException with the following L&F: " + UIManager.getCrossPlatformLookAndFeelClassName());
+            System.err.println("Using default look and feel.");
+        }
+        catch (IllegalAccessException e) {
+            System.err.println("There was an IllegalAccessException with the following L&F: " + UIManager.getCrossPlatformLookAndFeelClassName());
+            System.err.println("Using default look and feel.");
+        }
+    }
+    
     public static HangManGame getGame(){
         return currentGame;
     }
     
     public static void main(String[] args) {
-        CS245P1 game = new CS245P1();
+        //CS245P1 game = new CS245P1();
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                CS245P1 game = new CS245P1();
+            }
+        });
     }
     
 }
