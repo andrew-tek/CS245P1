@@ -707,14 +707,6 @@ public class MainGamePanel extends javax.swing.JPanel {
         System.out.println(CS245P1.getGame().getPoints());
     }
     
-    //method: transitionToGameOver
-    //purpose: Sets the score on the Game Over screen and then transitions to that panel
-    private void transitionToGameOver(){
-        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
-        gameOver.setScore();
-        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
-    }
-    
     //method: updateGussedWord
     //purpose: update the UI above the dashed lines
     public void updateGuessedWord() {
@@ -725,6 +717,14 @@ public class MainGamePanel extends javax.swing.JPanel {
             str.append(wordGuessed[i] + " ");
         }
         jLabelGuessWord.setText(str.toString());
+    }
+    
+    //method: transitionToGameOver
+    //purpose: Sets the score on the Game Over screen and then transitions to that panel
+    private void transitionToGameOver(){
+        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
+        gameOver.setScore();
+        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
     }
     
     //method: getSkipButton
