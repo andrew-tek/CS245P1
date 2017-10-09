@@ -90,7 +90,7 @@
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Christopher Kilian, #012122383"/>
+        <Property name="text" type="java.lang.String" value="Christopher Kilian, Bronco #012122383"/>
         <Property name="toolTipText" type="java.lang.String" value="creditsChristopher"/>
       </Properties>
     </Component>
@@ -106,7 +106,7 @@
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Andrew Tek, #009604621"/>
+        <Property name="text" type="java.lang.String" value="Andrew Tek, Bronco #009604621"/>
         <Property name="toolTipText" type="java.lang.String" value="creditsAndrew"/>
       </Properties>
     </Component>
@@ -122,7 +122,7 @@
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Nicholas Pham, #010186410"/>
+        <Property name="text" type="java.lang.String" value="Nicholas Pham, Bronco #010186410"/>
         <Property name="toolTipText" type="java.lang.String" value="creditsNicholas"/>
       </Properties>
     </Component>

@@ -57,21 +57,21 @@ public class CreditsPanel extends javax.swing.JPanel {
         chrisNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         chrisNameLabel.setForeground(java.awt.Color.white);
         chrisNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        chrisNameLabel.setText("Christopher Kilian, #012122383");
+        chrisNameLabel.setText("Christopher Kilian, Bronco #012122383");
         chrisNameLabel.setToolTipText("creditsChristopher");
 
         andrewNameLabel.setBackground(java.awt.Color.black);
         andrewNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         andrewNameLabel.setForeground(java.awt.Color.white);
         andrewNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        andrewNameLabel.setText("Andrew Tek, #009604621");
+        andrewNameLabel.setText("Andrew Tek, Bronco #009604621");
         andrewNameLabel.setToolTipText("creditsAndrew");
 
         nickNameLabel.setBackground(java.awt.Color.black);
         nickNameLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         nickNameLabel.setForeground(java.awt.Color.white);
         nickNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nickNameLabel.setText("Nicholas Pham, #010186410");
+        nickNameLabel.setText("Nicholas Pham, Bronco #010186410");
         nickNameLabel.setToolTipText("creditsNicholas");
 
         backButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N

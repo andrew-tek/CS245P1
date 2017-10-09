@@ -12,7 +12,6 @@
 ****************************************************************/
 package cs245p1;
 
-import static cs245p1.MainGamePanel.wordsList;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,17 +20,17 @@ import java.util.concurrent.ThreadLocalRandom;
 public class HangManGame {
     
     //Constants and instance variables
-    private List wordList;
+    private List<String> wordsList;
     private static final int FAIL_SCORE = 40;
-    private int correctGuesses;
     private int points;
-    private int correctNeeded;
+    private int incorrectGuesses;
     private String gameWord;
+    
     //method: constructor
     //purpose: Builds the game environment by initializing score and correct points, randomly choosing a word from the database,
     //and initializing the number of correct guesses needed for a win by checking how many unique characters exist in the chosen word
     public HangManGame(){
-        wordsList = new ArrayList<String> ();
+        wordsList = new ArrayList<>();
         wordsList.add("cemetery");
         wordsList.add("nurse");
         wordsList.add("abstract");
@@ -39,10 +38,9 @@ public class HangManGame {
         wordsList.add("climbing");
         Collections.shuffle(wordsList);
         gameWord = wordsList.get(0);
-        wordsList.remove(0);
-        correctGuesses = 0;
+        incorrectGuesses = 0;
         points = 100;
-        correctNeeded = (int)gameWord.chars().distinct().count();
+        //correctNeeded = (int)gameWord.chars().distinct().count();
     }
     
     //method: getPoints
@@ -51,10 +49,10 @@ public class HangManGame {
         return points;
     }
     
+    //method: getWord
+    //purpose: Getter which returns the word chosen for this game
     public String getWord () {
-        String word = wordsList.get(0);
-        wordsList.remove(0);
-        return word;
+        return gameWord;
     }
     
     //method: getWordLength
@@ -69,35 +67,37 @@ public class HangManGame {
     public void skipGame(){
         points = 0;
     }
+    
+    //method: getIncorrect
+    //purpose: Returns number of incorrect guesses this game
+    public int getIncorrect(){
+        return incorrectGuesses;
+    }
 
     
     //method: checkForWin
     //purpose: A method returning a boolean which indicates whether the player has won the game or not
     public boolean checkForWin(String s){
         boolean win = false;
-//        if((points > FAIL_SCORE) && (correctGuesses == correctNeeded)){
-//            win = true;
-//        }
         if((points > FAIL_SCORE) && (gameWord.equals(s))){
             win = true;
         }
         return win;
     }
 
-    public int getCorrectGuesses() {
-        return correctGuesses;
-    }
     //method: checkLetter
     //purpose: This method accepts a letter (in the form of a string) and checks the "game word"
     //(chosen at random when the game is instantiated) to see what the positons in the word (if any) are for
     //the guessed letter. An arraylist is returned, so if the letter is not found anywhere in the word it will
     //return an empty arraylist. Otherwise, the arraylist will contain all the index values of the word.
-    //Additionally, this method invokes the private "adjustScore" method which examines the initially found index
-    //to see how to modify the game state
+    //This method will also reduce the players score if the letter is not in the word.
     public ArrayList<Integer> checkLetter(String theLetter){
         ArrayList foundIndices = new ArrayList();
         int foundIndex = gameWord.indexOf(theLetter);
-        adjustScore(foundIndex);
+        if(foundIndex == -1){
+            points -= 10;
+            incorrectGuesses++;
+        }
         
         while(foundIndex >= 0){
             foundIndices.add(foundIndex);
@@ -105,18 +105,6 @@ public class HangManGame {
         }
         
         return foundIndices;
-    }
-    
-    //method: adjustScore
-    //purpose: This method works with "checkLetter" by examining the index of the first found letter.
-    //If the letter exists even a single time in the word, correctGuesses is incremented. Otherwise, 10 points
-    //are removed from the players score (they made an incorrect guess)
-    private void adjustScore(int foundIndex){
-        if(foundIndex >= 0){
-            correctGuesses++;
-        }else{
-            points -= 10;
-        }
     }
     
 }

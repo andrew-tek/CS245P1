@@ -6,73 +6,79 @@
 * assignment: Point and Click Game – v.1.0
 * date last modified: 10/04/2017
 *
-* purpose: Sets up the card holder, panels, and jFrame.
-* 
-* 
+* purpose: Sets up the card holder, panels, and jFrame, along with maintaining various constants
+* needed throughout the game program.
+* Also maintains a single static game state, so that game values (such as score)
+* are easily accessible from various panels.
 *
 ****************************************************************/
 package cs245p1;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.*;
 
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-
-/**
- *
- * @author 
- */
 public class CS245P1 {
     
-    private static final String MAIN_MENU = "Menu";
-    private static final String CREDITS_SCREEN = "Credits";
-    private static final String START_SCREEN = "Start";
-    private static final String GAME_OVER = "Game Over";
-    private static final String HIGH_SCORES = "High Scores";
-    private static final String GAME = "Game";
+    //String constants here are protected so they're easily accessible from the various panel classes
+    //Other private values are (when needed by other panels) accessible via getter methods
+    protected static final String MAIN_MENU = "Menu";
+    protected static final String CREDITS_SCREEN = "Credits";
+    protected static final String START_SCREEN = "Start";
+    protected static final String GAME_OVER = "Game Over";
+    protected static final String HIGH_SCORES = "High Scores";
+    protected static final String GAME = "Game";
+    private static final CardLayout CARDLAYOUT = new CardLayout();  
+    private static final JPanel CARDHOLDER = new JPanel(CARDLAYOUT);
     private static HangManGame currentGame;
-    /**
-     * @param args the command line arguments
-     */
+    private static Map allPanels; //allows access to panel methods anywhere in program
+    
+    //method: Constructor
+    //purpose: Initializes all the necessary components of the game, including the individual panels
+    //and the game object itself, as well as setting up actionlisteners for the buttons which transition
+    //between panels (utilizing the CardLayout layout)
     public CS245P1(){
         initLookAndFeel();
         JFrame mainFrame = new JFrame();
         currentGame = new HangManGame();
-        CardLayout cardLayout = new CardLayout();
-        JPanel cardHolder = new JPanel(cardLayout);
+        allPanels = new HashMap<String,Component>();
         CreditsPanel creditPanel = new CreditsPanel();
+        allPanels.put(CREDITS_SCREEN, creditPanel);
         GameOverPanel gameOverPanel = new GameOverPanel();
+        allPanels.put(GAME_OVER, gameOverPanel);
         HighScoresPanel highScoresPanel = new HighScoresPanel();
+        allPanels.put(HIGH_SCORES, highScoresPanel);
         MainGamePanel mainGamePanel = new MainGamePanel();
+        allPanels.put(GAME, mainGamePanel);
         MenuPanel menuPanel = new MenuPanel();
+        allPanels.put(MAIN_MENU, menuPanel);
         StartPanel startPanel = new StartPanel();
+        allPanels.put(START_SCREEN, startPanel);
         
-        
-        cardHolder.add(creditPanel, CREDITS_SCREEN);
-        cardHolder.add(gameOverPanel, GAME_OVER);
-        cardHolder.add(highScoresPanel, HIGH_SCORES);
-        cardHolder.add(mainGamePanel, GAME);
-        cardHolder.add(startPanel, START_SCREEN);
-        cardHolder.add(menuPanel, MAIN_MENU);
+        CARDHOLDER.add(creditPanel, CREDITS_SCREEN);
+        CARDHOLDER.add(gameOverPanel, GAME_OVER);
+        CARDHOLDER.add(highScoresPanel, HIGH_SCORES);
+        CARDHOLDER.add(mainGamePanel, GAME);
+        CARDHOLDER.add(startPanel, START_SCREEN);
+        CARDHOLDER.add(menuPanel, MAIN_MENU);
         
         mainFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setSize(new java.awt.Dimension(600, 400));
-        mainFrame.add(cardHolder);
-        cardLayout.show(cardHolder, START_SCREEN);
+        mainFrame.add(CARDHOLDER);
+        CARDLAYOUT.show(CARDHOLDER, START_SCREEN);
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
         
         ActionListener showMenuScreen = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                cardLayout.show(cardHolder, MAIN_MENU);
+                CARDLAYOUT.show(CARDHOLDER, MAIN_MENU);
             }
         };
-        Timer timer = new Timer (1000, showMenuScreen);
+        Timer timer = new Timer (500, showMenuScreen);
         timer.setRepeats(false);
         timer.start(); 
                 
@@ -81,18 +87,20 @@ public class CS245P1 {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == menuPanel.getPlayButton()) {
                     currentGame = new HangManGame();
-                    cardLayout.show(cardHolder, GAME);
+                    mainGamePanel.resetMainGamePanel();
+                    CARDLAYOUT.show(CARDHOLDER, GAME);
                 }else if(e.getSource() == menuPanel.getHighscoreButton()){
-                    cardLayout.show(cardHolder, HIGH_SCORES);
+                    CARDLAYOUT.show(CARDHOLDER, HIGH_SCORES);
                 }else if(e.getSource() == menuPanel.getCreditsButton()){
-                    cardLayout.show(cardHolder, CREDITS_SCREEN);
+                    CARDLAYOUT.show(CARDHOLDER, CREDITS_SCREEN);
                 }else if(e.getSource() == mainGamePanel.getSkipButton()){
                     currentGame.skipGame();
-                    cardLayout.show(cardHolder, GAME_OVER);
+                    gameOverPanel.setScore();
+                    CARDLAYOUT.show(CARDHOLDER, GAME_OVER);
                 }else if((e.getSource() == gameOverPanel.getEndButton()) ||
                         (e.getSource() == creditPanel.getBackButton()) ||
                         (e.getSource() == highScoresPanel.getBackButton())){
-                    cardLayout.show(cardHolder, MAIN_MENU);
+                    CARDLAYOUT.show(CARDHOLDER, MAIN_MENU);
                 }
             }
         };
@@ -129,6 +137,18 @@ public class CS245P1 {
     
     public static HangManGame getGame(){
         return currentGame;
+    }
+    
+    public static CardLayout getPrimaryLayout(){
+        return CARDLAYOUT;
+    }
+    
+    public static JPanel getPrimaryCardHolder(){
+        return CARDHOLDER;
+    }
+    
+    public static Map getPanelMap(){
+        return allPanels;
     }
     
     public static void main(String[] args) {

@@ -22,6 +22,10 @@ public class GameOverPanel extends javax.swing.JPanel {
     public GameOverPanel() {
         initComponents();
     }
+    
+    public void setScore(){
+        scoreLabel.setText("Your Score: " + CS245P1.getGame().getPoints());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

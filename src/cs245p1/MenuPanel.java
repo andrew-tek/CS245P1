@@ -54,7 +54,7 @@ public class MenuPanel extends javax.swing.JPanel {
         });
 
         highscoreButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
-        highscoreButton.setText("Highscore");
+        highscoreButton.setText("Highscores");
 
         creditsButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         creditsButton.setText("Credits");
@@ -64,7 +64,7 @@ public class MenuPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(463, Short.MAX_VALUE)
+                .addContainerGap(454, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(creditsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(playButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

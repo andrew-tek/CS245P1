@@ -23,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
     
@@ -34,31 +35,17 @@ public class MainGamePanel extends javax.swing.JPanel {
     /**
      * Creates new form testPanel
      */
-    public static List <String> wordsList;
-    public static char [] word;
-    public static char [] wordGuessed;
-    public static String [] gallowPaths = {"../gallows1.jpg", "../gallows2.jpg",
+    private static char [] word;
+    private static char [] wordGuessed;
+    private static String [] gallowPaths = {"../gallows1.jpg", "../gallows2.jpg",
     "../gallows3.jpg", "../gallows4.jpg", "../gallows5.jpg",
     "../gallows6.jpg", "../gallows7.jpg"};
-    public static int incorrectGuesses;
   
-    //method: MainGamePanel
-    //purpose: initialize components get the word and prepare the dashed lines
-    // and also set up the clock.    
+    //method: Constructor
+    //purpose: Call appropriate methods to initialize the panel and setup the clock  
     public MainGamePanel() {
         initComponents();
-        incorrectGuesses = 0;
-        word = CS245P1.getGame().getWord().toCharArray();
-        wordGuessed = new char [word.length];
-        StringBuilder dashLines = new StringBuilder();
-        for (int i = 0; i < word.length; i++) {
-            wordGuessed[i] = ' ';
-            dashLines.append("_" + " ");
-        }
-        
-        jLabelDashedLines.setFont(new Font("Century 24", Font.PLAIN, 35));
-        jLabelDashedLines.setText(dashLines.toString());
-        jLabelGuessWord.setText("");
+        resetMainGamePanel();
         ActionListener updateClock = new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
@@ -71,6 +58,57 @@ public class MainGamePanel extends javax.swing.JPanel {
         timer.start(); 
         
     }
+    
+    //method: resetMainGamePanel
+    //purpose: Resets the panel for a new game
+    public void resetMainGamePanel(){
+        word = CS245P1.getGame().getWord().toCharArray();
+        wordGuessed = new char [word.length];
+        StringBuilder dashLines = new StringBuilder();
+        for (int i = 0; i < word.length; i++) {
+            wordGuessed[i] = ' ';
+            dashLines.append("_" + " ");
+        }
+        
+        jLabelDashedLines.setFont(new Font("Century 24", Font.PLAIN, 35));
+        jLabelDashedLines.setText(dashLines.toString());
+        jLabelGuessWord.setText("");
+        jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().
+                    getResource(gallowPaths[0])));
+        enableAllLetters();
+    }
+    
+    //method: enableAllLetters
+    //purpose: Enables all of the letter buttons for a new game
+    private void enableAllLetters(){
+        jButtonA.setEnabled(true);
+        jButtonB.setEnabled(true);
+        jButtonC.setEnabled(true);
+        jButtonD.setEnabled(true);
+        jButtonE.setEnabled(true);
+        jButtonF.setEnabled(true);
+        jButtonG.setEnabled(true);
+        jButtonH.setEnabled(true);
+        jButtonI.setEnabled(true);
+        jButtonJ.setEnabled(true);
+        jButtonK.setEnabled(true);
+        jButtonL.setEnabled(true);
+        jButtonM.setEnabled(true);
+        jButtonN.setEnabled(true);
+        jButtonO.setEnabled(true);
+        jButtonP.setEnabled(true);
+        jButtonQ.setEnabled(true);
+        jButtonR.setEnabled(true);
+        jButtonS.setEnabled(true);
+        jButtonT.setEnabled(true);
+        jButtonU.setEnabled(true);
+        jButtonV.setEnabled(true);
+        jButtonW.setEnabled(true);
+        jButtonX.setEnabled(true);
+        jButtonY.setEnabled(true);
+        jButtonZ.setEnabled(true);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -646,11 +684,14 @@ public class MainGamePanel extends javax.swing.JPanel {
     //Will also update the UI    
     public void updateGuessedWord(char letterPushed) {
          List <Integer> index = new ArrayList(CS245P1.getGame().checkLetter(String.valueOf(letterPushed)));
+         System.out.println("List size is: " + index.size());
         if (index.isEmpty()) {
             System.out.println("Letter not in word");
-            incorrectGuesses++;
             jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().
-                    getResource(gallowPaths[incorrectGuesses]))); 
+                    getResource(gallowPaths[CS245P1.getGame().getIncorrect()]))); 
+            if(CS245P1.getGame().getIncorrect() == 6){
+                transitionToGameOver();
+            }
         }
         else {
             System.out.println(index.size());
@@ -660,11 +701,18 @@ public class MainGamePanel extends javax.swing.JPanel {
             updateGuessedWord();
             if (CS245P1.getGame().checkForWin(String.copyValueOf(wordGuessed))) {
                 System.out.println("You WIN!");
-                //move to game over screen
+                transitionToGameOver();
             }
         }
         System.out.println(CS245P1.getGame().getPoints());
-        System.out.println(CS245P1.getGame().getCorrectGuesses());
+    }
+    
+    //method: transitionToGameOver
+    //purpose: Sets the score on the Game Over screen and then transitions to that panel
+    private void transitionToGameOver(){
+        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
+        gameOver.setScore();
+        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
     }
     
     //method: updateGussedWord
