@@ -4,7 +4,7 @@
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.0
-* date last modified: 10/04/2017
+* date last modified: 10/08/2017
 *
 * purpose: This class defines the panel which displays the game over screen
 * and the players score for the game

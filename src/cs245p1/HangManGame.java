@@ -1,10 +1,10 @@
 /***************************************************************
 * file: HangManGame.java
-* author: Christopher Kilian
+* author: Christopher Kilian, Andrew Tek
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.0
-* date last modified: 10/05/2017
+* date last modified: 10/08/2017
 *
 * purpose: This class handles the actual game play functionality behind
 * the Hangman game
