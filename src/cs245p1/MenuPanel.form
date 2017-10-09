@@ -30,12 +30,19 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <Component id="jLabelLogo" min="-2" pref="198" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="280" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+              <Component id="jLabelLogo" min="-2" pref="141" max="-2" attributes="0"/>
+              <EmptySpace pref="72" max="32767" attributes="0"/>
               <Component id="playButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="highscoreButton" min="-2" max="-2" attributes="0"/>
@@ -54,9 +61,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Play"/>
       </Properties>
-      <Events>
-        <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="playButtonComponentHidden"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="highscoreButton">
       <Properties>
@@ -73,6 +77,8 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Credits"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelLogo">
     </Component>
   </SubComponents>
 </Form>
