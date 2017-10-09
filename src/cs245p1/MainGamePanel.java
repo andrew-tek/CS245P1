@@ -1,6 +1,6 @@
 /***************************************************************
 * file: MainGamePanel.java
-* author: Christopher Kilian
+* author: Christopher Kilian, Andrew Tek
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.0
@@ -70,7 +70,6 @@ public class MainGamePanel extends javax.swing.JPanel {
             dashLines.append("_" + " ");
         }
         
-        jLabelDashedLines.setFont(new Font("Century 24", Font.PLAIN, 35));
         jLabelDashedLines.setText(dashLines.toString());
         jLabelGuessWord.setText("");
         jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().
@@ -188,12 +187,12 @@ public class MainGamePanel extends javax.swing.JPanel {
         skipButton.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         skipButton.setText("Skip");
 
-        jLabelGuessWord.setFont(new java.awt.Font("Century", 0, 36)); // NOI18N
+        jLabelGuessWord.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabelGuessWord.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelGuessWord.setText("a b s t r a c t");
         jLabelGuessWord.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        jLabelDashedLines.setFont(new java.awt.Font("Century", 0, 36)); // NOI18N
+        jLabelDashedLines.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabelDashedLines.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelDashedLines.setText("_ _ _ _ _ _ _ _");
         jLabelDashedLines.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -711,7 +710,6 @@ public class MainGamePanel extends javax.swing.JPanel {
     //purpose: update the UI above the dashed lines
     public void updateGuessedWord() {
         StringBuilder str = new StringBuilder();
-        jLabelGuessWord.setFont(new Font("Century 24", Font.PLAIN, 35));
         
         for (int i = 0; i < wordGuessed.length; i++) {
             str.append(wordGuessed[i] + " ");

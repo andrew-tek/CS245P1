@@ -166,7 +166,7 @@
         <Component class="javax.swing.JLabel" name="jLabelGuessWord">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Century" size="36" style="0"/>
+              <Font name="Courier New" size="36" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="a b s t r a c t"/>
@@ -179,7 +179,7 @@
         <Component class="javax.swing.JLabel" name="jLabelDashedLines">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Century" size="36" style="0"/>
+              <Font name="Courier New" size="36" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="_ _ _ _ _ _ _ _"/>
