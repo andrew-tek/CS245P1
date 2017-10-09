@@ -96,7 +96,7 @@ public class CreditsPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+                .addContainerGap(121, Short.MAX_VALUE)
                 .addComponent(creditsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chrisNameLabel)
@@ -104,7 +104,7 @@ public class CreditsPanel extends javax.swing.JPanel {
                 .addComponent(andrewNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nickNameLabel)
-                .addGap(135, 135, 135)
+                .addGap(98, 98, 98)
                 .addComponent(backButton)
                 .addContainerGap())
         );
