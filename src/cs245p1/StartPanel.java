@@ -11,15 +11,11 @@
 ****************************************************************/
 package cs245p1;
 
-/**
- *
- * @author Chris
- */
+
 public class StartPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form StartPanel
-     */
+    //method: contructor
+    //purpose: Sets up panel
     public StartPanel() {
         initComponents();
     }

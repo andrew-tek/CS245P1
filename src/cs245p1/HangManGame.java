@@ -48,6 +48,9 @@ public class HangManGame {
     public int getPoints(){
         return points;
     }
+    public void setPoints(int n){
+        points = n;
+    }
     
     //method: getWord
     //purpose: Getter which returns the word chosen for this game
