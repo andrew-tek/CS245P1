@@ -113,6 +113,8 @@ public class CS245P1 {
         highScoresPanel.getBackButton().addActionListener(buttonHandler);
     }
     
+    //method: initLookAndFeel
+    //purpose: Sets up the "look and feel" of the game
     private static void initLookAndFeel(){
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());       
@@ -135,22 +137,29 @@ public class CS245P1 {
         }
     }
     
+    //method: getGame
+    //purpose: Getter for the game object
     public static HangManGame getGame(){
         return currentGame;
     }
-    
+    //method: getPrimaryLayout
+    //purpose: Getter for the layout object (allows changing panels from within other panels)
     public static CardLayout getPrimaryLayout(){
         return CARDLAYOUT;
     }
-    
+    //method: getPrimaryCardHolder
+    //purpose: Getter for the panel object which manages the layour (allows changing panels from within other panels)
     public static JPanel getPrimaryCardHolder(){
         return CARDHOLDER;
     }
-    
+    //method: getPanelMap
+    //purpose: Getter for the panel map, allowing access to public panel methods from anywhere in program
     public static Map getPanelMap(){
         return allPanels;
     }
     
+    //method: main
+    //purpose: Runs the game
     public static void main(String[] args) {
         //CS245P1 game = new CS245P1();
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
