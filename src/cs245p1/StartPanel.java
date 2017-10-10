@@ -11,9 +11,10 @@
 ****************************************************************/
 package cs245p1;
 
-
 public class StartPanel extends javax.swing.JPanel {
 
+    //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
+    
     //method: contructor
     //purpose: Sets up panel
     public StartPanel() {

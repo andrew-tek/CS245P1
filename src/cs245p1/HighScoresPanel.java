@@ -12,7 +12,6 @@
 
 package cs245p1;
 
-import java.util.ArrayList;
 import javax.swing.JButton;
 
 /**
@@ -20,8 +19,10 @@ import javax.swing.JButton;
  */
 public class HighScoresPanel extends javax.swing.JPanel {
     
+    //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
+    
     // high scores list
-    HighScoresList highScoresList = new HighScoresList();
+    private HighScoresList highScoresList = new HighScoresList();
 
     // method: highScoresPanel
     // purpose: build panel to display high scores

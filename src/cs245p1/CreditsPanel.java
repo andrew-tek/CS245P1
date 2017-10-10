@@ -18,7 +18,9 @@ import javax.swing.JButton;
  * this class is the panel that displays who created the game/project
  */
 public class CreditsPanel extends javax.swing.JPanel {
-
+    
+    //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
+    
     // method: CreditsPanel
     // purpose: constructor
     public CreditsPanel() {

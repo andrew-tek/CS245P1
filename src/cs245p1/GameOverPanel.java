@@ -16,13 +16,16 @@ import javax.swing.JButton;
 
 public class GameOverPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GameOverPanel
-     */
+    //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
+    
+    // method: GameOverPanel
+    // purpose: constructor
     public GameOverPanel() {
         initComponents();
     }
     
+    // method: setScore
+    // purpose: sets the score label with the most recent game score
     public void setScore(){
         scoreLabel.setText("Your Score: " + CS245P1.getGame().getPoints());
     }

@@ -30,7 +30,7 @@ public class Scores {
     }
     
     // method: Scores
-    // purpose: constructor for player name and score
+    // purpose: constructor for player score
     public Scores(int score) {
         this.score = score;
     }

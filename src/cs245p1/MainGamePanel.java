@@ -4,7 +4,7 @@
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.0
-* date last modified: 10/08/2017
+* date last modified: 10/09/2017
 *
 * purpose: This class defines the panel from which the game is actually played
 * along with the buttons necessary to do so, as well as the display of the word
@@ -14,27 +14,20 @@
 package cs245p1;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import javax.swing.JButton;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.JPanel;
 import javax.swing.Timer;
 
     
-/**
- *
- * @author Chris
- */
 public class MainGamePanel extends javax.swing.JPanel {
-    /**
-     * Creates new form testPanel
-     */
+    
+    //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
+    
     private static char [] word;
     private static char [] wordGuessed;
     private static String [] gallowPaths = {"../gallows1.jpg", "../gallows2.jpg",
@@ -61,7 +54,7 @@ public class MainGamePanel extends javax.swing.JPanel {
     }
     
     //method: resetMainGamePanel
-    //purpose: Resets the panel for a new game
+    //purpose: Resets the panel for a new game - note that a new game should always be generated before resetting the main game panel
     public void resetMainGamePanel(){
         word = CS245P1.getGame().getWord().toCharArray();
         wordGuessed = new char [word.length];
@@ -76,7 +69,6 @@ public class MainGamePanel extends javax.swing.JPanel {
         jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().
                     getResource(gallowPaths[0])));
         enableAllLetters();
-        CS245P1.getGame().setPoints(100);
         jLabelUserScore.setText("User Score: " + CS245P1.getGame().getPoints());
     }
     
@@ -693,7 +685,7 @@ public class MainGamePanel extends javax.swing.JPanel {
     //Will also update the UI    
     public void updateGuessedWord(char letterPushed) {
          List <Integer> index = new ArrayList(CS245P1.getGame().checkLetter(String.valueOf(letterPushed)));
-//         System.out.println("List size is: " + index.size());
+
         if (index.isEmpty()) {
             System.out.println("Letter not in word");
             jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().
@@ -741,8 +733,6 @@ public class MainGamePanel extends javax.swing.JPanel {
     public JButton getSkipButton() {
         return skipButton;
     }
-
-                
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;

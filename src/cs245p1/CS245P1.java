@@ -4,7 +4,7 @@
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.0
-* date last modified: 10/04/2017
+* date last modified: 10/09/2017
 *
 * purpose: Sets up the card holder, panels, and jFrame, along with maintaining various constants
 * needed throughout the game program.
@@ -74,15 +74,16 @@ public class CS245P1 {
         mainFrame.setVisible(true);
         
         ActionListener showMenuScreen = new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 CARDLAYOUT.show(CARDHOLDER, MAIN_MENU);
             }
         };
-        Timer timer = new Timer (500, showMenuScreen);
+        Timer timer = new Timer (3000, showMenuScreen);
         timer.setRepeats(false);
         timer.start(); 
                 
-        ActionListener buttonHandler = new ActionListener() {
+        ActionListener buttonHandler = new ActionListener() { //all buttons which transition between panels are handled here
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == menuPanel.getPlayButton()) {
@@ -161,7 +162,6 @@ public class CS245P1 {
     //method: main
     //purpose: Runs the game
     public static void main(String[] args) {
-        //CS245P1 game = new CS245P1();
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 CS245P1 game = new CS245P1();

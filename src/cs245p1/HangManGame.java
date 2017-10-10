@@ -4,7 +4,7 @@
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.0
-* date last modified: 10/08/2017
+* date last modified: 10/09/2017
 *
 * purpose: This class handles the actual game play functionality behind
 * the Hangman game
@@ -15,13 +15,12 @@ package cs245p1;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class HangManGame {
     
     //Constants and instance variables
-    private List<String> wordsList;
     private static final int FAIL_SCORE = 40;
+    private List<String> wordsList;
     private int points;
     private int incorrectGuesses;
     private String gameWord;
@@ -40,16 +39,12 @@ public class HangManGame {
         gameWord = wordsList.get(0);
         incorrectGuesses = 0;
         points = 100;
-        //correctNeeded = (int)gameWord.chars().distinct().count();
     }
     
     //method: getPoints
     //purpose: Getter which returns the players score
     public int getPoints(){
         return points;
-    }
-    public void setPoints(int n){
-        points = n;
     }
     
     //method: getWord
