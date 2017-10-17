@@ -3,8 +3,8 @@
 * author: Christopher Kilian, Andrew Tek
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.0
-* date last modified: 10/09/2017
+* assignment: Point and Click Game – v.1.1
+* date last modified: 10/17/2017
 *
 * purpose: This class defines the panel from which the game is actually played
 * along with the buttons necessary to do so, as well as the display of the word
@@ -692,7 +692,7 @@ public class MainGamePanel extends javax.swing.JPanel {
                     getResource(gallowPaths[CS245P1.getGame().getIncorrect()]))); 
             jLabelUserScore.setText("User Score: " + CS245P1.getGame().getPoints());
             if(CS245P1.getGame().getIncorrect() == 6){
-                transitionToGameOver();
+                transitionToColorGame();
             }
         }
         else {
@@ -703,7 +703,7 @@ public class MainGamePanel extends javax.swing.JPanel {
             updateGuessedWord();
             if (CS245P1.getGame().checkForWin(String.copyValueOf(wordGuessed))) {
                 System.out.println("You WIN!");
-                transitionToGameOver();
+                transitionToColorGame();
             }
         }
         System.out.println(CS245P1.getGame().getPoints());
@@ -720,13 +720,19 @@ public class MainGamePanel extends javax.swing.JPanel {
         jLabelGuessWord.setText(str.toString());
     }
     
+    
+    private void transitionToColorGame(){
+        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.COLOR_GAME);
+    }
+
     //method: transitionToGameOver
     //purpose: Sets the score on the Game Over screen and then transitions to that panel
-    private void transitionToGameOver(){
-        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
-        gameOver.setScore();
-        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
-    }
+    //This method has been deprecated here, but should be reused in the ColorGamePanel to move to game-over screen from there
+//    private void transitionToGameOver(){
+//        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
+//        gameOver.setScore();
+//        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
+//    }
     
     //method: getSkipButton
     //purpose: return skip button
