@@ -83,7 +83,7 @@ public class CS245P1 {
                 CARDLAYOUT.show(CARDHOLDER, MAIN_MENU);
             }
         };
-        Timer timer = new Timer (3000, showMenuScreen);
+        Timer timer = new Timer (500, showMenuScreen); //REMEMBER TO CHANGE BACK TO 3 SECONDS
         timer.setRepeats(false);
         timer.start(); 
                 
