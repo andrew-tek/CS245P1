@@ -1,9 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: CS245P1.java
+* author: Christopher Kilian
+* class: CS 245 – Programming Graphical User Interfaces
+*
+* assignment: Point and Click Game – v.1.1
+* date last modified: 10/17/2017
+*
+* purpose: The panel from which the color choosing game is played is set up
+* in this code.
+*
+****************************************************************/
 package cs245p1;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.Timer;
 
 /**
  *
@@ -11,27 +26,32 @@ package cs245p1;
  */
 public class ColorGamePanel extends javax.swing.JPanel {
     
-    //private javax.swing.JButton jButtonRed;
-    //private javax.swing.JButton jButtonYellow;
-    //private javax.swing.JButton jButtonGreen;
-    //private javax.swing.JButton jButtonBlue;
-    //private javax.swing.JButton jButtonPurple;
     
     /**
      * Creates new form ColorGamePanel
      */
     public ColorGamePanel() {
         initComponents();
-        //jButtonRed = new javax.swing.JButton();
-        //jButtonYellow = new javax.swing.JButton();
-        //jButtonGreen = new javax.swing.JButton();
-        //jButtonBlue = new javax.swing.JButton();
-        //jButtonPurple = new javax.swing.JButton();
+        
+        ActionListener updateClock = new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
+            Date date = new Date();
+            clockLabel.setText(dateFormat.format(date).toString());
+        }
+    };
+        Timer timer = new Timer (1000, updateClock);
+        timer.setRepeats(true);
+        timer.start(); 
     }
     
-    public void placeRandomButtons(){
-        
+    //to be used when the color game is finished and we need to transition to the game over screen
+    private void transitionToGameOver(){
+        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
+        gameOver.setScore();
+        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

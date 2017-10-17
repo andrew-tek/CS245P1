@@ -3,8 +3,8 @@
 * author: Christopher Kilian
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.0
-* date last modified: 10/08/2017
+* assignment: Point and Click Game – v.1.1
+* date last modified: 10/17/2017
 *
 * purpose: This class defines the panel which displays the game over screen
 * and the players score for the game
@@ -27,7 +27,8 @@ public class GameOverPanel extends javax.swing.JPanel {
     // method: setScore
     // purpose: sets the score label with the most recent game score
     public void setScore(){
-        scoreLabel.setText("Your Score: " + CS245P1.getGame().getPoints());
+        int totalPoints = CS245P1.getGame().getPoints();//NOTE: Add addition of total points from color game here
+        scoreLabel.setText("Your Score: " + totalPoints);
     }
 
     /**

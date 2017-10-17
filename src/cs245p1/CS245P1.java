@@ -3,8 +3,8 @@
 * author: Christopher Kilian, Nicholas Pham, Andrew Tek
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.0
-* date last modified: 10/09/2017
+* assignment: Point and Click Game – v.1.1
+* date last modified: 10/17/2017
 *
 * purpose: Sets up the card holder, panels, and jFrame, along with maintaining various constants
 * needed throughout the game program.
@@ -31,6 +31,7 @@ public class CS245P1 {
     protected static final String GAME_OVER = "Game Over";
     protected static final String HIGH_SCORES = "High Scores";
     protected static final String GAME = "Game";
+    protected static final String COLOR_GAME = "Color Game";
     private static final CardLayout CARDLAYOUT = new CardLayout();  
     private static final JPanel CARDHOLDER = new JPanel(CARDLAYOUT);
     private static HangManGame currentGame;
@@ -57,6 +58,8 @@ public class CS245P1 {
         allPanels.put(MAIN_MENU, menuPanel);
         StartPanel startPanel = new StartPanel();
         allPanels.put(START_SCREEN, startPanel);
+        ColorGamePanel colorPanel = new ColorGamePanel();
+        allPanels.put(COLOR_GAME, colorPanel);
         
         CARDHOLDER.add(creditPanel, CREDITS_SCREEN);
         CARDHOLDER.add(gameOverPanel, GAME_OVER);
@@ -64,6 +67,7 @@ public class CS245P1 {
         CARDHOLDER.add(mainGamePanel, GAME);
         CARDHOLDER.add(startPanel, START_SCREEN);
         CARDHOLDER.add(menuPanel, MAIN_MENU);
+        CARDHOLDER.add(colorPanel, COLOR_GAME);
         
         mainFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setSize(new java.awt.Dimension(600, 400));
@@ -88,6 +92,7 @@ public class CS245P1 {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == menuPanel.getPlayButton()) {
                     currentGame = new HangManGame();
+                    //create new color game here as well - always create new color game when new hangman game created
                     mainGamePanel.resetMainGamePanel();
                     CARDLAYOUT.show(CARDHOLDER, GAME);
                 }else if(e.getSource() == menuPanel.getHighscoreButton()){
@@ -96,8 +101,8 @@ public class CS245P1 {
                     CARDLAYOUT.show(CARDHOLDER, CREDITS_SCREEN);
                 }else if(e.getSource() == mainGamePanel.getSkipButton()){
                     currentGame.skipGame();
-                    gameOverPanel.setScore();
-                    CARDLAYOUT.show(CARDHOLDER, GAME_OVER);
+                    //gameOverPanel.setScore(); This has changed - game over panel set score needs to happen after color game is played
+                    CARDLAYOUT.show(CARDHOLDER, COLOR_GAME);
                 }else if((e.getSource() == gameOverPanel.getEndButton()) ||
                         (e.getSource() == creditPanel.getBackButton()) ||
                         (e.getSource() == highScoresPanel.getBackButton())){
