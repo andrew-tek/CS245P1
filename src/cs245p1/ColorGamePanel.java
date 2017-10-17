@@ -5,28 +5,36 @@
  */
 package cs245p1;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
+
 /**
  *
  * @author Chris
  */
 public class ColorGamePanel extends javax.swing.JPanel {
     
-    //private javax.swing.JButton jButtonRed;
-    //private javax.swing.JButton jButtonYellow;
-    //private javax.swing.JButton jButtonGreen;
-    //private javax.swing.JButton jButtonBlue;
-    //private javax.swing.JButton jButtonPurple;
     
     /**
      * Creates new form ColorGamePanel
      */
     public ColorGamePanel() {
         initComponents();
-        //jButtonRed = new javax.swing.JButton();
-        //jButtonYellow = new javax.swing.JButton();
-        //jButtonGreen = new javax.swing.JButton();
-        //jButtonBlue = new javax.swing.JButton();
-        //jButtonPurple = new javax.swing.JButton();
+        
+        ActionListener updateClock = new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
+            Date date = new Date();
+            clockLabel.setText(dateFormat.format(date).toString());
+        }
+    };
+        Timer timer = new Timer (1000, updateClock);
+        timer.setRepeats(true);
+        timer.start(); 
     }
     
     public void placeRandomButtons(){
