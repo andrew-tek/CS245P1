@@ -27,7 +27,15 @@ public class HighScoresPanel extends javax.swing.JPanel {
     // method: highScoresPanel
     // purpose: build panel to display high scores
     public HighScoresPanel() {
+        highScoresList.sortScores();
+        highScoresList.update();
+        highScoresList.addScore(new Scores("TEST", 999999));
+        highScoresList.sortScores();
+        highScoresList.update();
+        // Testing
+        System.out.print(highScoresList.toString());
         initComponents();
+
     }
 
     /**

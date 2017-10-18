@@ -46,4 +46,16 @@ public class Scores {
     public int getScore() {
         return score;
     }
+    
+    // method: setPlayer
+    // purpose: set name of player
+    public void setPlayer(String player) {
+        this.player = player;
+    }
+    
+    // method: setScore
+    // purpose: set score of player
+    public void setScore(int score) {
+        this.score = score;
+    }
 }
