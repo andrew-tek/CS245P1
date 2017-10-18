@@ -12,6 +12,7 @@
 ****************************************************************/
 package cs245p1;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
@@ -49,13 +50,15 @@ public class ColorGamePanel extends javax.swing.JPanel {
             DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
             Date date = new Date();
             clockLabel.setText(dateFormat.format(date).toString());
+            int points = CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
+            jLabelUserScore.setText("User Score: " + points);
         }
     };
         Timer timer = new Timer (1000, updateClock);
         timer.setRepeats(true);
         timer.start(); 
-        
         randomizeButtons();
+        CS245P1.getColorGame().configureLabel(colorLabel);
     }
     
     //randomize positions of buttons on page
@@ -81,8 +84,8 @@ public class ColorGamePanel extends javax.swing.JPanel {
             XYCoords currentCoord = coordList.remove(rand.nextInt(coordList.size())); //pick random coordinate from current list
             colorButtonPanel.add(currentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(currentCoord.getX(), currentCoord.getY()));
         }
-        
         colorButtonPanel.repaint();
+
     }
     
     //initialize coordinate lists with pre-defined valid coordinates for "random" button placement
@@ -163,6 +166,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
         jButtonGreen = new javax.swing.JButton();
         jButtonYellow = new javax.swing.JButton();
         jButtonBlue = new javax.swing.JButton();
+        jLabelUserScore = new javax.swing.JLabel();
 
         clockLabel.setText("Clock Here");
         clockLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), null));
@@ -182,11 +186,11 @@ public class ColorGamePanel extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonPurpleMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonPurpleMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jButtonPurpleMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonPurpleMouseEntered(evt);
             }
         });
         colorButtonPanel.add(jButtonPurple, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 85, 89));
@@ -263,6 +267,8 @@ public class ColorGamePanel extends javax.swing.JPanel {
         });
         colorButtonPanel.add(jButtonBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 85, 89));
 
+        jLabelUserScore.setText("User Score:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -270,23 +276,29 @@ public class ColorGamePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 247, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(colorLabel)
-                                .addGap(261, 261, 261))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(colorButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(261, 261, 261))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(colorButtonPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelUserScore, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelUserScore))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(colorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -337,31 +349,41 @@ public class ColorGamePanel extends javax.swing.JPanel {
 
     private void jButtonYellowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonYellowMouseClicked
         // TODO add your handling code here:
-        System.out.println("Yellow Clicked!");
+        if (colorLabel.getForeground() == Color.YELLOW)
+            CS245P1.getColorGame().addPoints(100);
+        CS245P1.getColorGame().configureLabel(colorLabel);
         buttonClickActions();
     }//GEN-LAST:event_jButtonYellowMouseClicked
 
     private void jButtonBlueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBlueMouseClicked
         // TODO add your handling code here:
-        System.out.println("Blue Clicked!");
+        if (colorLabel.getForeground() == Color.BLUE)
+            CS245P1.getColorGame().addPoints(100);
+        CS245P1.getColorGame().configureLabel(colorLabel);
         buttonClickActions();
     }//GEN-LAST:event_jButtonBlueMouseClicked
 
     private void jButtonRedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRedMouseClicked
         // TODO add your handling code here:
-        System.out.println("Red Clicked!");
+        if (colorLabel.getForeground() == Color.RED)
+            CS245P1.getColorGame().addPoints(100);
+        CS245P1.getColorGame().configureLabel(colorLabel);
         buttonClickActions();
     }//GEN-LAST:event_jButtonRedMouseClicked
 
     private void jButtonGreenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGreenMouseClicked
         // TODO add your handling code here:
-        System.out.println("Green Clicked!");
+        if (colorLabel.getForeground() == Color.GREEN)
+            CS245P1.getColorGame().addPoints(100);
+        CS245P1.getColorGame().configureLabel(colorLabel);
         buttonClickActions();
     }//GEN-LAST:event_jButtonGreenMouseClicked
 
     private void jButtonPurpleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPurpleMouseClicked
         // TODO add your handling code here:
-        System.out.println("Purple Clicked!");
+        if (colorLabel.getForeground() == Color.MAGENTA)
+            CS245P1.getColorGame().addPoints(100);
+        CS245P1.getColorGame().configureLabel(colorLabel);
         buttonClickActions();
     }//GEN-LAST:event_jButtonPurpleMouseClicked
     
@@ -385,6 +407,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
         randomCoords.add(coordSet5);
         randomCoords.add(coordSet6);
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;
@@ -395,5 +418,6 @@ public class ColorGamePanel extends javax.swing.JPanel {
     private javax.swing.JButton jButtonPurple;
     private javax.swing.JButton jButtonRed;
     private javax.swing.JButton jButtonYellow;
+    private javax.swing.JLabel jLabelUserScore;
     // End of variables declaration//GEN-END:variables
 }

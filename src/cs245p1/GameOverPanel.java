@@ -27,7 +27,7 @@ public class GameOverPanel extends javax.swing.JPanel {
     // method: setScore
     // purpose: sets the score label with the most recent game score
     public void setScore(){
-        int totalPoints = CS245P1.getGame().getPoints();//NOTE: Add addition of total points from color game here
+        int totalPoints = CS245P1.getGame().getPoints() + CS245P1.getColorGame().getPoints();
         scoreLabel.setText("Your Score: " + totalPoints);
     }
 
