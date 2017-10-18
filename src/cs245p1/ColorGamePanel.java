@@ -16,8 +16,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.Timer;
 
@@ -27,13 +31,19 @@ import javax.swing.Timer;
  */
 public class ColorGamePanel extends javax.swing.JPanel {
     
+    private List<List<XYCoords>> randomCoords;
+    private List<XYCoords> coordSet1;
+    private List<XYCoords> coordSet2;
+    private List<XYCoords> coordSet3;
+    private List<XYCoords> coordSet4;
+    private List<XYCoords> coordSet5;
+    private List<XYCoords> coordSet6;
     
-    /**
-     * Creates new form ColorGamePanel
-     */
+    private int tempCount = 0; //temporary value for testing things
+    
     public ColorGamePanel() {
         initComponents();
-        
+        resetCoordsSets();
         ActionListener updateClock = new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
@@ -44,22 +54,97 @@ public class ColorGamePanel extends javax.swing.JPanel {
         Timer timer = new Timer (1000, updateClock);
         timer.setRepeats(true);
         timer.start(); 
+        
+        randomizeButtons();
     }
+    
+    //randomize positions of buttons on page
+    private void randomizeButtons(){
+        Random rand = new Random();
+        List<JButton> buttonList = new ArrayList();
+        List<XYCoords> coordList = randomCoords.remove(rand.nextInt(randomCoords.size())); //get random set of coordinates and remove from list
+        
+        buttonList.add(jButtonRed);
+        buttonList.add(jButtonBlue);
+        buttonList.add(jButtonYellow);
+        buttonList.add(jButtonGreen);
+        buttonList.add(jButtonPurple);
+        
+        colorButtonPanel.remove(jButtonRed);
+        colorButtonPanel.remove(jButtonBlue);
+        colorButtonPanel.remove(jButtonYellow);
+        colorButtonPanel.remove(jButtonGreen);
+        colorButtonPanel.remove(jButtonPurple);
+        
+        while(!buttonList.isEmpty() && !coordList.isEmpty()){
+            JButton currentButton = buttonList.remove(rand.nextInt(buttonList.size())); //pick a random button
+            XYCoords currentCoord = coordList.remove(rand.nextInt(coordList.size())); //pick random coordinate from current list
+            colorButtonPanel.add(currentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(currentCoord.getX(), currentCoord.getY()));
+        }
+        
+        colorButtonPanel.repaint();
+    }
+    
+    //initialize coordinate lists with pre-defined valid coordinates for "random" button placement
+    private void resetCoordsSets(){
+        coordSet1 = new ArrayList();
+        coordSet1.add(new XYCoords(300, 20));
+        coordSet1.add(new XYCoords(230, 170));
+        coordSet1.add(new XYCoords(420, 180));
+        coordSet1.add(new XYCoords(90, 70));
+        coordSet1.add(new XYCoords(50, 210));
+        
+        coordSet2 = new ArrayList();
+        coordSet2.add(new XYCoords(30, 160));
+        coordSet2.add(new XYCoords(20, 10));
+        coordSet2.add(new XYCoords(330, 210));
+        coordSet2.add(new XYCoords(180, 130));
+        coordSet2.add(new XYCoords(430, 100));
+        
+        coordSet3 = new ArrayList();
+        coordSet3.add(new XYCoords(440, 70));
+        coordSet3.add(new XYCoords(30, 190));
+        coordSet3.add(new XYCoords(160, 110));
+        coordSet3.add(new XYCoords(270, 20));
+        coordSet3.add(new XYCoords(460, 200));
+        
+        coordSet4 = new ArrayList();
+        coordSet4.add(new XYCoords(120, 190));
+        coordSet4.add(new XYCoords(380, 30));
+        coordSet4.add(new XYCoords(20, 70));
+        coordSet4.add(new XYCoords(220, 110));
+        coordSet4.add(new XYCoords(460, 200));
+        
+        coordSet5 = new ArrayList();
+        coordSet5.add(new XYCoords(190, 120));
+        coordSet5.add(new XYCoords(300, 210));
+        coordSet5.add(new XYCoords(410, 80));
+        coordSet5.add(new XYCoords(240, 10));
+        coordSet5.add(new XYCoords(50, 50));
+        
+        coordSet6 = new ArrayList();
+        coordSet6.add(new XYCoords(160, 200));
+        coordSet6.add(new XYCoords(450, 180));
+        coordSet6.add(new XYCoords(400, 10));
+        coordSet6.add(new XYCoords(30, 60));
+        coordSet6.add(new XYCoords(140, 20));
+        
+        resetCoordsList();
+    }
+    
     
     //to be used when the color game is finished and we need to transition to the game over screen
     private void transitionToGameOver(){
+        //reset panel values to initial state
+        resetCoordsSets();
+        tempCount = 0;
+        //set score on game over panel and move to that panel
         GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
         gameOver.setScore();
         CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
     }
     
-//    public void testButtonMove(){
-//        Random random = new Random();
-//        jButtonRed.setBounds(random.nextInt(590 - 121),
-//                        random.nextInt(350 - 121), 121,
-//                        121);
-//        repaint();
-//    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,6 +179,9 @@ public class ColorGamePanel extends javax.swing.JPanel {
         jButtonPurple.setBorderPainted(false);
         jButtonPurple.setContentAreaFilled(false);
         jButtonPurple.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonPurpleMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonPurpleMouseEntered(evt);
             }
@@ -101,7 +189,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
                 jButtonPurpleMouseExited(evt);
             }
         });
-        colorButtonPanel.add(jButtonPurple, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 85, 89));
+        colorButtonPanel.add(jButtonPurple, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 85, 89));
 
         jButtonRed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/red button image small transparent.png"))); // NOI18N
         jButtonRed.setToolTipText("");
@@ -109,6 +197,9 @@ public class ColorGamePanel extends javax.swing.JPanel {
         jButtonRed.setBorderPainted(false);
         jButtonRed.setContentAreaFilled(false);
         jButtonRed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonRedMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonRedMouseEntered(evt);
             }
@@ -116,7 +207,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
                 jButtonRedMouseExited(evt);
             }
         });
-        colorButtonPanel.add(jButtonRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 85, 89));
+        colorButtonPanel.add(jButtonRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 85, 89));
 
         jButtonGreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/green button image small transparent.png"))); // NOI18N
         jButtonGreen.setToolTipText("");
@@ -124,6 +215,9 @@ public class ColorGamePanel extends javax.swing.JPanel {
         jButtonGreen.setBorderPainted(false);
         jButtonGreen.setContentAreaFilled(false);
         jButtonGreen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonGreenMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonGreenMouseEntered(evt);
             }
@@ -131,7 +225,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
                 jButtonGreenMouseExited(evt);
             }
         });
-        colorButtonPanel.add(jButtonGreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 85, 89));
+        colorButtonPanel.add(jButtonGreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 85, 89));
 
         jButtonYellow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/yellow button image small transparent.png"))); // NOI18N
         jButtonYellow.setToolTipText("");
@@ -139,6 +233,9 @@ public class ColorGamePanel extends javax.swing.JPanel {
         jButtonYellow.setBorderPainted(false);
         jButtonYellow.setContentAreaFilled(false);
         jButtonYellow.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonYellowMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonYellowMouseEntered(evt);
             }
@@ -146,7 +243,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
                 jButtonYellowMouseExited(evt);
             }
         });
-        colorButtonPanel.add(jButtonYellow, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 85, 89));
+        colorButtonPanel.add(jButtonYellow, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 85, 89));
 
         jButtonBlue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blue button image small transparent.png"))); // NOI18N
         jButtonBlue.setToolTipText("");
@@ -154,6 +251,9 @@ public class ColorGamePanel extends javax.swing.JPanel {
         jButtonBlue.setBorderPainted(false);
         jButtonBlue.setContentAreaFilled(false);
         jButtonBlue.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBlueMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonBlueMouseEntered(evt);
             }
@@ -161,7 +261,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
                 jButtonBlueMouseExited(evt);
             }
         });
-        colorButtonPanel.add(jButtonBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 85, 89));
+        colorButtonPanel.add(jButtonBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 85, 89));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -171,7 +271,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 252, Short.MAX_VALUE)
+                        .addGap(0, 247, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,7 +290,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(colorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(colorButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addComponent(colorButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -235,6 +335,56 @@ public class ColorGamePanel extends javax.swing.JPanel {
         jButtonRed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/red button image small transparent.png")));
     }//GEN-LAST:event_jButtonRedMouseExited
 
+    private void jButtonYellowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonYellowMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Yellow Clicked!");
+        buttonClickActions();
+    }//GEN-LAST:event_jButtonYellowMouseClicked
+
+    private void jButtonBlueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBlueMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Blue Clicked!");
+        buttonClickActions();
+    }//GEN-LAST:event_jButtonBlueMouseClicked
+
+    private void jButtonRedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRedMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Red Clicked!");
+        buttonClickActions();
+    }//GEN-LAST:event_jButtonRedMouseClicked
+
+    private void jButtonGreenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGreenMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Green Clicked!");
+        buttonClickActions();
+    }//GEN-LAST:event_jButtonGreenMouseClicked
+
+    private void jButtonPurpleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPurpleMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Purple Clicked!");
+        buttonClickActions();
+    }//GEN-LAST:event_jButtonPurpleMouseClicked
+    
+    //every button basically uses same actions, put them all here
+    private void buttonClickActions(){
+        tempCount++;
+        if(tempCount >= 5){
+            transitionToGameOver();
+        }else{
+            randomizeButtons();
+        }
+    }
+    
+    //resets the randomCoords list for a new game (since elements are removed as a game is played)
+    private void resetCoordsList(){
+        randomCoords = new ArrayList();
+        randomCoords.add(coordSet1);
+        randomCoords.add(coordSet2);
+        randomCoords.add(coordSet3);
+        randomCoords.add(coordSet4);
+        randomCoords.add(coordSet5);
+        randomCoords.add(coordSet6);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;

@@ -722,8 +722,6 @@ public class MainGamePanel extends javax.swing.JPanel {
     
     
     private void transitionToColorGame(){
-        //ColorGamePanel colorPanel = (ColorGamePanel)CS245P1.getPanelMap().get(CS245P1.COLOR_GAME);
-        //colorPanel.testButtonMove();
         CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.COLOR_GAME);
     }
 
