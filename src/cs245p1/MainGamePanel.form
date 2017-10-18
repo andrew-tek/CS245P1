@@ -27,7 +27,7 @@
                   <Component id="wordPanel" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="hangmanPanel" pref="576" max="32767" attributes="0"/>
+                          <Component id="hangmanPanel" pref="588" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="titleLabel" min="-2" pref="115" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>

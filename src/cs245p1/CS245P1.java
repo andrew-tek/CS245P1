@@ -35,6 +35,7 @@ public class CS245P1 {
     private static final CardLayout CARDLAYOUT = new CardLayout();  
     private static final JPanel CARDHOLDER = new JPanel(CARDLAYOUT);
     private static HangManGame currentGame;
+    private static ColorGame colorGame;
     private static Map allPanels; //allows access to panel methods anywhere in program
     
     //method: Constructor
@@ -45,6 +46,7 @@ public class CS245P1 {
         initLookAndFeel();
         JFrame mainFrame = new JFrame();
         currentGame = new HangManGame();
+        colorGame = new ColorGame();
         allPanels = new HashMap<String,Component>();
         CreditsPanel creditPanel = new CreditsPanel();
         allPanels.put(CREDITS_SCREEN, creditPanel);
@@ -94,6 +96,7 @@ public class CS245P1 {
                     currentGame = new HangManGame();
                     //create new color game here as well - always create new color game when new hangman game created
                     mainGamePanel.resetMainGamePanel();
+                    colorGame.resetPoints();
                     CARDLAYOUT.show(CARDHOLDER, GAME);
                 }else if(e.getSource() == menuPanel.getHighscoreButton()){
                     CARDLAYOUT.show(CARDHOLDER, HIGH_SCORES);
@@ -162,6 +165,9 @@ public class CS245P1 {
     //purpose: Getter for the panel map, allowing access to public panel methods from anywhere in program
     public static Map getPanelMap(){
         return allPanels;
+    }
+    public static ColorGame getColorGame() {
+        return colorGame;
     }
     
     //method: main
