@@ -4,7 +4,7 @@
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.1
-* date last modified: 10/17/2017
+* date last modified: 10/18/2017
 *
 * purpose: Sets up the card holder, panels, and jFrame, along with maintaining various constants
 * needed throughout the game program.
@@ -94,9 +94,8 @@ public class CS245P1 {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == menuPanel.getPlayButton()) {
                     currentGame = new HangManGame();
-                    //create new color game here as well - always create new color game when new hangman game created
+                    colorGame.resetGame();
                     mainGamePanel.resetMainGamePanel();
-                    colorGame.resetPoints();
                     CARDLAYOUT.show(CARDHOLDER, GAME);
                 }else if(e.getSource() == menuPanel.getHighscoreButton()){
                     CARDLAYOUT.show(CARDHOLDER, HIGH_SCORES);
@@ -104,7 +103,6 @@ public class CS245P1 {
                     CARDLAYOUT.show(CARDHOLDER, CREDITS_SCREEN);
                 }else if(e.getSource() == mainGamePanel.getSkipButton()){
                     currentGame.skipGame();
-                    //gameOverPanel.setScore(); This has changed - game over panel set score needs to happen after color game is played
                     CARDLAYOUT.show(CARDHOLDER, COLOR_GAME);
                 }else if((e.getSource() == gameOverPanel.getEndButton()) ||
                         (e.getSource() == creditPanel.getBackButton()) ||

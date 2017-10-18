@@ -3,7 +3,7 @@
 * author: Nicholas Pham
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.0
+* assignment: Point and Click Game – v.1.1
 * date last modified: 10/07/2017
 *
 * purpose: This class builds the panel which displays the game credits

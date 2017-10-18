@@ -3,8 +3,8 @@
 * author: Andrew Tek
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.0
-* date last modified: 10/09/2017
+* assignment: Point and Click Game – v.1.1
+* date last modified: 10/18/2017
 *
 * purpose: This class defines the main menu panel, from which the player can access
 * various game features (like the game itself, credits, etc)
@@ -26,6 +26,24 @@ public class MenuPanel extends javax.swing.JPanel {
                     getResource("../trogdor.png"))); 
     }
 
+    //method: getCreditsButton
+    //purpose: Returns creditsButton
+    public JButton getCreditsButton() {
+        return creditsButton;
+    }
+    
+    //method: getHighscoreButton
+    //purpose: Returns highscoreButton
+    public JButton getHighscoreButton() {
+        return highscoreButton;
+    }
+    
+    //method: getPlayButton
+    //purpose: Returns playButton
+    public JButton getPlayButton() {
+        return playButton;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,24 +101,7 @@ public class MenuPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-    
-    //method: getCreditsButton
-    //purpose: Returns creditsButton
-    public JButton getCreditsButton() {
-        return creditsButton;
-    }
-    
-    //method: getHighscoreButton
-    //purpose: Returns highscoreButton
-    public JButton getHighscoreButton() {
-        return highscoreButton;
-    }
-    
-    //method: getPlayButton
-    //purpose: Returns playButton
-    public JButton getPlayButton() {
-        return playButton;
-    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton creditsButton;

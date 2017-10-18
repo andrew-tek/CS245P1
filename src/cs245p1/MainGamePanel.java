@@ -4,7 +4,7 @@
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.1
-* date last modified: 10/17/2017
+* date last modified: 10/18/2017
 *
 * purpose: This class defines the panel from which the game is actually played
 * along with the buttons necessary to do so, as well as the display of the word
@@ -103,6 +103,58 @@ public class MainGamePanel extends javax.swing.JPanel {
         jButtonZ.setEnabled(true);
     }
     
+    
+    //method: updateGuessedWord
+    //purpose: check if the gussed letter is in the word and update the guessed word
+    //Will also update the UI    
+    public void updateGuessedWord(char letterPushed) {
+         List <Integer> index = new ArrayList(CS245P1.getGame().checkLetter(String.valueOf(letterPushed)));
+
+        if (index.isEmpty()) {
+            System.out.println("Letter not in word");
+            jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().
+                    getResource(gallowPaths[CS245P1.getGame().getIncorrect()]))); 
+            jLabelUserScore.setText("User Score: " + CS245P1.getGame().getPoints());
+            if(CS245P1.getGame().getIncorrect() == 6){
+                transitionToColorGame();
+            }
+        }
+        else {
+            System.out.println(index.size());
+            for (int i = 0; i < index.size(); i++) {
+                wordGuessed[index.get(i)] = letterPushed;
+            }
+            updateGuessedWord();
+            if (CS245P1.getGame().checkForWin(String.copyValueOf(wordGuessed))) {
+                System.out.println("You WIN!");
+                transitionToColorGame();
+            }
+        }
+        System.out.println(CS245P1.getGame().getPoints());
+    }
+    
+    //method: updateGussedWord
+    //purpose: update the UI above the dashed lines
+    public void updateGuessedWord() {
+        StringBuilder str = new StringBuilder();
+        
+        for (int i = 0; i < wordGuessed.length; i++) {
+            str.append(wordGuessed[i] + " ");
+        }
+        jLabelGuessWord.setText(str.toString());
+    }
+    
+    //method: transitionToColorGame
+    //purpose: Moves to the color game panel when called (to be used once hang-man game is over)
+    private void transitionToColorGame(){
+        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.COLOR_GAME);
+    }
+    
+    //method: getSkipButton
+    //purpose: return skip button
+    public JButton getSkipButton() {
+        return skipButton;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -680,65 +732,6 @@ public class MainGamePanel extends javax.swing.JPanel {
 //        System.out.println(CS245P1.getGame().getPoints());
     }//GEN-LAST:event_jButtonZActionPerformed
 
-    //method: updateGuessedWord
-    //purpose: check if the gussed letter is in the word and update the guessed word
-    //Will also update the UI    
-    public void updateGuessedWord(char letterPushed) {
-         List <Integer> index = new ArrayList(CS245P1.getGame().checkLetter(String.valueOf(letterPushed)));
-
-        if (index.isEmpty()) {
-            System.out.println("Letter not in word");
-            jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().
-                    getResource(gallowPaths[CS245P1.getGame().getIncorrect()]))); 
-            jLabelUserScore.setText("User Score: " + CS245P1.getGame().getPoints());
-            if(CS245P1.getGame().getIncorrect() == 6){
-                transitionToColorGame();
-            }
-        }
-        else {
-            System.out.println(index.size());
-            for (int i = 0; i < index.size(); i++) {
-                wordGuessed[index.get(i)] = letterPushed;
-            }
-            updateGuessedWord();
-            if (CS245P1.getGame().checkForWin(String.copyValueOf(wordGuessed))) {
-                System.out.println("You WIN!");
-                transitionToColorGame();
-            }
-        }
-        System.out.println(CS245P1.getGame().getPoints());
-    }
-    
-    //method: updateGussedWord
-    //purpose: update the UI above the dashed lines
-    public void updateGuessedWord() {
-        StringBuilder str = new StringBuilder();
-        
-        for (int i = 0; i < wordGuessed.length; i++) {
-            str.append(wordGuessed[i] + " ");
-        }
-        jLabelGuessWord.setText(str.toString());
-    }
-    
-    
-    private void transitionToColorGame(){
-        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.COLOR_GAME);
-    }
-
-    //method: transitionToGameOver
-    //purpose: Sets the score on the Game Over screen and then transitions to that panel
-    //This method has been deprecated here, but should be reused in the ColorGamePanel to move to game-over screen from there
-//    private void transitionToGameOver(){
-//        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
-//        gameOver.setScore();
-//        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
-//    }
-    
-    //method: getSkipButton
-    //purpose: return skip button
-    public JButton getSkipButton() {
-        return skipButton;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;

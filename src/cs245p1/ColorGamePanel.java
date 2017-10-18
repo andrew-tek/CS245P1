@@ -1,10 +1,10 @@
 /***************************************************************
-* file: CS245P1.java
-* author: Christopher Kilian
+* file: ColorGamePanel.java
+* author: Christopher Kilian, Andrew Tek
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.1
-* date last modified: 10/17/2017
+* date last modified: 10/18/2017
 *
 * purpose: The panel from which the color choosing game is played is set up
 * in this code.
@@ -19,19 +19,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.Timer;
 
-/**
- *
- * @author Chris
- */
 public class ColorGamePanel extends javax.swing.JPanel {
-    
+    //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
+    //These lists are used to hold sets of valid coordinates for the randomized button positions
+    //The lists are consumed when button position is randomized and will need to be reset between games (method provided)
     private List<List<XYCoords>> randomCoords;
     private List<XYCoords> coordSet1;
     private List<XYCoords> coordSet2;
@@ -39,13 +35,17 @@ public class ColorGamePanel extends javax.swing.JPanel {
     private List<XYCoords> coordSet4;
     private List<XYCoords> coordSet5;
     private List<XYCoords> coordSet6;
+    //use to prevent multiple clicks on a button before panel has a chance to update
+    private boolean buttonWaitFlag; //if true, don't wait, if false then wait
     
-    private int tempCount = 0; //temporary value for testing things
-    
+    // method: ColorGamePanel
+    // purpose: Constructor. Builds the panel and initializes coordinate lists.
     public ColorGamePanel() {
         initComponents();
         resetCoordsSets();
+        buttonWaitFlag = true;
         ActionListener updateClock = new ActionListener() {
+        @Override
         public void actionPerformed(ActionEvent evt) {
             DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
             Date date = new Date();
@@ -61,7 +61,10 @@ public class ColorGamePanel extends javax.swing.JPanel {
         CS245P1.getColorGame().configureLabel(colorLabel);
     }
     
-    //randomize positions of buttons on page
+    // method: randomizeButtons
+    // purpose: randomize positions of buttons on page using the predefined lists of acceptable coordinate groups.
+    //Note that these coordinates will be consumed as a part of the randomization process, and so will need to be reset
+    //when the game is finished in order to play a new game.
     private void randomizeButtons(){
         Random rand = new Random();
         List<JButton> buttonList = new ArrayList();
@@ -88,7 +91,50 @@ public class ColorGamePanel extends javax.swing.JPanel {
 
     }
     
-    //initialize coordinate lists with pre-defined valid coordinates for "random" button placement
+    // method: buttonClickActions
+    // purpose: These actions are common to every button in this panel, and so they are gathered in this
+    //one method which is called by the click handlers. Sets buttonWaitFlag to false while operating so that only
+    //one button operation is handled at a time. Handles incrementing of round counter, and decision to either
+    //move to the game over screen or initiate another round.
+    private void buttonClickActions(boolean addPoints){
+        buttonWaitFlag = false; //don't let other buttons operate while button actions being processed
+        CS245P1.getColorGame().roundProcessing(addPoints);
+        if(CS245P1.getColorGame().checkRounds() >= 5){
+            transitionToGameOver();
+        }else{
+            CS245P1.getColorGame().configureLabel(colorLabel);
+            randomizeButtons();
+        }
+        buttonWaitFlag = true; //button actions completed, allow more button operations
+    }
+    
+    // method: resetCoordsList
+    // purpose: resets the randomCoords list for a new game (since elements are consumed as a game is played)
+    private void resetCoordsList(){
+        randomCoords = new ArrayList();
+        randomCoords.add(coordSet1);
+        randomCoords.add(coordSet2);
+        randomCoords.add(coordSet3);
+        randomCoords.add(coordSet4);
+        randomCoords.add(coordSet5);
+        randomCoords.add(coordSet6);
+    }
+    
+    // method: transitionToGameOver
+    // purpose: Handles the transitioning to the game over screen once a game is done. Resets coordinate
+    //values, sets the score on the game over panel, and switches to that panel.
+    private void transitionToGameOver(){
+        //reset panel values to initial state
+        resetCoordsSets();
+        //set score on game over panel and move to that panel
+        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
+        gameOver.setScore();
+        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
+        gameOver.checkForHighScore();
+    }
+    
+    // method: resetCoordsSets
+    // purpose: initialize coordinate lists with pre-defined valid coordinates for "random" button placement
     private void resetCoordsSets(){
         coordSet1 = new ArrayList();
         coordSet1.add(new XYCoords(300, 20));
@@ -134,20 +180,6 @@ public class ColorGamePanel extends javax.swing.JPanel {
         
         resetCoordsList();
     }
-    
-    
-    //to be used when the color game is finished and we need to transition to the game over screen
-    private void transitionToGameOver(){
-        //reset panel values to initial state
-        resetCoordsSets();
-        tempCount = 0;
-        //set score on game over panel and move to that panel
-        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
-        gameOver.setScore();
-        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
-    }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -167,6 +199,8 @@ public class ColorGamePanel extends javax.swing.JPanel {
         jButtonYellow = new javax.swing.JButton();
         jButtonBlue = new javax.swing.JButton();
         jLabelUserScore = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(600, 400));
 
         clockLabel.setText("Clock Here");
         clockLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), null));
@@ -277,21 +311,17 @@ public class ColorGamePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(colorLabel)
-                                .addGap(261, 261, 261))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
+                        .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(colorButtonPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(colorButtonPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelUserScore, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addComponent(jLabelUserScore, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addComponent(colorLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,108 +337,122 @@ public class ColorGamePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    // method: jButtonGreenMouseEntered
+    // purpose: handles highlighting of the button
     private void jButtonGreenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGreenMouseEntered
         jButtonGreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/green button image highlighted.png")));
     }//GEN-LAST:event_jButtonGreenMouseEntered
 
+    // method: jButtonGreenMouseExited
+    // purpose: handles de-highlighting of the button
     private void jButtonGreenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGreenMouseExited
         jButtonGreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/green button image small transparent.png")));
     }//GEN-LAST:event_jButtonGreenMouseExited
 
+    // method: jButtonBlueMouseEntered
+    // purpose: handles highlighting of the button
     private void jButtonBlueMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBlueMouseEntered
         jButtonBlue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blue button image highlighted.png"))); 
     }//GEN-LAST:event_jButtonBlueMouseEntered
 
+    // method: jButtonBlueMouseExited
+    // purpose: handles de-highlighting of the button
     private void jButtonBlueMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBlueMouseExited
         jButtonBlue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blue button image small transparent.png"))); 
     }//GEN-LAST:event_jButtonBlueMouseExited
 
+    // method: jButtonPurpleMouseEntered
+    // purpose: handles highlighting of the button
     private void jButtonPurpleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPurpleMouseEntered
         jButtonPurple.setIcon(new javax.swing.ImageIcon(getClass().getResource("/purple button image highlighted.png")));
     }//GEN-LAST:event_jButtonPurpleMouseEntered
 
+    // method: jButtonPurpleMouseExited
+    // purpose: handles de-highlighting of the button
     private void jButtonPurpleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPurpleMouseExited
         jButtonPurple.setIcon(new javax.swing.ImageIcon(getClass().getResource("/purple button image small transparent.png")));
     }//GEN-LAST:event_jButtonPurpleMouseExited
 
+    // method: jButtonYellowMouseEntered
+    // purpose: handles highlighting of the button
     private void jButtonYellowMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonYellowMouseEntered
         jButtonYellow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/yellow button image highlighted.png")));
     }//GEN-LAST:event_jButtonYellowMouseEntered
 
+    // method: jButtonYellowMouseExited
+    // purpose: handles de-highlighting of the button
     private void jButtonYellowMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonYellowMouseExited
         jButtonYellow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/yellow button image small transparent.png")));
     }//GEN-LAST:event_jButtonYellowMouseExited
 
+    // method: jButtonRedMouseEntered
+    // purpose: handles highlighting of the button
     private void jButtonRedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRedMouseEntered
         jButtonRed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/red button image highlighted.png")));
     }//GEN-LAST:event_jButtonRedMouseEntered
 
+    // method: jButtonRedMouseExited
+    // purpose: handles de-highlighting of the button
     private void jButtonRedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRedMouseExited
         jButtonRed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/red button image small transparent.png")));
     }//GEN-LAST:event_jButtonRedMouseExited
 
+    // method: jButtonYellowMouseClicked
+    // purpose: click handler for a button
     private void jButtonYellowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonYellowMouseClicked
-        // TODO add your handling code here:
-        if (colorLabel.getForeground() == Color.YELLOW)
-            CS245P1.getColorGame().addPoints(100);
-        CS245P1.getColorGame().configureLabel(colorLabel);
-        buttonClickActions();
+        if(buttonWaitFlag){
+            boolean pointFlag = false;
+            if (colorLabel.getForeground() == Color.YELLOW)
+                pointFlag = true;
+            buttonClickActions(pointFlag);
+        }
     }//GEN-LAST:event_jButtonYellowMouseClicked
 
+    // method: jButtonBlueMouseClicked
+    // purpose: click handler for a button
     private void jButtonBlueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBlueMouseClicked
-        // TODO add your handling code here:
-        if (colorLabel.getForeground() == Color.BLUE)
-            CS245P1.getColorGame().addPoints(100);
-        CS245P1.getColorGame().configureLabel(colorLabel);
-        buttonClickActions();
+        boolean pointFlag = false;
+        if(buttonWaitFlag){
+            if (colorLabel.getForeground() == Color.BLUE)
+                pointFlag = true;
+            buttonClickActions(pointFlag);
+        }
     }//GEN-LAST:event_jButtonBlueMouseClicked
 
+    // method: jButtonRedMouseClicked
+    // purpose: click handler for a button
     private void jButtonRedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRedMouseClicked
-        // TODO add your handling code here:
-        if (colorLabel.getForeground() == Color.RED)
-            CS245P1.getColorGame().addPoints(100);
-        CS245P1.getColorGame().configureLabel(colorLabel);
-        buttonClickActions();
+        boolean pointFlag = false;
+        if(buttonWaitFlag){
+            if (colorLabel.getForeground() == Color.RED)
+                pointFlag = true;
+            buttonClickActions(pointFlag);
+        }
     }//GEN-LAST:event_jButtonRedMouseClicked
 
+    // method: jButtonGreenMouseClicked
+    // purpose: click handler for a button
     private void jButtonGreenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGreenMouseClicked
-        // TODO add your handling code here:
-        if (colorLabel.getForeground() == Color.GREEN)
-            CS245P1.getColorGame().addPoints(100);
-        CS245P1.getColorGame().configureLabel(colorLabel);
-        buttonClickActions();
+        boolean pointFlag = false;
+        if(buttonWaitFlag){
+            if (colorLabel.getForeground() == Color.GREEN)
+                pointFlag = true;
+            buttonClickActions(pointFlag);
+        }
     }//GEN-LAST:event_jButtonGreenMouseClicked
 
+    // method: jButtonPurpleMouseClicked
+    // purpose: click handler for a button
     private void jButtonPurpleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPurpleMouseClicked
-        // TODO add your handling code here:
-        if (colorLabel.getForeground() == Color.MAGENTA)
-            CS245P1.getColorGame().addPoints(100);
-        CS245P1.getColorGame().configureLabel(colorLabel);
-        buttonClickActions();
+        boolean pointFlag = false;
+        if(buttonWaitFlag){
+            if (colorLabel.getForeground() == Color.MAGENTA)
+                pointFlag = true;
+            buttonClickActions(pointFlag);
+        }
     }//GEN-LAST:event_jButtonPurpleMouseClicked
     
-    //every button basically uses same actions, put them all here
-    private void buttonClickActions(){
-        tempCount++;
-        if(tempCount >= 5){
-            transitionToGameOver();
-        }else{
-            randomizeButtons();
-        }
-    }
     
-    //resets the randomCoords list for a new game (since elements are removed as a game is played)
-    private void resetCoordsList(){
-        randomCoords = new ArrayList();
-        randomCoords.add(coordSet1);
-        randomCoords.add(coordSet2);
-        randomCoords.add(coordSet3);
-        randomCoords.add(coordSet4);
-        randomCoords.add(coordSet5);
-        randomCoords.add(coordSet6);
-    }
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;
     private javax.swing.JPanel colorButtonPanel;

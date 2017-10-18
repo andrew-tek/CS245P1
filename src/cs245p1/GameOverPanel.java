@@ -1,10 +1,10 @@
 /***************************************************************
 * file: GameOverPanel.java
-* author: Christopher Kilian
+* author: Christopher Kilian, Nicholas Pham
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.1
-* date last modified: 10/17/2017
+* date last modified: 10/18/2017
 *
 * purpose: This class defines the panel which displays the game over screen
 * and the players score for the game
@@ -13,6 +13,7 @@
 package cs245p1;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 public class GameOverPanel extends javax.swing.JPanel {
 
@@ -25,6 +26,42 @@ public class GameOverPanel extends javax.swing.JPanel {
     public GameOverPanel() {
         initComponents();
     }
+    
+    //WORKING NOTES: call this method immediately after displaying the game over panel
+    //method should call the high-score check method, and if it's a high score then display the dialog
+    //box to get the user's initials, and then finally call the high-score save method.
+    //uncomment the "if" block when implementing the high score check
+    // method: checkForHighScore
+    // purpose: method which will check the score of the most recently played hangman and color games.
+    //If the score is a high score, it asks the player if they want to enter their initials (1 to 3 characters)
+    //and if they do, it will save their score. If they click cancel, nothing is done.
+    public void checkForHighScore(){
+        int score = CS245P1.getGame().getPoints() + CS245P1.getColorGame().getPoints();
+        //if(run check for high score method here){
+            GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
+            
+            String response = (String)JOptionPane.showInputDialog(
+                        gameOver,
+                        "Congratulations on your high score! \n"
+                        + "Please enter your initials (no more than 3)",
+                        "High Score!",
+                        JOptionPane.PLAIN_MESSAGE);
+            while(response != null && ((response.length() == 0) || (response.length() > 3))){
+                response = (String)JOptionPane.showInputDialog(
+                        gameOver,
+                        "To record your score, please enter between 1 and 3 initials only!",
+                        "High Score!",
+                        JOptionPane.PLAIN_MESSAGE);
+            }
+            
+            if(response != null){
+                //after getting name from dialog, call "save high score" method here, passing the "response" string and the "score" value
+                //Note that if the user clicks "cancel" on the dialog box, response will be null - in that case, don't bother saving anything as
+                //user has declined option to save their high score - do nothing in that case
+            }
+        //} //UNCOMMENT IF BLOCK WHEN HIGH SCORE CHECK METHOD IS IMPLEMENTED
+    }
+    
     
     // method: setScore
     // purpose: sets the score label with the most recent game score
@@ -43,6 +80,12 @@ public class GameOverPanel extends javax.swing.JPanel {
 //        }
     }
 
+    // method: getEndButton
+    // purpose: getter for the "end" button
+    public JButton getEndButton() {
+        return endButton;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,10 +140,7 @@ public class GameOverPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    public JButton getEndButton() {
-        return endButton;
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton endButton;
