@@ -18,6 +18,8 @@ public class GameOverPanel extends javax.swing.JPanel {
 
     //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
     
+    private HighScoresList highScores = new HighScoresList();
+    
     // method: GameOverPanel
     // purpose: constructor
     public GameOverPanel() {
@@ -29,6 +31,16 @@ public class GameOverPanel extends javax.swing.JPanel {
     public void setScore(){
         int totalPoints = CS245P1.getGame().getPoints();//NOTE: Add addition of total points from color game here
         scoreLabel.setText("Your Score: " + totalPoints);
+        
+        // compare to high scores
+//        highScores.sortScores();
+//        for (int i = highScores.size(); i > 0; i--) {
+//            if (totalPoints == highScores.getScores().get(i).getScore()) {
+//                highScores.getScores().remove(highScores.getScores().get(i));
+//                highScores.addScore(new Score("____", totalPoints));
+//            }
+//            else if (totalPoints > highScores)
+//        }
     }
 
     /**
