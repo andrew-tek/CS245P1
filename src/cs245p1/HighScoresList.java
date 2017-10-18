@@ -102,7 +102,7 @@ public class HighScoresList {
     }
     
     // method: addScore
-    // purpose: add new high score
+    // purpose: add new high score to list
     public void addScore(Scores score) {
         highScores.add(score);
     }
@@ -124,14 +124,10 @@ public class HighScoresList {
         }
         return output;
     }
-}   
-
-
-//    
-//    // Add score into the .dat file
-//    public void addScore(int score, String name) {
-//        load();
-//        highScore.add(new Score(score, name));
-//        update();
-//    }
-//}
+    
+    // method: size
+    // purpose: return size of high scores list
+    public int size() {
+        return highScores.size();
+    }
+}
