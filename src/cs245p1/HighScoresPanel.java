@@ -29,7 +29,20 @@ public class HighScoresPanel extends javax.swing.JPanel {
     public HighScoresPanel() {
         highScoresList.sortScores();
         initComponents();
+        
+        /* DISPLAY HIGH SCORES */
+        // Reads first in high scores list, which is sorted to be the highest and prints the player name and their score
+        highScore1.setText(highScoresList.getScores().get(0).getPlayer() + " - " + String.format("%06d", highScoresList.getScores().get(0).getScore()));
+        // Reads second in high scores list, which is sorted to be the highest and prints the player name and their score
+        highScore2.setText(highScoresList.getScores().get(1).getPlayer() + " - " + String.format("%06d", highScoresList.getScores().get(1).getScore()));
+        // Reads third in high scores list, which is sorted to be the highest and prints the player name and their score
+        highScore3.setText(highScoresList.getScores().get(2).getPlayer() + " - " + String.format("%06d", highScoresList.getScores().get(2).getScore()));
+        // Reads fourth in high scores list, which is sorted to be the highest and prints the player name and their score
+        highScore4.setText(highScoresList.getScores().get(3).getPlayer() + " - " + String.format("%06d", highScoresList.getScores().get(3).getScore()));
+        // Reads fifth in high scores list, which is sorted to be the highest and prints the player name and their score
+        highScore5.setText(highScoresList.getScores().get(4).getPlayer() + " - " + String.format("%06d", highScoresList.getScores().get(4).getScore()));
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,7 +61,7 @@ public class HighScoresPanel extends javax.swing.JPanel {
         highScore5 = new javax.swing.JLabel();
         highScoresBackButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(51, 51, 51));
+        setBackground(new java.awt.Color(102, 102, 102));
         setPreferredSize(new java.awt.Dimension(600, 400));
 
         scoresTitle.setBackground(java.awt.Color.black);
@@ -64,40 +77,30 @@ public class HighScoresPanel extends javax.swing.JPanel {
         highScore1.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScore1.setForeground(java.awt.Color.white);
         highScore1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        // Reads first in high scores list, which is sorted to be the highest and prints the player name and their score
-        highScore1.setText(highScoresList.getScores().get(0).getPlayer() + ": " + String.format("%06d", highScoresList.getScores().get(0).getScore()));
         highScore1.setToolTipText("highScore1");
 
         highScore2.setBackground(java.awt.Color.black);
         highScore2.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScore2.setForeground(java.awt.Color.white);
         highScore2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        // Reads second in high scores list, which is sorted to be the highest and prints the player name and their score
-        highScore2.setText(highScoresList.getScores().get(1).getPlayer() + ": " + String.format("%06d", highScoresList.getScores().get(1).getScore()));
         highScore2.setToolTipText("highScore2");
 
         highScore3.setBackground(java.awt.Color.black);
         highScore3.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScore3.setForeground(java.awt.Color.white);
         highScore3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        // Reads third in high scores list, which is sorted to be the highest and prints the player name and their score
-        highScore3.setText(highScoresList.getScores().get(2).getPlayer() + ": " + String.format("%06d", highScoresList.getScores().get(2).getScore()));
         highScore3.setToolTipText("highScore3");
 
         highScore4.setBackground(java.awt.Color.black);
         highScore4.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScore4.setForeground(java.awt.Color.white);
         highScore4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        // Reads fourth in high scores list, which is sorted to be the highest and prints the player name and their score
-        highScore4.setText(highScoresList.getScores().get(3).getPlayer() + ": " + String.format("%06d", highScoresList.getScores().get(3).getScore()));
         highScore4.setToolTipText("highScore4");
 
         highScore5.setBackground(java.awt.Color.black);
         highScore5.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScore5.setForeground(java.awt.Color.white);
         highScore5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        // Reads fifth in high scores list, which is sorted to be the highest and prints the player name and their score
-        highScore5.setText(highScoresList.getScores().get(4).getPlayer() + ": " + String.format("%06d", highScoresList.getScores().get(4).getScore()));
         highScore5.setToolTipText("highScore5");
 
         highScoresBackButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N

@@ -42,7 +42,7 @@ public class CreditsPanel extends javax.swing.JPanel {
         nickNameLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(51, 51, 51));
+        setBackground(new java.awt.Color(102, 102, 102));
         setPreferredSize(new java.awt.Dimension(600, 400));
 
         creditsLabel.setBackground(java.awt.Color.black);

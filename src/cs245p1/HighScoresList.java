@@ -130,4 +130,15 @@ public class HighScoresList {
     public int size() {
         return highScores.size();
     }
+    
+    // method: checkIfHighScore
+    // purpose: checks an inputted score belongs in the top 5
+    public boolean checkIfHighScore(int score) {
+        if (score >= highScores.get(4).getScore()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
