@@ -22,7 +22,7 @@ public class ColorGame {
     private int points;
     private int rounds;
     
-    //method: Constructor
+    //method: ColorGame (Constructor)
     //purpose: Initialize class set points = 0 and rounds = 0
     public ColorGame() {
         points = 0;

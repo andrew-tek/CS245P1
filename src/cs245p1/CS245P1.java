@@ -38,7 +38,7 @@ public class CS245P1 {
     private static ColorGame colorGame;
     private static Map allPanels; //allows access to panel methods anywhere in program
     
-    //method: Constructor
+    //method: CS245P1 (Constructor)
     //purpose: Initializes all the necessary components of the game, including the individual panels
     //and the game object itself, as well as setting up actionlisteners for the buttons which transition
     //between panels (utilizing the CardLayout layout)

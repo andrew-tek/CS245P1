@@ -64,7 +64,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
     // method: randomizeButtons
     // purpose: randomize positions of buttons on page using the predefined lists of acceptable coordinate groups.
     //Note that these coordinates will be consumed as a part of the randomization process, and so will need to be reset
-    //when the game is finished in order to play a new game.
+    //when the game is finished in order to play a new game (method provided).
     private void randomizeButtons(){
         Random rand = new Random();
         List<JButton> buttonList = new ArrayList();
@@ -94,7 +94,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
     // method: buttonClickActions
     // purpose: These actions are common to every button in this panel, and so they are gathered in this
     //one method which is called by the click handlers. Sets buttonWaitFlag to false while operating so that only
-    //one button operation is handled at a time. Handles incrementing of round counter, and decision to either
+    //one button operation is handled at a time. Runs the game method, and decision to either
     //move to the game over screen or initiate another round.
     private void buttonClickActions(boolean addPoints){
         buttonWaitFlag = false; //don't let other buttons operate while button actions being processed
