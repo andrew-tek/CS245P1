@@ -400,8 +400,8 @@ public class ColorGamePanel extends javax.swing.JPanel {
     // method: jButtonYellowMouseClicked
     // purpose: click handler for a button
     private void jButtonYellowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonYellowMouseClicked
+        boolean pointFlag = false;
         if(buttonWaitFlag){
-            boolean pointFlag = false;
             if (colorLabel.getForeground() == Color.YELLOW)
                 pointFlag = true;
             buttonClickActions(pointFlag);

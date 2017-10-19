@@ -38,7 +38,7 @@ public class GameOverPanel extends javax.swing.JPanel {
     public void checkForHighScore(){
         int score = CS245P1.getGame().getPoints() + CS245P1.getColorGame().getPoints();
         highScores.sortScores();
-        if (highScores.checkIfHighScore(score) == true) {
+        if (highScores.checkIfHighScore(score)) {
             GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
             
             String response = (String)JOptionPane.showInputDialog(
@@ -55,14 +55,16 @@ public class GameOverPanel extends javax.swing.JPanel {
                         JOptionPane.PLAIN_MESSAGE);
             }
             
+            //if user clicks "cancel" on dialog box, response will be null and no action should be taken (user declined saving high score)
             if(response != null){
-                //after getting name from dialog, call "save high score" method here, passing the "response" string and the "score" value
                 Scores newScore = new Scores(response, score);
                 highScores.addScore(newScore);
                 highScores.sortScores();
                 highScores.update();
-                //Note that if the user clicks "cancel" on the dialog box, response will be null - in that case, don't bother saving anything as
-                //user has declined option to save their high score - do nothing in that case
+                
+                HighScoresPanel scoresPanel = (HighScoresPanel)CS245P1.getPanelMap().get(CS245P1.HIGH_SCORES);
+                scoresPanel.updateHighScoresList(highScores);
+                scoresPanel.updateScoresView();
             }
         }
     }

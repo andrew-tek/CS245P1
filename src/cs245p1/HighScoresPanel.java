@@ -1,10 +1,10 @@
 /***************************************************************
 * file: HighScoresPanel.java
-* author: Nicholas Pham
+* author: Nicholas Pham, Christopher Kilian
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.0
-* date last modified: 10/07/2017
+* assignment: Point and Click Game – v.1.1
+* date last modified: 10/18/2017
 *
 * purpose: This class builds the panel which displays the high scores
 *
@@ -22,14 +22,26 @@ public class HighScoresPanel extends javax.swing.JPanel {
     //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
     
     // high scores list
-    private HighScoresList highScoresList = new HighScoresList();
+    private HighScoresList highScoresList;
 
     // method: highScoresPanel
     // purpose: build panel to display high scores
     public HighScoresPanel() {
+        highScoresList = new HighScoresList();
         highScoresList.sortScores();
         initComponents();
-        
+        updateScoresView();
+    }
+    
+    // method: updateHighScoresList
+    // purpose: reset the high scores list to point to a new one (needed to update list on panel)
+    public void updateHighScoresList(HighScoresList newHighScoreList){
+        highScoresList = newHighScoreList;
+    }
+    
+    // method: updateScoresView
+    // purpose: updates the listed scores visible on the panel
+    public void updateScoresView(){
         /* DISPLAY HIGH SCORES */
         // Reads first in high scores list, which is sorted to be the highest and prints the player name and their score
         highScore1.setText(highScoresList.getScores().get(0).getPlayer() + " - " + String.format("%06d", highScoresList.getScores().get(0).getScore()));
@@ -41,8 +53,14 @@ public class HighScoresPanel extends javax.swing.JPanel {
         highScore4.setText(highScoresList.getScores().get(3).getPlayer() + " - " + String.format("%06d", highScoresList.getScores().get(3).getScore()));
         // Reads fifth in high scores list, which is sorted to be the highest and prints the player name and their score
         highScore5.setText(highScoresList.getScores().get(4).getPlayer() + " - " + String.format("%06d", highScoresList.getScores().get(4).getScore()));
+        repaint();
     }
     
+    // method: getBackButton
+    // purpose: return to main menu
+    public JButton getBackButton() {
+        return highScoresBackButton;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -146,11 +164,6 @@ public class HighScoresPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    // method: getBackButton
-    // purpose: return to main menu
-    public JButton getBackButton() {
-        return highScoresBackButton;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel highScore1;

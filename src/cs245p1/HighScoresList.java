@@ -1,10 +1,10 @@
 /***************************************************************
 * file: HighScoresList.java
-* author: Nicholas Pham
+* author: Nicholas Pham, Christopher Kilian
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.0
-* date last modified: 10/07/2017
+* assignment: Point and Click Game – v.1.1
+* date last modified: 10/18/2017
 *
 * purpose: This class creates the list of high scores accumulated
 *
@@ -35,6 +35,7 @@ public class HighScoresList {
     private FileWriter fw;
     // writer for file
     private BufferedWriter bw;
+    
     
     // method: HighScoresList
     // purpose: constructor
@@ -102,8 +103,13 @@ public class HighScoresList {
     }
     
     // method: addScore
-    // purpose: add new high score to list
+    // purpose: add new high score to list - only call on a score that is already confirmed to be
+    //a new high score. This method trims the high score list down to 
     public void addScore(Scores score) {
+        while(highScores.size() > 4){
+            highScores.remove((highScores.size()-1));
+        }
+        
         highScores.add(score);
     }
     

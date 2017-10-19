@@ -1,5 +1,5 @@
-abc,0
-abc,0
-abc,0
-abc,0
-abc,0
+ASS,360
+MDK,300
+MRP,300
+AAA,260
+CDK,200
