@@ -26,6 +26,12 @@ public class CreditsPanel extends javax.swing.JPanel {
     public CreditsPanel() {
         initComponents();
     }
+    
+    // method: getBackButton
+    // purpose: return to main menu
+    public JButton getBackButton() {
+        return backButton;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,11 +118,7 @@ public class CreditsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    // method: getBackButton
-    // purpose: return to main menu
-    public JButton getBackButton() {
-        return backButton;
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel andrewNameLabel;

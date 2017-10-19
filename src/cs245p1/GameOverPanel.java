@@ -27,10 +27,6 @@ public class GameOverPanel extends javax.swing.JPanel {
         initComponents();
     }
     
-    //WORKING NOTES: call this method immediately after displaying the game over panel
-    //method should call the high-score check method, and if it's a high score then display the dialog
-    //box to get the user's initials, and then finally call the high-score save method.
-    //uncomment the "if" block when implementing the high score check
     // method: checkForHighScore
     // purpose: method which will check the score of the most recently played hangman and color games.
     //If the score is a high score, it asks the player if they want to enter their initials (1 to 3 characters)

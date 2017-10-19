@@ -104,7 +104,8 @@ public class HighScoresList {
     
     // method: addScore
     // purpose: add new high score to list - only call on a score that is already confirmed to be
-    //a new high score. This method trims the high score list down to 
+    //a new high score. This method trims the high score list down to 4 items before adding the newest
+    //high score (since the lowest high score should always get bumped off the list).
     public void addScore(Scores score) {
         while(highScores.size() > 4){
             highScores.remove((highScores.size()-1));

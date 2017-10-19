@@ -1,8 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: CompareScore.java
+* author: Nicholas Pham
+* class: CS 245 – Programming Graphical User Interfaces
+*
+* assignment: Point and Click Game – v.1.1
+* date last modified: 10/18/2017
+*
+* purpose: Comparator for two score objects
+*
+****************************************************************/
 package cs245p1;
 
 import java.util.Comparator;

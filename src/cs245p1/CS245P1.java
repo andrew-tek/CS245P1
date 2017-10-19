@@ -85,7 +85,7 @@ public class CS245P1 {
                 CARDLAYOUT.show(CARDHOLDER, MAIN_MENU);
             }
         };
-        Timer timer = new Timer (3000, showMenuScreen); //REMEMBER TO CHANGE BACK TO 3 SECONDS
+        Timer timer = new Timer (3000, showMenuScreen);
         timer.setRepeats(false);
         timer.start(); 
                 
@@ -149,21 +149,27 @@ public class CS245P1 {
     public static HangManGame getGame(){
         return currentGame;
     }
+    
     //method: getPrimaryLayout
     //purpose: Getter for the layout object (allows changing panels from within other panels)
     public static CardLayout getPrimaryLayout(){
         return CARDLAYOUT;
     }
+    
     //method: getPrimaryCardHolder
     //purpose: Getter for the panel object which manages the layour (allows changing panels from within other panels)
     public static JPanel getPrimaryCardHolder(){
         return CARDHOLDER;
     }
+    
     //method: getPanelMap
     //purpose: Getter for the panel map, allowing access to public panel methods from anywhere in program
     public static Map getPanelMap(){
         return allPanels;
     }
+    
+    //method: getColorGame
+    //purpose: Getter for the color game object
     public static ColorGame getColorGame() {
         return colorGame;
     }
