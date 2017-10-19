@@ -37,7 +37,8 @@ public class GameOverPanel extends javax.swing.JPanel {
     //and if they do, it will save their score. If they click cancel, nothing is done.
     public void checkForHighScore(){
         int score = CS245P1.getGame().getPoints() + CS245P1.getColorGame().getPoints();
-        //if(run check for high score method here){
+        highScores.sortScores();
+        if (highScores.checkIfHighScore(score) == true) {
             GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
             
             String response = (String)JOptionPane.showInputDialog(
@@ -56,10 +57,14 @@ public class GameOverPanel extends javax.swing.JPanel {
             
             if(response != null){
                 //after getting name from dialog, call "save high score" method here, passing the "response" string and the "score" value
+                Scores newScore = new Scores(response, score);
+                highScores.addScore(newScore);
+                highScores.sortScores();
+                highScores.update();
                 //Note that if the user clicks "cancel" on the dialog box, response will be null - in that case, don't bother saving anything as
                 //user has declined option to save their high score - do nothing in that case
             }
-        //} //UNCOMMENT IF BLOCK WHEN HIGH SCORE CHECK METHOD IS IMPLEMENTED
+        }
     }
     
     
@@ -69,15 +74,6 @@ public class GameOverPanel extends javax.swing.JPanel {
         int totalPoints = CS245P1.getGame().getPoints() + CS245P1.getColorGame().getPoints();
         scoreLabel.setText("Your Score: " + totalPoints);
         
-        // compare to high scores
-//        highScores.sortScores();
-//        for (int i = highScores.size(); i > 0; i--) {
-//            if (totalPoints == highScores.getScores().get(i).getScore()) {
-//                highScores.getScores().remove(highScores.getScores().get(i));
-//                highScores.addScore(new Score("____", totalPoints));
-//            }
-//            else if (totalPoints > highScores)
-//        }
     }
 
     // method: getEndButton
