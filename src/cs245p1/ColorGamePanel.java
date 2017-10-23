@@ -100,7 +100,8 @@ public class ColorGamePanel extends javax.swing.JPanel {
         buttonWaitFlag = false; //don't let other buttons operate while button actions being processed
         CS245P1.getColorGame().roundProcessing(addPoints);
         if(CS245P1.getColorGame().checkRounds() >= 5){
-            transitionToGameOver();
+            // transitionToGameOver();
+            transitionToSudoku();
         }else{
             CS245P1.getColorGame().configureLabel(colorLabel);
             randomizeButtons();
@@ -131,6 +132,12 @@ public class ColorGamePanel extends javax.swing.JPanel {
         gameOver.setScore();
         CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
         gameOver.checkForHighScore();
+    }
+    
+    private void transitionToSudoku() {
+        //reset panel values to initial state
+        resetCoordsSets();
+        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.SUDOKU);
     }
     
     // method: resetCoordsSets
