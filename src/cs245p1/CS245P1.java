@@ -32,10 +32,12 @@ public class CS245P1 {
     protected static final String HIGH_SCORES = "High Scores";
     protected static final String GAME = "Game";
     protected static final String COLOR_GAME = "Color Game";
+    protected static final String SUDOKU = "Sudoku";
     private static final CardLayout CARDLAYOUT = new CardLayout();  
     private static final JPanel CARDHOLDER = new JPanel(CARDLAYOUT);
     private static HangManGame currentGame;
     private static ColorGame colorGame;
+    private static Sudoku sudoku;
     private static Map allPanels; //allows access to panel methods anywhere in program
     
     //method: CS245P1 (Constructor)
@@ -62,6 +64,8 @@ public class CS245P1 {
         allPanels.put(START_SCREEN, startPanel);
         ColorGamePanel colorPanel = new ColorGamePanel();
         allPanels.put(COLOR_GAME, colorPanel);
+        SudokuPanel sudokuPanel = new SudokuPanel();
+        allPanels.put(SUDOKU, sudokuPanel);
         
         CARDHOLDER.add(creditPanel, CREDITS_SCREEN);
         CARDHOLDER.add(gameOverPanel, GAME_OVER);
@@ -70,6 +74,7 @@ public class CS245P1 {
         CARDHOLDER.add(startPanel, START_SCREEN);
         CARDHOLDER.add(menuPanel, MAIN_MENU);
         CARDHOLDER.add(colorPanel, COLOR_GAME);
+        CARDHOLDER.add(sudokuPanel, SUDOKU);
         
         mainFrame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setSize(new java.awt.Dimension(600, 400));
@@ -172,6 +177,10 @@ public class CS245P1 {
     //purpose: Getter for the color game object
     public static ColorGame getColorGame() {
         return colorGame;
+    }
+    
+    public static Sudoku getSudokuGame() {
+        return sudoku;
     }
     
     //method: main
