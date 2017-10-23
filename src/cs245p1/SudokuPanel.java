@@ -17,7 +17,6 @@ public class SudokuPanel extends javax.swing.JPanel {
     
     public SudokuPanel() {
         initComponents();
-        mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("../sudokuBoard.png")));
         
         ActionListener updateClock = new ActionListener() {
         @Override
@@ -27,8 +26,8 @@ public class SudokuPanel extends javax.swing.JPanel {
             clockLabel.setText(dateFormat.format(date).toString());
             
             // Set points to points + 540 (Sudoku)
-            int points = CS245P1.getSudokuGame().getPoints() + CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
-            //
+            // ERROR HERE int points = CS245P1.getSudokuGame().getPoints() + CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
+            int points = CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
             jLabelUserScore.setText("User Score: " + points);
         }
         };
@@ -75,11 +74,23 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         jLabelUserScore.setText("User Score:");
 
-        sudokuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         mainBoard.setAlignmentX(0.5F);
         mainBoard.setPreferredSize(new java.awt.Dimension(350, 350));
-        sudokuPanel.add(mainBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, -1));
+
+        javax.swing.GroupLayout sudokuPanelLayout = new javax.swing.GroupLayout(sudokuPanel);
+        sudokuPanel.setLayout(sudokuPanelLayout);
+        sudokuPanelLayout.setHorizontalGroup(
+            sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sudokuPanelLayout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(mainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        sudokuPanelLayout.setVerticalGroup(
+            sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(mainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sudokuBoard.png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,7 +102,7 @@ public class SudokuPanel extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
                         .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(sudokuPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                    .addComponent(sudokuPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelUserScore, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
