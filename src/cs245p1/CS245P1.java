@@ -114,6 +114,7 @@ public class CS245P1 {
                         (e.getSource() == highScoresPanel.getBackButton())){
                     CARDLAYOUT.show(CARDHOLDER, MAIN_MENU);
                 }
+                // add sudoku
             }
         };
         menuPanel.getCreditsButton().addActionListener(buttonHandler);

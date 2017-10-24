@@ -12,10 +12,32 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.Timer;
+import javax.swing.JTextField;
 
 public class SudokuPanel extends javax.swing.JPanel {
     
+    /**
+     * jTextField for all inputs for board game
+     * jTextField##.setToolTipText("Enter a number from 1 to 9");
+     */
+    
+    
+    private JTextField enteredWord = new JTextField();
+    private int[] intEntered = new int[81];
+    
     public SudokuPanel() {
+        Sudoku sudoku = new Sudoku();
+        enteredWord.setText("1");
+        String entered = enteredWord.getText();
+        intEntered[1] = Integer.parseInt(entered);
+        if (intEntered[1] == sudoku.getSolution()[1]) {
+            // 3 == 3
+            System.out.println("WINNER");
+        }
+        else {
+            System.out.println("LOSER");
+        }
+        
         initComponents();
         
         ActionListener updateClock = new ActionListener() {
@@ -35,6 +57,8 @@ public class SudokuPanel extends javax.swing.JPanel {
         Timer timer = new Timer (1000, updateClock);
         timer.setRepeats(true);
         timer.start();
+        
+        
     }
     
  
@@ -82,7 +106,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuPanelLayout.setHorizontalGroup(
             sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sudokuPanelLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(263, 263, 263)
                 .addComponent(mainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         sudokuPanelLayout.setVerticalGroup(
@@ -90,7 +114,7 @@ public class SudokuPanel extends javax.swing.JPanel {
             .addComponent(mainBoard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sudokuBoard.png")));
+        //mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sudokuBoard.png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -100,7 +124,7 @@ public class SudokuPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(sudokuPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
