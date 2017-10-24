@@ -41,4 +41,8 @@ public class Sudoku {
     public void subPoints() {
         points = points - 10;
     }
+    
+    public int[] getSolution() {
+        return solution;
+    }
 }

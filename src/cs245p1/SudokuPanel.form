@@ -25,7 +25,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="389" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="clockLabel" min="-2" pref="199" max="-2" attributes="0"/>
                   </Group>
                   <Component id="sudokuPanel" alignment="1" max="32767" attributes="0"/>
@@ -79,7 +79,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="110" pref="110" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="263" max="-2" attributes="0"/>
                   <Component id="mainBoard" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -99,7 +99,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/sudokuBoard.png&quot;)));"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/sudokuBoard.png&quot;)));"/>
           </AuxValues>
         </Component>
       </SubComponents>
