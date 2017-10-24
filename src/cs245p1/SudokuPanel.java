@@ -22,21 +22,32 @@ public class SudokuPanel extends javax.swing.JPanel {
      */
     
     
-    private JTextField enteredWord = new JTextField();
+    private JTextField[] enteredWord = new JTextField[81];
     private int[] intEntered = new int[81];
+    private boolean[] calculated = new boolean[81];
+    private Sudoku sudoku = new Sudoku();
     
     public SudokuPanel() {
-        Sudoku sudoku = new Sudoku();
-        enteredWord.setText("1");
-        String entered = enteredWord.getText();
-        intEntered[1] = Integer.parseInt(entered);
-        if (intEntered[1] == sudoku.getSolution()[1]) {
+        // Initialize JTextField array and array to calculate points later
+        for (int i = 0; i < enteredWord.length; i++) {
+            enteredWord[i] = new JTextField();
+            calculated[i] = false;
+        }
+        
+        
+        
+        /* TESTING */
+        enteredWord[0].setText("8");
+        String entered = enteredWord[0].getText();
+        intEntered[0] = Integer.parseInt(entered);
+        if (intEntered[0] == sudoku.getSolution()[0]) {
             // 3 == 3
             System.out.println("WINNER");
         }
         else {
             System.out.println("LOSER");
         }
+        /* TESTING */
         
         initComponents();
         
@@ -57,6 +68,25 @@ public class SudokuPanel extends javax.swing.JPanel {
         Timer timer = new Timer (1000, updateClock);
         timer.setRepeats(true);
         timer.start();
+        
+        // 
+        
+        
+    }
+    
+    private void textFieldToArray(JTextField jtf, int index) {
+        enteredWord[index] = jtf;
+    }
+    
+    private void originalNumbersInTFArray() {
+        enteredWord[0].setText("8");
+        enteredWord[3].setText("4");
+        enteredWord[5].setText("6");
+        enteredWord[8].setText("7");
+        enteredWord[15].setText("4");
+        enteredWord[19].setText("1");
+        enteredWord[24].setText("6");
+        enteredWord[25].setText("5");
         
         
     }
