@@ -169,7 +169,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuPanel.setPreferredSize(new java.awt.Dimension(600, 400));
 
-        mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SudokuBoard.png"))); // NOI18N
+        mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sudokuboard.png"))); // NOI18N
         mainBoard.setAlignmentX(0.5F);
         mainBoard.setPreferredSize(new java.awt.Dimension(350, 350));
 
@@ -192,6 +192,11 @@ public class SudokuPanel extends javax.swing.JPanel {
         });
 
         submitNumbers.setText("Submit");
+        submitNumbers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitNumbersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout sudokuPanelLayout = new javax.swing.GroupLayout(sudokuPanel);
         sudokuPanel.setLayout(sudokuPanelLayout);
@@ -294,6 +299,10 @@ public class SudokuPanel extends javax.swing.JPanel {
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void submitNumbersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitNumbersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_submitNumbersActionPerformed
 
    
     

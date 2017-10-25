@@ -161,7 +161,7 @@
         <Component class="javax.swing.JLabel" name="mainBoard">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/SudokuBoard.png"/>
+              <Image iconType="3" name="/sudokuboard.png"/>
             </Property>
             <Property name="alignmentX" type="float" value="0.5"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -202,6 +202,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Submit"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitNumbersActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
