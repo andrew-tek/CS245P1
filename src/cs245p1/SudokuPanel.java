@@ -145,7 +145,6 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         clockLabel = new javax.swing.JLabel();
         jLabelUserScore = new javax.swing.JLabel();
-        mainBoard = new javax.swing.JLabel();
         sudokuPanel = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -166,6 +165,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
+        mainBoard = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(600, 400));
 
@@ -174,9 +174,6 @@ public class SudokuPanel extends javax.swing.JPanel {
         clockLabel.setPreferredSize(new java.awt.Dimension(150, 25));
 
         jLabelUserScore.setText("User Score:");
-
-        mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SudokuBoard.png"))); // NOI18N
-        mainBoard.setAlignmentX(0.5F);
 
         sudokuPanel.setPreferredSize(new java.awt.Dimension(600, 400));
 
@@ -219,6 +216,9 @@ public class SudokuPanel extends javax.swing.JPanel {
         jLabel5.setBackground(java.awt.Color.white);
         jLabel5.setText("7");
         jLabel5.setOpaque(true);
+
+        mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SudokuBoard.png"))); // NOI18N
+        mainBoard.setAlignmentX(0.5F);
 
         javax.swing.GroupLayout sudokuPanelLayout = new javax.swing.GroupLayout(sudokuPanel);
         sudokuPanel.setLayout(sudokuPanelLayout);
@@ -269,8 +269,10 @@ public class SudokuPanel extends javax.swing.JPanel {
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(sudokuPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(submitNumbers)))
-                .addContainerGap(156, Short.MAX_VALUE))
+                        .addComponent(submitNumbers)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mainBoard)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         sudokuPanelLayout.setVerticalGroup(
             sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,9 +298,15 @@ public class SudokuPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
-                .addComponent(submitNumbers)
-                .addGap(86, 86, 86))
+                .addGroup(sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sudokuPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(submitNumbers)
+                        .addGap(86, 86, 86))
+                    .addGroup(sudokuPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mainBoard)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -313,11 +321,6 @@ public class SudokuPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelUserScore, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(128, 128, 128)
-                    .addComponent(mainBoard)
-                    .addContainerGap(128, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,11 +330,6 @@ public class SudokuPanel extends javax.swing.JPanel {
                     .addComponent(jLabelUserScore))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sudokuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(40, 40, 40)
-                    .addComponent(mainBoard)
-                    .addContainerGap(41, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
