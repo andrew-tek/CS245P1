@@ -32,7 +32,7 @@ public class GameOverPanel extends javax.swing.JPanel {
     //If the score is a high score, it asks the player if they want to enter their initials (1 to 3 characters)
     //and if they do, it will save their score. If they click cancel, nothing is done.
     public void checkForHighScore(){
-        int score = CS245P1.getGame().getPoints() + CS245P1.getColorGame().getPoints();
+        int score = CS245P1.getGame().getPoints() + CS245P1.getColorGame().getPoints() + CS245P1.getSudokuGame().getPoints();
         highScores.sortScores();
         if (highScores.checkIfHighScore(score)) {
             GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);

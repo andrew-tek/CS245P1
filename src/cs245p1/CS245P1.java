@@ -100,6 +100,7 @@ public class CS245P1 {
                 if (e.getSource() == menuPanel.getPlayButton()) {
                     currentGame = new HangManGame();
                     colorGame.resetGame();
+                    sudoku = new Sudoku();
                     mainGamePanel.resetMainGamePanel();
                     CARDLAYOUT.show(CARDHOLDER, GAME);
                 }else if(e.getSource() == menuPanel.getHighscoreButton()){

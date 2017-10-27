@@ -1,4 +1,14 @@
-
+/** *************************************************************
+ * file: SudokuPanel.java
+ * author: Nicholas Pham, Christopher Kilian
+ * class: CS 245 – Programming Graphical User Interfaces
+ *
+ * assignment: Point and Click Game – v.1.2
+ * date last modified: 10/26/2017
+ *
+ * purpose: The panel for handling the Sudoku game operations
+ *
+ *************************************************************** */
 package cs245p1;
 
 import java.awt.Color;
@@ -7,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -14,126 +25,257 @@ import javax.swing.JButton;
 import javax.swing.Timer;
 import javax.swing.JTextField;
 
-public class SudokuPanel extends javax.swing.JPanel { 
+public class SudokuPanel extends javax.swing.JPanel {
+
     /**
      * jTextField for all inputs for board game
      * jTextField##.setToolTipText("Enter a number from 1 to 9");
      */
+    private List<JTextField> gameBoardTracker;
+    private boolean[] credit = new boolean[81];
 
-    private JTextField[] enteredWord = new JTextField[81];
-    private int[] intEntered = new int[81];
-    private boolean[] calculated = new boolean[81];
-    private Sudoku sudoku = new Sudoku();
-    
     public SudokuPanel() {
         initComponents();
+        initializeGameBoardList();
         // Initialize Arrays
         initializeArrays();
-        // Initialize game board
-        initializeGameBoard();
+
+        //WORKING NOTE: Solution check is in place but has not been tested yet. Please run tests.
+        //ALSO NOTE: Still need to alert the player when they've won or automatically move to EndGame screen (don't know if it's supposed to
+        //do that on winning)
+        //ALSO NOTE: Still need a method to clear the textfields that are editable for a new game.
         
         // SUBMIT NUMBERS
         // When submit is pressed, all numbers inputted will be recorded and then calculated to see if they are correct
         submitNumbers.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // WORKS FOR FIRST ROW
-                // Non-user numbers
-//                if (i == 0 || i == 3 || i == 5 || i == 8 || i == 15 || i == 19 
-//                        || i == 24 || i == 25 || i == 27 || i == 29 || i == 31 
-//                        || i == 33 || i == 34 || i == 40 || i == 46 || i == 47 
-//                        || i == 49 || i == 51 || i == 53 || i == 55 || i == 56 
-//                        || i == 61 || i == 65 || i == 72 || i == 75 || i == 77 
-//                        || i == 80)
-//                                 continue;
-                enteredWord[1].setText(jTextField1.getText());
-                enteredWord[2].setText(jTextField2.getText());
-                enteredWord[4].setText(jTextField3.getText());
-                enteredWord[6].setText(jTextField4.getText());
-                enteredWord[7].setText(jTextField5.getText());
-                intEntered[1] = Integer.parseInt(enteredWord[1].getText());
-                intEntered[2] = Integer.parseInt(enteredWord[2].getText());
-                intEntered[4] = Integer.parseInt(enteredWord[4].getText());
-                intEntered[6] = Integer.parseInt(enteredWord[6].getText());
-                intEntered[7] = Integer.parseInt(enteredWord[7].getText());
-                // FIRST ROW TEST
-                for (int i = 0; i < 9; i++) {
-                    if (intEntered[i] == sudoku.getSolution()[i]) {
-                    // 3 == 3
-                    System.out.println("Good | Entered: " + intEntered[i] + " Sol: " + sudoku.getSolution()[i]);
-                    }
-                    else {
-                    System.out.println("Bad | Entered: " + intEntered[i] + " Sol: " + sudoku.getSolution()[i]);
-                    }
-                }
+                checkInput();
+            }
+        });
+
+        quitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                transitionToGameOver();
             }
         });
 
         ActionListener updateClock = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
-            Date date = new Date();
-            clockLabel.setText(dateFormat.format(date).toString());
-            
-            // Set points to points + 540 (Sudoku)
-            // ERROR HERE int points = CS245P1.getSudokuGame().getPoints() + CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
-            int points = CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
-            jLabelUserScore.setText("User Score: " + points);
-        }
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
+                Date date = new Date();
+                clockLabel.setText(dateFormat.format(date).toString());
+
+                // Set points to points + 540 (Sudoku)
+                // ERROR HERE int points = CS245P1.getSudokuGame().getPoints() + CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
+                int points = CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
+                jLabelUserScore.setText("User Score: " + points);
+            }
         };
-        
-        Timer timer = new Timer (1000, updateClock);
+
+        Timer timer = new Timer(1000, updateClock);
         timer.setRepeats(true);
         timer.start();
     }
-    
+
     // method: initializeArrays
     // purpose: initialize JTextField and integer arrays to calculate user inputs for later
     public void initializeArrays() {
-        for (int i = 0; i < enteredWord.length; i++) {
-            enteredWord[i] = new JTextField();
-            calculated[i] = false;
-        }
+        Arrays.fill(credit, true);
+        //fill array with "true", then re-falsify the values which are prefilled on the board (the player should not get any
+        //credit for those)
+        credit[0] = false;
+        credit[3] = false;
+        credit[5] = false;
+        credit[8] = false;
+        credit[15] = false;
+        credit[19] = false;
+        credit[24] = false;
+        credit[25] = false;
+        credit[27] = false;
+        credit[29] = false;
+        credit[31] = false;
+        credit[33] = false;
+        credit[34] = false;
+        credit[40] = false;
+        credit[46] = false;
+        credit[47] = false;
+        credit[49] = false;
+        credit[51] = false;
+        credit[53] = false;
+        credit[55] = false;
+        credit[56] = false;
+        credit[61] = false;
+        credit[65] = false;
+        credit[72] = false;
+        credit[75] = false;
+        credit[77] = false;
+        credit[80] = false;
     }
-    
-    // method: initliaizeGameBoard
-    // purpose: adds the default numbers from pdf to game board
-    private void initializeGameBoard() {
-        enteredWord[0].setText("8");
-        enteredWord[3].setText("4");
-        enteredWord[5].setText("6");
-        enteredWord[8].setText("7");
-        enteredWord[15].setText("4");
-        enteredWord[19].setText("1");
-        enteredWord[24].setText("6");
-        enteredWord[25].setText("5");
-        enteredWord[27].setText("5");
-        enteredWord[29].setText("9");
-        enteredWord[31].setText("3");
-        enteredWord[33].setText("7");
-        enteredWord[34].setText("8");
-        enteredWord[40].setText("7");
-        enteredWord[46].setText("4");
-        enteredWord[47].setText("8");
-        enteredWord[49].setText("2");
-        enteredWord[51].setText("1");
-        enteredWord[53].setText("3");
-        enteredWord[55].setText("5");
-        enteredWord[56].setText("2");
-        enteredWord[61].setText("9");
-        enteredWord[65].setText("1");
-        enteredWord[72].setText("3");
-        enteredWord[75].setText("9");
-        enteredWord[77].setText("2");
-        enteredWord[80].setText("5");
-        for (int j = 0; j < intEntered.length; j++) {
-            if (enteredWord[j].getText() != null && !enteredWord[j].getText().equals("")) {
-                intEntered[j] = Integer.parseInt(enteredWord[j].getText());
+
+    // method: initializeGameBoardList
+    // purpose: Build the list which holds all of the sudokuTextFields on the board
+    private void initializeGameBoardList() {
+        gameBoardTracker = new ArrayList();
+        gameBoardTracker.add(sudokuTextField1);
+        gameBoardTracker.add(sudokuTextField2);
+        gameBoardTracker.add(sudokuTextField3);
+        gameBoardTracker.add(sudokuTextField4);
+        gameBoardTracker.add(sudokuTextField5);
+        gameBoardTracker.add(sudokuTextField6);
+        gameBoardTracker.add(sudokuTextField7);
+        gameBoardTracker.add(sudokuTextField8);
+        gameBoardTracker.add(sudokuTextField9);
+        gameBoardTracker.add(sudokuTextField10);
+        gameBoardTracker.add(sudokuTextField11);
+        gameBoardTracker.add(sudokuTextField12);
+        gameBoardTracker.add(sudokuTextField13);
+        gameBoardTracker.add(sudokuTextField14);
+        gameBoardTracker.add(sudokuTextField15);
+        gameBoardTracker.add(sudokuTextField16);
+        gameBoardTracker.add(sudokuTextField17);
+        gameBoardTracker.add(sudokuTextField18);
+        gameBoardTracker.add(sudokuTextField19);
+        gameBoardTracker.add(sudokuTextField20);
+        gameBoardTracker.add(sudokuTextField21);
+        gameBoardTracker.add(sudokuTextField22);
+        gameBoardTracker.add(sudokuTextField23);
+        gameBoardTracker.add(sudokuTextField24);
+        gameBoardTracker.add(sudokuTextField25);
+        gameBoardTracker.add(sudokuTextField26);
+        gameBoardTracker.add(sudokuTextField27);
+        gameBoardTracker.add(sudokuTextField28);
+        gameBoardTracker.add(sudokuTextField29);
+        gameBoardTracker.add(sudokuTextField30);
+        gameBoardTracker.add(sudokuTextField31);
+        gameBoardTracker.add(sudokuTextField32);
+        gameBoardTracker.add(sudokuTextField33);
+        gameBoardTracker.add(sudokuTextField34);
+        gameBoardTracker.add(sudokuTextField35);
+        gameBoardTracker.add(sudokuTextField36);
+        gameBoardTracker.add(sudokuTextField37);
+        gameBoardTracker.add(sudokuTextField38);
+        gameBoardTracker.add(sudokuTextField39);
+        gameBoardTracker.add(sudokuTextField40);
+        gameBoardTracker.add(sudokuTextField41);
+        gameBoardTracker.add(sudokuTextField42);
+        gameBoardTracker.add(sudokuTextField43);
+        gameBoardTracker.add(sudokuTextField44);
+        gameBoardTracker.add(sudokuTextField45);
+        gameBoardTracker.add(sudokuTextField46);
+        gameBoardTracker.add(sudokuTextField47);
+        gameBoardTracker.add(sudokuTextField48);
+        gameBoardTracker.add(sudokuTextField49);
+        gameBoardTracker.add(sudokuTextField50);
+        gameBoardTracker.add(sudokuTextField51);
+        gameBoardTracker.add(sudokuTextField52);
+        gameBoardTracker.add(sudokuTextField53);
+        gameBoardTracker.add(sudokuTextField54);
+        gameBoardTracker.add(sudokuTextField55);
+        gameBoardTracker.add(sudokuTextField56);
+        gameBoardTracker.add(sudokuTextField57);
+        gameBoardTracker.add(sudokuTextField58);
+        gameBoardTracker.add(sudokuTextField59);
+        gameBoardTracker.add(sudokuTextField60);
+        gameBoardTracker.add(sudokuTextField61);
+        gameBoardTracker.add(sudokuTextField62);
+        gameBoardTracker.add(sudokuTextField63);
+        gameBoardTracker.add(sudokuTextField64);
+        gameBoardTracker.add(sudokuTextField65);
+        gameBoardTracker.add(sudokuTextField66);
+        gameBoardTracker.add(sudokuTextField67);
+        gameBoardTracker.add(sudokuTextField68);
+        gameBoardTracker.add(sudokuTextField69);
+        gameBoardTracker.add(sudokuTextField70);
+        gameBoardTracker.add(sudokuTextField71);
+        gameBoardTracker.add(sudokuTextField72);
+        gameBoardTracker.add(sudokuTextField73);
+        gameBoardTracker.add(sudokuTextField74);
+        gameBoardTracker.add(sudokuTextField75);
+        gameBoardTracker.add(sudokuTextField76);
+        gameBoardTracker.add(sudokuTextField77);
+        gameBoardTracker.add(sudokuTextField78);
+        gameBoardTracker.add(sudokuTextField79);
+        gameBoardTracker.add(sudokuTextField80);
+        gameBoardTracker.add(sudokuTextField81);
+    }
+
+    private void transitionToGameOver() {
+        //reset panel values to initial state - need a new method for this (just clear all the editable fields - remember to leave uneditable fields alone)
+        //resetCoordsSets();
+        //set score on game over panel and move to that panel
+        GameOverPanel gameOver = (GameOverPanel) CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
+        gameOver.setScore();
+        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
+        gameOver.checkForHighScore();
+    }
+
+    // method: checkInput
+    // purpose: Checks the currently entered solution to see if it is correct. Uses the "credit" array to track
+    //when points need to be deducted, or if they've already been deducted. 
+    private void checkInput() {
+        boolean solvedFlag = true;
+        int[] solution = CS245P1.getSudokuGame().getSolution();
+        for (int i = 0; i < solution.length; i++) {
+            boolean checkFlag = false;
+            if (!gameBoardTracker.get(i).getText().isEmpty()) {
+                if (Integer.parseInt(gameBoardTracker.get(i).getText()) != solution[i]) {
+                    checkFlag = true;
+                }
+            } else {
+                checkFlag = true;
             }
+            
+            if(checkFlag){
+                solvedFlag = false;
+                if (credit[i]) {
+                    credit[i] = false;
+                    CS245P1.getSudokuGame().subPoints();
+                }
+            }
+            
         }
     }
 
+    // method: initliaizeGameBoard
+    // purpose: adds the default numbers from pdf to game board
+    //NOTE: This is probably not needed, although we will need a method to clear all of the editable fields after the game is over in preparation of a new game
+//    private void initializeGameBoard() {
+//        enteredWord[0].setText("8");
+//        enteredWord[3].setText("4");
+//        enteredWord[5].setText("6");
+//        enteredWord[8].setText("7");
+//        enteredWord[15].setText("4");
+//        enteredWord[19].setText("1");
+//        enteredWord[24].setText("6");
+//        enteredWord[25].setText("5");
+//        enteredWord[27].setText("5");
+//        enteredWord[29].setText("9");
+//        enteredWord[31].setText("3");
+//        enteredWord[33].setText("7");
+//        enteredWord[34].setText("8");
+//        enteredWord[40].setText("7");
+//        enteredWord[46].setText("4");
+//        enteredWord[47].setText("8");
+//        enteredWord[49].setText("2");
+//        enteredWord[51].setText("1");
+//        enteredWord[53].setText("3");
+//        enteredWord[55].setText("5");
+//        enteredWord[56].setText("2");
+//        enteredWord[61].setText("9");
+//        enteredWord[65].setText("1");
+//        enteredWord[72].setText("3");
+//        enteredWord[75].setText("9");
+//        enteredWord[77].setText("2");
+//        enteredWord[80].setText("5");
+//        for (int j = 0; j < intEntered.length; j++) {
+//            if (enteredWord[j].getText() != null && !enteredWord[j].getText().equals("")) {
+//                intEntered[j] = Integer.parseInt(enteredWord[j].getText());
+//            }
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -146,26 +288,98 @@ public class SudokuPanel extends javax.swing.JPanel {
         clockLabel = new javax.swing.JLabel();
         jLabelUserScore = new javax.swing.JLabel();
         sudokuPanel = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        sudokuTextField1 = new cs245p1.SudokuTextField();
+        sudokuTextField2 = new cs245p1.SudokuTextField();
+        sudokuTextField3 = new cs245p1.SudokuTextField();
+        sudokuTextField10 = new cs245p1.SudokuTextField();
+        sudokuTextField11 = new cs245p1.SudokuTextField();
+        sudokuTextField12 = new cs245p1.SudokuTextField();
+        sudokuTextField19 = new cs245p1.SudokuTextField();
+        sudokuTextField20 = new cs245p1.SudokuTextField();
+        sudokuTextField21 = new cs245p1.SudokuTextField();
+        jPanel2 = new javax.swing.JPanel();
+        sudokuTextField4 = new cs245p1.SudokuTextField();
+        sudokuTextField5 = new cs245p1.SudokuTextField();
+        sudokuTextField6 = new cs245p1.SudokuTextField();
+        sudokuTextField13 = new cs245p1.SudokuTextField();
+        sudokuTextField14 = new cs245p1.SudokuTextField();
+        sudokuTextField15 = new cs245p1.SudokuTextField();
+        sudokuTextField22 = new cs245p1.SudokuTextField();
+        sudokuTextField23 = new cs245p1.SudokuTextField();
+        sudokuTextField24 = new cs245p1.SudokuTextField();
+        jPanel3 = new javax.swing.JPanel();
+        sudokuTextField7 = new cs245p1.SudokuTextField();
+        sudokuTextField8 = new cs245p1.SudokuTextField();
+        sudokuTextField9 = new cs245p1.SudokuTextField();
+        sudokuTextField16 = new cs245p1.SudokuTextField();
+        sudokuTextField17 = new cs245p1.SudokuTextField();
+        sudokuTextField18 = new cs245p1.SudokuTextField();
+        sudokuTextField25 = new cs245p1.SudokuTextField();
+        sudokuTextField26 = new cs245p1.SudokuTextField();
+        sudokuTextField27 = new cs245p1.SudokuTextField();
+        jPanel4 = new javax.swing.JPanel();
+        sudokuTextField28 = new cs245p1.SudokuTextField();
+        sudokuTextField29 = new cs245p1.SudokuTextField();
+        sudokuTextField30 = new cs245p1.SudokuTextField();
+        sudokuTextField37 = new cs245p1.SudokuTextField();
+        sudokuTextField38 = new cs245p1.SudokuTextField();
+        sudokuTextField39 = new cs245p1.SudokuTextField();
+        sudokuTextField46 = new cs245p1.SudokuTextField();
+        sudokuTextField47 = new cs245p1.SudokuTextField();
+        sudokuTextField48 = new cs245p1.SudokuTextField();
+        jPanel5 = new javax.swing.JPanel();
+        sudokuTextField31 = new cs245p1.SudokuTextField();
+        sudokuTextField32 = new cs245p1.SudokuTextField();
+        sudokuTextField33 = new cs245p1.SudokuTextField();
+        sudokuTextField40 = new cs245p1.SudokuTextField();
+        sudokuTextField41 = new cs245p1.SudokuTextField();
+        sudokuTextField42 = new cs245p1.SudokuTextField();
+        sudokuTextField49 = new cs245p1.SudokuTextField();
+        sudokuTextField50 = new cs245p1.SudokuTextField();
+        sudokuTextField51 = new cs245p1.SudokuTextField();
+        jPanel6 = new javax.swing.JPanel();
+        sudokuTextField34 = new cs245p1.SudokuTextField();
+        sudokuTextField35 = new cs245p1.SudokuTextField();
+        sudokuTextField36 = new cs245p1.SudokuTextField();
+        sudokuTextField43 = new cs245p1.SudokuTextField();
+        sudokuTextField44 = new cs245p1.SudokuTextField();
+        sudokuTextField45 = new cs245p1.SudokuTextField();
+        sudokuTextField52 = new cs245p1.SudokuTextField();
+        sudokuTextField53 = new cs245p1.SudokuTextField();
+        sudokuTextField54 = new cs245p1.SudokuTextField();
+        jPanel7 = new javax.swing.JPanel();
+        sudokuTextField55 = new cs245p1.SudokuTextField();
+        sudokuTextField56 = new cs245p1.SudokuTextField();
+        sudokuTextField57 = new cs245p1.SudokuTextField();
+        sudokuTextField64 = new cs245p1.SudokuTextField();
+        sudokuTextField65 = new cs245p1.SudokuTextField();
+        sudokuTextField66 = new cs245p1.SudokuTextField();
+        sudokuTextField73 = new cs245p1.SudokuTextField();
+        sudokuTextField74 = new cs245p1.SudokuTextField();
+        sudokuTextField75 = new cs245p1.SudokuTextField();
+        jPanel8 = new javax.swing.JPanel();
+        sudokuTextField58 = new cs245p1.SudokuTextField();
+        sudokuTextField59 = new cs245p1.SudokuTextField();
+        sudokuTextField60 = new cs245p1.SudokuTextField();
+        sudokuTextField67 = new cs245p1.SudokuTextField();
+        sudokuTextField68 = new cs245p1.SudokuTextField();
+        sudokuTextField69 = new cs245p1.SudokuTextField();
+        sudokuTextField76 = new cs245p1.SudokuTextField();
+        sudokuTextField77 = new cs245p1.SudokuTextField();
+        sudokuTextField78 = new cs245p1.SudokuTextField();
+        jPanel9 = new javax.swing.JPanel();
+        sudokuTextField61 = new cs245p1.SudokuTextField();
+        sudokuTextField62 = new cs245p1.SudokuTextField();
+        sudokuTextField63 = new cs245p1.SudokuTextField();
+        sudokuTextField70 = new cs245p1.SudokuTextField();
+        sudokuTextField71 = new cs245p1.SudokuTextField();
+        sudokuTextField72 = new cs245p1.SudokuTextField();
+        sudokuTextField79 = new cs245p1.SudokuTextField();
+        sudokuTextField80 = new cs245p1.SudokuTextField();
+        sudokuTextField81 = new cs245p1.SudokuTextField();
         submitNumbers = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        mainBoard = new javax.swing.JLabel();
+        quitButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(600, 400));
 
@@ -175,139 +389,711 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         jLabelUserScore.setText("User Score:");
 
-        sudokuPanel.setPreferredSize(new java.awt.Dimension(600, 400));
+        sudokuPanel.setPreferredSize(new java.awt.Dimension(288, 288));
+        sudokuPanel.setLayout(new java.awt.GridLayout(3, 3));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel1.setMinimumSize(new java.awt.Dimension(96, 96));
+        jPanel1.setPreferredSize(new java.awt.Dimension(96, 96));
+        jPanel1.setLayout(new java.awt.GridLayout(3, 3));
+
+        sudokuTextField1.setEditable(false);
+        sudokuTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField1.setText("8");
+        sudokuTextField1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField1.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField1.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel1.add(sudokuTextField1);
+
+        sudokuTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField2.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField2.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel1.add(sudokuTextField2);
+
+        sudokuTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField3.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField3.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel1.add(sudokuTextField3);
+
+        sudokuTextField10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField10.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField10.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField10.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel1.add(sudokuTextField10);
+
+        sudokuTextField11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField11.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField11.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField11.setPreferredSize(new java.awt.Dimension(30, 30));
+        sudokuTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                sudokuTextField11ActionPerformed(evt);
             }
         });
+        jPanel1.add(sudokuTextField11);
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
+        sudokuTextField12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField12.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField12.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField12.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel1.add(sudokuTextField12);
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
+        sudokuTextField19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField19.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField19.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField19.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel1.add(sudokuTextField19);
+
+        sudokuTextField20.setEditable(false);
+        sudokuTextField20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField20.setText("1");
+        sudokuTextField20.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField20.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField20.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel1.add(sudokuTextField20);
+
+        sudokuTextField21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField21.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField21.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField21.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel1.add(sudokuTextField21);
+
+        sudokuPanel.add(jPanel1);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel2.setMinimumSize(new java.awt.Dimension(96, 96));
+        jPanel2.setPreferredSize(new java.awt.Dimension(96, 96));
+        jPanel2.setLayout(new java.awt.GridLayout(3, 3));
+
+        sudokuTextField4.setEditable(false);
+        sudokuTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField4.setText("4");
+        sudokuTextField4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField4.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField4.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel2.add(sudokuTextField4);
+
+        sudokuTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField5.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField5.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel2.add(sudokuTextField5);
+
+        sudokuTextField6.setEditable(false);
+        sudokuTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField6.setText("6");
+        sudokuTextField6.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField6.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField6.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel2.add(sudokuTextField6);
+
+        sudokuTextField13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField13.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField13.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField13.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel2.add(sudokuTextField13);
+
+        sudokuTextField14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField14.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField14.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField14.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel2.add(sudokuTextField14);
+
+        sudokuTextField15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField15.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField15.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField15.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel2.add(sudokuTextField15);
+
+        sudokuTextField22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField22.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField22.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField22.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel2.add(sudokuTextField22);
+
+        sudokuTextField23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField23.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField23.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField23.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel2.add(sudokuTextField23);
+
+        sudokuTextField24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField24.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField24.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField24.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel2.add(sudokuTextField24);
+
+        sudokuPanel.add(jPanel2);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel3.setMinimumSize(new java.awt.Dimension(96, 96));
+        jPanel3.setPreferredSize(new java.awt.Dimension(96, 96));
+        jPanel3.setLayout(new java.awt.GridLayout(3, 3));
+
+        sudokuTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField7.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField7.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField7.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel3.add(sudokuTextField7);
+
+        sudokuTextField8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField8.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField8.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField8.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel3.add(sudokuTextField8);
+
+        sudokuTextField9.setEditable(false);
+        sudokuTextField9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField9.setText("7");
+        sudokuTextField9.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField9.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField9.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel3.add(sudokuTextField9);
+
+        sudokuTextField16.setEditable(false);
+        sudokuTextField16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField16.setText("4");
+        sudokuTextField16.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField16.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField16.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel3.add(sudokuTextField16);
+
+        sudokuTextField17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField17.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField17.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField17.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel3.add(sudokuTextField17);
+
+        sudokuTextField18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField18.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField18.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField18.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel3.add(sudokuTextField18);
+
+        sudokuTextField25.setEditable(false);
+        sudokuTextField25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField25.setText("6");
+        sudokuTextField25.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField25.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField25.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel3.add(sudokuTextField25);
+
+        sudokuTextField26.setEditable(false);
+        sudokuTextField26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField26.setText("5");
+        sudokuTextField26.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField26.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField26.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel3.add(sudokuTextField26);
+
+        sudokuTextField27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField27.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField27.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField27.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel3.add(sudokuTextField27);
+
+        sudokuPanel.add(jPanel3);
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel4.setMinimumSize(new java.awt.Dimension(96, 96));
+        jPanel4.setPreferredSize(new java.awt.Dimension(96, 96));
+        jPanel4.setLayout(new java.awt.GridLayout(3, 3));
+
+        sudokuTextField28.setEditable(false);
+        sudokuTextField28.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField28.setText("5");
+        sudokuTextField28.setToolTipText("");
+        sudokuTextField28.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField28.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField28.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel4.add(sudokuTextField28);
+
+        sudokuTextField29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField29.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField29.setToolTipText("");
+        sudokuTextField29.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField29.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField29.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel4.add(sudokuTextField29);
+
+        sudokuTextField30.setEditable(false);
+        sudokuTextField30.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField30.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField30.setText("9");
+        sudokuTextField30.setToolTipText("");
+        sudokuTextField30.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField30.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField30.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel4.add(sudokuTextField30);
+
+        sudokuTextField37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField37.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField37.setToolTipText("");
+        sudokuTextField37.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField37.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField37.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel4.add(sudokuTextField37);
+
+        sudokuTextField38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField38.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField38.setToolTipText("");
+        sudokuTextField38.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField38.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField38.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel4.add(sudokuTextField38);
+
+        sudokuTextField39.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField39.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField39.setToolTipText("");
+        sudokuTextField39.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField39.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField39.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel4.add(sudokuTextField39);
+
+        sudokuTextField46.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField46.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField46.setToolTipText("");
+        sudokuTextField46.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField46.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField46.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel4.add(sudokuTextField46);
+
+        sudokuTextField47.setEditable(false);
+        sudokuTextField47.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField47.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField47.setText("4");
+        sudokuTextField47.setToolTipText("");
+        sudokuTextField47.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField47.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField47.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel4.add(sudokuTextField47);
+
+        sudokuTextField48.setEditable(false);
+        sudokuTextField48.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField48.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField48.setText("8");
+        sudokuTextField48.setToolTipText("");
+        sudokuTextField48.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField48.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField48.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel4.add(sudokuTextField48);
+
+        sudokuPanel.add(jPanel4);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel5.setMinimumSize(new java.awt.Dimension(96, 96));
+        jPanel5.setPreferredSize(new java.awt.Dimension(96, 96));
+        jPanel5.setLayout(new java.awt.GridLayout(3, 3));
+
+        sudokuTextField31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField31.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField31.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField31.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel5.add(sudokuTextField31);
+
+        sudokuTextField32.setEditable(false);
+        sudokuTextField32.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField32.setText("3");
+        sudokuTextField32.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField32.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField32.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel5.add(sudokuTextField32);
+
+        sudokuTextField33.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField33.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField33.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField33.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel5.add(sudokuTextField33);
+
+        sudokuTextField40.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField40.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField40.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField40.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField40.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel5.add(sudokuTextField40);
+
+        sudokuTextField41.setEditable(false);
+        sudokuTextField41.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField41.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField41.setText("7");
+        sudokuTextField41.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField41.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField41.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel5.add(sudokuTextField41);
+
+        sudokuTextField42.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField42.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField42.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField42.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField42.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel5.add(sudokuTextField42);
+
+        sudokuTextField49.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField49.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField49.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField49.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField49.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel5.add(sudokuTextField49);
+
+        sudokuTextField50.setEditable(false);
+        sudokuTextField50.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField50.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField50.setText("2");
+        sudokuTextField50.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField50.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField50.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel5.add(sudokuTextField50);
+
+        sudokuTextField51.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField51.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField51.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField51.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField51.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel5.add(sudokuTextField51);
+
+        sudokuPanel.add(jPanel5);
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel6.setMinimumSize(new java.awt.Dimension(96, 96));
+        jPanel6.setPreferredSize(new java.awt.Dimension(96, 96));
+        jPanel6.setLayout(new java.awt.GridLayout(3, 3));
+
+        sudokuTextField34.setEditable(false);
+        sudokuTextField34.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField34.setText("7");
+        sudokuTextField34.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField34.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField34.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel6.add(sudokuTextField34);
+
+        sudokuTextField35.setEditable(false);
+        sudokuTextField35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField35.setText("8");
+        sudokuTextField35.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField35.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField35.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel6.add(sudokuTextField35);
+
+        sudokuTextField36.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField36.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField36.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField36.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField36.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel6.add(sudokuTextField36);
+
+        sudokuTextField43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField43.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField43.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField43.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField43.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel6.add(sudokuTextField43);
+
+        sudokuTextField44.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField44.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField44.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField44.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField44.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel6.add(sudokuTextField44);
+
+        sudokuTextField45.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField45.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField45.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField45.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField45.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel6.add(sudokuTextField45);
+
+        sudokuTextField52.setEditable(false);
+        sudokuTextField52.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField52.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField52.setText("1");
+        sudokuTextField52.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField52.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField52.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel6.add(sudokuTextField52);
+
+        sudokuTextField53.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField53.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField53.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField53.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField53.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel6.add(sudokuTextField53);
+
+        sudokuTextField54.setEditable(false);
+        sudokuTextField54.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField54.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField54.setText("3");
+        sudokuTextField54.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField54.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField54.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel6.add(sudokuTextField54);
+
+        sudokuPanel.add(jPanel6);
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel7.setMinimumSize(new java.awt.Dimension(96, 96));
+        jPanel7.setPreferredSize(new java.awt.Dimension(96, 96));
+        jPanel7.setLayout(new java.awt.GridLayout(3, 3));
+
+        sudokuTextField55.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField55.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField55.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField55.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField55.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel7.add(sudokuTextField55);
+
+        sudokuTextField56.setEditable(false);
+        sudokuTextField56.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField56.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField56.setText("5");
+        sudokuTextField56.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField56.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField56.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel7.add(sudokuTextField56);
+
+        sudokuTextField57.setEditable(false);
+        sudokuTextField57.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField57.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField57.setText("2");
+        sudokuTextField57.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField57.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField57.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel7.add(sudokuTextField57);
+
+        sudokuTextField64.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField64.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField64.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField64.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField64.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel7.add(sudokuTextField64);
+
+        sudokuTextField65.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField65.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField65.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField65.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField65.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel7.add(sudokuTextField65);
+
+        sudokuTextField66.setEditable(false);
+        sudokuTextField66.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField66.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField66.setText("1");
+        sudokuTextField66.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField66.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField66.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel7.add(sudokuTextField66);
+
+        sudokuTextField73.setEditable(false);
+        sudokuTextField73.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField73.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField73.setText("3");
+        sudokuTextField73.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField73.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField73.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel7.add(sudokuTextField73);
+
+        sudokuTextField74.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField74.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField74.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField74.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField74.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel7.add(sudokuTextField74);
+
+        sudokuTextField75.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField75.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField75.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField75.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField75.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel7.add(sudokuTextField75);
+
+        sudokuPanel.add(jPanel7);
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel8.setMinimumSize(new java.awt.Dimension(96, 96));
+        jPanel8.setPreferredSize(new java.awt.Dimension(96, 96));
+        jPanel8.setLayout(new java.awt.GridLayout(3, 3));
+
+        sudokuTextField58.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField58.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField58.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField58.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField58.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel8.add(sudokuTextField58);
+
+        sudokuTextField59.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField59.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField59.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField59.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField59.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel8.add(sudokuTextField59);
+
+        sudokuTextField60.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField60.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField60.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField60.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField60.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel8.add(sudokuTextField60);
+
+        sudokuTextField67.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField67.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField67.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField67.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField67.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel8.add(sudokuTextField67);
+
+        sudokuTextField68.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField68.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField68.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField68.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField68.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel8.add(sudokuTextField68);
+
+        sudokuTextField69.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField69.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField69.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField69.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField69.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel8.add(sudokuTextField69);
+
+        sudokuTextField76.setEditable(false);
+        sudokuTextField76.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField76.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField76.setText("9");
+        sudokuTextField76.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField76.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField76.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel8.add(sudokuTextField76);
+
+        sudokuTextField77.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField77.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField77.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField77.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField77.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel8.add(sudokuTextField77);
+
+        sudokuTextField78.setEditable(false);
+        sudokuTextField78.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField78.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField78.setText("2");
+        sudokuTextField78.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField78.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField78.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel8.add(sudokuTextField78);
+
+        sudokuPanel.add(jPanel8);
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel9.setMinimumSize(new java.awt.Dimension(96, 96));
+        jPanel9.setPreferredSize(new java.awt.Dimension(96, 96));
+        jPanel9.setLayout(new java.awt.GridLayout(3, 3));
+
+        sudokuTextField61.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField61.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField61.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField61.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField61.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel9.add(sudokuTextField61);
+
+        sudokuTextField62.setEditable(false);
+        sudokuTextField62.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField62.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField62.setText("9");
+        sudokuTextField62.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField62.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField62.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel9.add(sudokuTextField62);
+
+        sudokuTextField63.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField63.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField63.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField63.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField63.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel9.add(sudokuTextField63);
+
+        sudokuTextField70.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField70.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField70.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField70.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField70.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel9.add(sudokuTextField70);
+
+        sudokuTextField71.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField71.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField71.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField71.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField71.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel9.add(sudokuTextField71);
+
+        sudokuTextField72.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField72.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField72.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField72.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField72.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel9.add(sudokuTextField72);
+
+        sudokuTextField79.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField79.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField79.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField79.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField79.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel9.add(sudokuTextField79);
+
+        sudokuTextField80.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField80.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField80.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField80.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField80.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel9.add(sudokuTextField80);
+
+        sudokuTextField81.setEditable(false);
+        sudokuTextField81.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        sudokuTextField81.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField81.setText("5");
+        sudokuTextField81.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        sudokuTextField81.setMinimumSize(new java.awt.Dimension(30, 30));
+        sudokuTextField81.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel9.add(sudokuTextField81);
+
+        sudokuPanel.add(jPanel9);
 
         submitNumbers.setText("Submit");
 
-        jLabel1.setBackground(java.awt.Color.white);
-        jLabel1.setText("6");
-        jLabel1.setOpaque(true);
-
-        jLabel2.setBackground(java.awt.Color.white);
-        jLabel2.setText("8");
-        jLabel2.setOpaque(true);
-
-        jLabel3.setBackground(java.awt.Color.white);
-        jLabel3.setText("4");
-        jLabel3.setOpaque(true);
-
-        jLabel4.setBackground(java.awt.Color.white);
-        jLabel4.setText("4");
-        jLabel4.setOpaque(true);
-
-        jLabel5.setBackground(java.awt.Color.white);
-        jLabel5.setText("7");
-        jLabel5.setOpaque(true);
-
-        mainBoard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SudokuBoard.png"))); // NOI18N
-        mainBoard.setAlignmentX(0.5F);
-
-        javax.swing.GroupLayout sudokuPanelLayout = new javax.swing.GroupLayout(sudokuPanel);
-        sudokuPanel.setLayout(sudokuPanelLayout);
-        sudokuPanelLayout.setHorizontalGroup(
-            sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sudokuPanelLayout.createSequentialGroup()
-                .addGroup(sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(sudokuPanelLayout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addGroup(sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(sudokuPanelLayout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(sudokuPanelLayout.createSequentialGroup()
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(jTextField10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(sudokuPanelLayout.createSequentialGroup()
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(sudokuPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(sudokuPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(submitNumbers)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mainBoard)))
-                .addContainerGap(138, Short.MAX_VALUE))
-        );
-        sudokuPanelLayout.setVerticalGroup(
-            sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sudokuPanelLayout.createSequentialGroup()
-                .addGroup(sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(sudokuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(sudokuPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(submitNumbers)
-                        .addGap(86, 86, 86))
-                    .addGroup(sudokuPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mainBoard)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+        quitButton.setText("Quit");
+        quitButton.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -316,60 +1102,140 @@ public class SudokuPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(clockLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sudokuPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelUserScore, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(submitNumbers)
+                .addGap(44, 44, 44)
+                .addComponent(sudokuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(quitButton)
+                .addGap(0, 69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelUserScore))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sudokuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelUserScore))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sudokuPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(submitNumbers, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(quitButton)))
+                .addGap(49, 49, 49))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void sudokuTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sudokuTextField11ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_sudokuTextField11ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-   
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelUserScore;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JLabel mainBoard;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JButton quitButton;
     private javax.swing.JButton submitNumbers;
     private javax.swing.JPanel sudokuPanel;
+    private cs245p1.SudokuTextField sudokuTextField1;
+    private cs245p1.SudokuTextField sudokuTextField10;
+    private cs245p1.SudokuTextField sudokuTextField11;
+    private cs245p1.SudokuTextField sudokuTextField12;
+    private cs245p1.SudokuTextField sudokuTextField13;
+    private cs245p1.SudokuTextField sudokuTextField14;
+    private cs245p1.SudokuTextField sudokuTextField15;
+    private cs245p1.SudokuTextField sudokuTextField16;
+    private cs245p1.SudokuTextField sudokuTextField17;
+    private cs245p1.SudokuTextField sudokuTextField18;
+    private cs245p1.SudokuTextField sudokuTextField19;
+    private cs245p1.SudokuTextField sudokuTextField2;
+    private cs245p1.SudokuTextField sudokuTextField20;
+    private cs245p1.SudokuTextField sudokuTextField21;
+    private cs245p1.SudokuTextField sudokuTextField22;
+    private cs245p1.SudokuTextField sudokuTextField23;
+    private cs245p1.SudokuTextField sudokuTextField24;
+    private cs245p1.SudokuTextField sudokuTextField25;
+    private cs245p1.SudokuTextField sudokuTextField26;
+    private cs245p1.SudokuTextField sudokuTextField27;
+    private cs245p1.SudokuTextField sudokuTextField28;
+    private cs245p1.SudokuTextField sudokuTextField29;
+    private cs245p1.SudokuTextField sudokuTextField3;
+    private cs245p1.SudokuTextField sudokuTextField30;
+    private cs245p1.SudokuTextField sudokuTextField31;
+    private cs245p1.SudokuTextField sudokuTextField32;
+    private cs245p1.SudokuTextField sudokuTextField33;
+    private cs245p1.SudokuTextField sudokuTextField34;
+    private cs245p1.SudokuTextField sudokuTextField35;
+    private cs245p1.SudokuTextField sudokuTextField36;
+    private cs245p1.SudokuTextField sudokuTextField37;
+    private cs245p1.SudokuTextField sudokuTextField38;
+    private cs245p1.SudokuTextField sudokuTextField39;
+    private cs245p1.SudokuTextField sudokuTextField4;
+    private cs245p1.SudokuTextField sudokuTextField40;
+    private cs245p1.SudokuTextField sudokuTextField41;
+    private cs245p1.SudokuTextField sudokuTextField42;
+    private cs245p1.SudokuTextField sudokuTextField43;
+    private cs245p1.SudokuTextField sudokuTextField44;
+    private cs245p1.SudokuTextField sudokuTextField45;
+    private cs245p1.SudokuTextField sudokuTextField46;
+    private cs245p1.SudokuTextField sudokuTextField47;
+    private cs245p1.SudokuTextField sudokuTextField48;
+    private cs245p1.SudokuTextField sudokuTextField49;
+    private cs245p1.SudokuTextField sudokuTextField5;
+    private cs245p1.SudokuTextField sudokuTextField50;
+    private cs245p1.SudokuTextField sudokuTextField51;
+    private cs245p1.SudokuTextField sudokuTextField52;
+    private cs245p1.SudokuTextField sudokuTextField53;
+    private cs245p1.SudokuTextField sudokuTextField54;
+    private cs245p1.SudokuTextField sudokuTextField55;
+    private cs245p1.SudokuTextField sudokuTextField56;
+    private cs245p1.SudokuTextField sudokuTextField57;
+    private cs245p1.SudokuTextField sudokuTextField58;
+    private cs245p1.SudokuTextField sudokuTextField59;
+    private cs245p1.SudokuTextField sudokuTextField6;
+    private cs245p1.SudokuTextField sudokuTextField60;
+    private cs245p1.SudokuTextField sudokuTextField61;
+    private cs245p1.SudokuTextField sudokuTextField62;
+    private cs245p1.SudokuTextField sudokuTextField63;
+    private cs245p1.SudokuTextField sudokuTextField64;
+    private cs245p1.SudokuTextField sudokuTextField65;
+    private cs245p1.SudokuTextField sudokuTextField66;
+    private cs245p1.SudokuTextField sudokuTextField67;
+    private cs245p1.SudokuTextField sudokuTextField68;
+    private cs245p1.SudokuTextField sudokuTextField69;
+    private cs245p1.SudokuTextField sudokuTextField7;
+    private cs245p1.SudokuTextField sudokuTextField70;
+    private cs245p1.SudokuTextField sudokuTextField71;
+    private cs245p1.SudokuTextField sudokuTextField72;
+    private cs245p1.SudokuTextField sudokuTextField73;
+    private cs245p1.SudokuTextField sudokuTextField74;
+    private cs245p1.SudokuTextField sudokuTextField75;
+    private cs245p1.SudokuTextField sudokuTextField76;
+    private cs245p1.SudokuTextField sudokuTextField77;
+    private cs245p1.SudokuTextField sudokuTextField78;
+    private cs245p1.SudokuTextField sudokuTextField79;
+    private cs245p1.SudokuTextField sudokuTextField8;
+    private cs245p1.SudokuTextField sudokuTextField80;
+    private cs245p1.SudokuTextField sudokuTextField81;
+    private cs245p1.SudokuTextField sudokuTextField9;
     // End of variables declaration//GEN-END:variables
 }
