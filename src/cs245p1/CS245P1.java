@@ -49,7 +49,6 @@ public class CS245P1 {
         JFrame mainFrame = new JFrame();
         currentGame = new HangManGame();
         colorGame = new ColorGame();
-        sudoku = new Sudoku();
         allPanels = new HashMap<String,Component>();
         CreditsPanel creditPanel = new CreditsPanel();
         allPanels.put(CREDITS_SCREEN, creditPanel);
@@ -101,6 +100,7 @@ public class CS245P1 {
                 if (e.getSource() == menuPanel.getPlayButton()) {
                     currentGame = new HangManGame();
                     colorGame.resetGame();
+                    sudoku = new Sudoku();
                     mainGamePanel.resetMainGamePanel();
                     CARDLAYOUT.show(CARDHOLDER, GAME);
                 }else if(e.getSource() == menuPanel.getHighscoreButton()){
