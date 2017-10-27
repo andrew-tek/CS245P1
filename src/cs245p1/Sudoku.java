@@ -45,4 +45,8 @@ public class Sudoku {
     public int[] getSolution() {
         return solution;
     }
+    
+    public void quitGame(){
+        points = 0;
+    }
 }

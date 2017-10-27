@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.JTextField;
 
@@ -57,6 +58,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                CS245P1.getSudokuGame().quitGame();
                 transitionToGameOver();
             }
         });
@@ -235,7 +237,12 @@ public class SudokuPanel extends javax.swing.JPanel {
                     CS245P1.getSudokuGame().subPoints();
                 }
             }
-            
+        }
+        
+        if(solvedFlag){
+            transitionToGameOver();
+        }else{
+            JOptionPane.showMessageDialog(null, "Your solution is incorrect, please attempt another!");
         }
     }
 
