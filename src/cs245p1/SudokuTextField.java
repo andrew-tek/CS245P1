@@ -1,8 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: SudokuTextField.java
+* author: Christopher Kilian
+* class: CS 245 – Programming Graphical User Interfaces
+*
+* assignment: Point and Click Game – v.1.2
+* date last modified: 10/26/2017
+*
+* purpose: Custom designed JTextField which only accepts a single character
+* entry of the numbers 1 through 9. Any other numeric input (additional numbers 
+* or the number 0) are discarded. If the user attempts to enter anything other than
+* a digit, they are warned that this is not allowed.
+*
+****************************************************************/
 package cs245p1;
 
 import javax.swing.JOptionPane;
@@ -45,7 +54,7 @@ public class SudokuTextField extends JTextField {
                         return;
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null, "Please enter only integer values!");
+                    JOptionPane.showMessageDialog(null, "Please enter only integer values 1-9!");
                 }
             }
         }

@@ -49,6 +49,7 @@ public class CS245P1 {
         JFrame mainFrame = new JFrame();
         currentGame = new HangManGame();
         colorGame = new ColorGame();
+        sudoku = new Sudoku();
         allPanels = new HashMap<String,Component>();
         CreditsPanel creditPanel = new CreditsPanel();
         allPanels.put(CREDITS_SCREEN, creditPanel);
