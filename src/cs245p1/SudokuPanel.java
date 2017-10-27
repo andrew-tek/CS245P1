@@ -42,8 +42,6 @@ public class SudokuPanel extends javax.swing.JPanel {
         initializeArrays();
 
         //WORKING NOTE: Solution check is in place but has not been tested yet. Please run tests.
-        //ALSO NOTE: Still need to alert the player when they've won or automatically move to EndGame screen (don't know if it's supposed to
-        //do that on winning)
         //ALSO NOTE: Still need a method to clear the textfields that are editable for a new game.
         
         // SUBMIT NUMBERS
