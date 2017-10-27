@@ -1,14 +1,14 @@
-/***************************************************************
-* file: SudokuPanel.java
-* author: Nicholas Pham, Christopher Kilian
-* class: CS 245 – Programming Graphical User Interfaces
-*
-* assignment: Point and Click Game – v.1.2
-* date last modified: 10/26/2017
-*
-* purpose: The panel for handling the Sudoku game operations
-*
-****************************************************************/
+/** *************************************************************
+ * file: SudokuPanel.java
+ * author: Nicholas Pham, Christopher Kilian
+ * class: CS 245 – Programming Graphical User Interfaces
+ *
+ * assignment: Point and Click Game – v.1.2
+ * date last modified: 10/26/2017
+ *
+ * purpose: The panel for handling the Sudoku game operations
+ *
+ *************************************************************** */
 package cs245p1;
 
 import java.awt.Color;
@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -24,108 +25,217 @@ import javax.swing.JButton;
 import javax.swing.Timer;
 import javax.swing.JTextField;
 
-public class SudokuPanel extends javax.swing.JPanel { 
+public class SudokuPanel extends javax.swing.JPanel {
+
     /**
      * jTextField for all inputs for board game
      * jTextField##.setToolTipText("Enter a number from 1 to 9");
      */
+    private List<JTextField> gameBoardTracker;
+    private boolean[] credit = new boolean[81];
 
-    private JTextField[] enteredWord = new JTextField[81];
-    private int[] intEntered = new int[81];
-    private boolean[] calculated = new boolean[81];
-    private Sudoku sudoku = new Sudoku();
-    
     public SudokuPanel() {
         initComponents();
+        initializeGameBoardList();
         // Initialize Arrays
         initializeArrays();
-        
+
+        //WORKING NOTE: For solution check, we only need to loop through every element of the gameBoardTracker list,
+        //and check the corresponding element of the solution. If an inc
         // SUBMIT NUMBERS
         // When submit is pressed, all numbers inputted will be recorded and then calculated to see if they are correct
         submitNumbers.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // WORKS FOR FIRST ROW
-                // Non-user numbers
-//                if (i == 0 || i == 3 || i == 5 || i == 8 || i == 15 || i == 19 
-//                        || i == 24 || i == 25 || i == 27 || i == 29 || i == 31 
-//                        || i == 33 || i == 34 || i == 40 || i == 46 || i == 47 
-//                        || i == 49 || i == 51 || i == 53 || i == 55 || i == 56 
-//                        || i == 61 || i == 65 || i == 72 || i == 75 || i == 77 
-//                        || i == 80)
-//                                 continue;
-//                enteredWord[1].setText(jTextField1.getText());
-//                enteredWord[2].setText(jTextField2.getText());
-//                enteredWord[4].setText(jTextField3.getText());
-//                enteredWord[6].setText(jTextField4.getText());
-//                enteredWord[7].setText(jTextField5.getText());
-                intEntered[1] = Integer.parseInt(enteredWord[1].getText());
-                intEntered[2] = Integer.parseInt(enteredWord[2].getText());
-                intEntered[4] = Integer.parseInt(enteredWord[4].getText());
-                intEntered[6] = Integer.parseInt(enteredWord[6].getText());
-                intEntered[7] = Integer.parseInt(enteredWord[7].getText());
-                // FIRST ROW TEST
-                for (int i = 0; i < 9; i++) {
-                    if (intEntered[i] == sudoku.getSolution()[i]) {
-                    // 3 == 3
-                    System.out.println("Good | Entered: " + intEntered[i] + " Sol: " + sudoku.getSolution()[i]);
-                    }
-                    else {
-                    System.out.println("Bad | Entered: " + intEntered[i] + " Sol: " + sudoku.getSolution()[i]);
-                    }
-                }
+                checkInput();
             }
         });
-        
-        
+
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 transitionToGameOver();
             }
         });
-        
 
         ActionListener updateClock = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
-            Date date = new Date();
-            clockLabel.setText(dateFormat.format(date).toString());
-            
-            // Set points to points + 540 (Sudoku)
-            // ERROR HERE int points = CS245P1.getSudokuGame().getPoints() + CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
-            int points = CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
-            jLabelUserScore.setText("User Score: " + points);
-        }
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
+                Date date = new Date();
+                clockLabel.setText(dateFormat.format(date).toString());
+
+                // Set points to points + 540 (Sudoku)
+                // ERROR HERE int points = CS245P1.getSudokuGame().getPoints() + CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
+                int points = CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
+                jLabelUserScore.setText("User Score: " + points);
+            }
         };
-        
-        Timer timer = new Timer (1000, updateClock);
+
+        Timer timer = new Timer(1000, updateClock);
         timer.setRepeats(true);
         timer.start();
     }
-    
+
     // method: initializeArrays
     // purpose: initialize JTextField and integer arrays to calculate user inputs for later
     public void initializeArrays() {
-        for (int i = 0; i < enteredWord.length; i++) {
-            enteredWord[i] = new JTextField();
-            calculated[i] = false;
-        }
+        Arrays.fill(credit, true);
+        //fill array with "true", then re-falsify the values which are prefilled on the board (the player should not get any
+        //credit for those)
+        credit[0] = false;
+        credit[3] = false;
+        credit[5] = false;
+        credit[8] = false;
+        credit[15] = false;
+        credit[19] = false;
+        credit[24] = false;
+        credit[25] = false;
+        credit[27] = false;
+        credit[29] = false;
+        credit[31] = false;
+        credit[33] = false;
+        credit[34] = false;
+        credit[40] = false;
+        credit[46] = false;
+        credit[47] = false;
+        credit[49] = false;
+        credit[51] = false;
+        credit[53] = false;
+        credit[55] = false;
+        credit[56] = false;
+        credit[61] = false;
+        credit[65] = false;
+        credit[72] = false;
+        credit[75] = false;
+        credit[77] = false;
+        credit[80] = false;
     }
-    
-    
-    
-    private void transitionToGameOver(){
+
+    // method: initializeGameBoardList
+    // purpose: Build the list which holds all of the sudokuTextFields on the board
+    private void initializeGameBoardList() {
+        gameBoardTracker = new ArrayList();
+        gameBoardTracker.add(sudokuTextField1);
+        gameBoardTracker.add(sudokuTextField2);
+        gameBoardTracker.add(sudokuTextField3);
+        gameBoardTracker.add(sudokuTextField4);
+        gameBoardTracker.add(sudokuTextField5);
+        gameBoardTracker.add(sudokuTextField6);
+        gameBoardTracker.add(sudokuTextField7);
+        gameBoardTracker.add(sudokuTextField8);
+        gameBoardTracker.add(sudokuTextField9);
+        gameBoardTracker.add(sudokuTextField10);
+        gameBoardTracker.add(sudokuTextField11);
+        gameBoardTracker.add(sudokuTextField12);
+        gameBoardTracker.add(sudokuTextField13);
+        gameBoardTracker.add(sudokuTextField14);
+        gameBoardTracker.add(sudokuTextField15);
+        gameBoardTracker.add(sudokuTextField16);
+        gameBoardTracker.add(sudokuTextField17);
+        gameBoardTracker.add(sudokuTextField18);
+        gameBoardTracker.add(sudokuTextField19);
+        gameBoardTracker.add(sudokuTextField20);
+        gameBoardTracker.add(sudokuTextField21);
+        gameBoardTracker.add(sudokuTextField22);
+        gameBoardTracker.add(sudokuTextField23);
+        gameBoardTracker.add(sudokuTextField24);
+        gameBoardTracker.add(sudokuTextField25);
+        gameBoardTracker.add(sudokuTextField26);
+        gameBoardTracker.add(sudokuTextField27);
+        gameBoardTracker.add(sudokuTextField28);
+        gameBoardTracker.add(sudokuTextField29);
+        gameBoardTracker.add(sudokuTextField30);
+        gameBoardTracker.add(sudokuTextField31);
+        gameBoardTracker.add(sudokuTextField32);
+        gameBoardTracker.add(sudokuTextField33);
+        gameBoardTracker.add(sudokuTextField34);
+        gameBoardTracker.add(sudokuTextField35);
+        gameBoardTracker.add(sudokuTextField36);
+        gameBoardTracker.add(sudokuTextField37);
+        gameBoardTracker.add(sudokuTextField38);
+        gameBoardTracker.add(sudokuTextField39);
+        gameBoardTracker.add(sudokuTextField40);
+        gameBoardTracker.add(sudokuTextField41);
+        gameBoardTracker.add(sudokuTextField42);
+        gameBoardTracker.add(sudokuTextField43);
+        gameBoardTracker.add(sudokuTextField44);
+        gameBoardTracker.add(sudokuTextField45);
+        gameBoardTracker.add(sudokuTextField46);
+        gameBoardTracker.add(sudokuTextField47);
+        gameBoardTracker.add(sudokuTextField48);
+        gameBoardTracker.add(sudokuTextField49);
+        gameBoardTracker.add(sudokuTextField50);
+        gameBoardTracker.add(sudokuTextField51);
+        gameBoardTracker.add(sudokuTextField52);
+        gameBoardTracker.add(sudokuTextField53);
+        gameBoardTracker.add(sudokuTextField54);
+        gameBoardTracker.add(sudokuTextField55);
+        gameBoardTracker.add(sudokuTextField56);
+        gameBoardTracker.add(sudokuTextField57);
+        gameBoardTracker.add(sudokuTextField58);
+        gameBoardTracker.add(sudokuTextField59);
+        gameBoardTracker.add(sudokuTextField60);
+        gameBoardTracker.add(sudokuTextField61);
+        gameBoardTracker.add(sudokuTextField62);
+        gameBoardTracker.add(sudokuTextField63);
+        gameBoardTracker.add(sudokuTextField64);
+        gameBoardTracker.add(sudokuTextField65);
+        gameBoardTracker.add(sudokuTextField66);
+        gameBoardTracker.add(sudokuTextField67);
+        gameBoardTracker.add(sudokuTextField68);
+        gameBoardTracker.add(sudokuTextField69);
+        gameBoardTracker.add(sudokuTextField70);
+        gameBoardTracker.add(sudokuTextField71);
+        gameBoardTracker.add(sudokuTextField72);
+        gameBoardTracker.add(sudokuTextField73);
+        gameBoardTracker.add(sudokuTextField74);
+        gameBoardTracker.add(sudokuTextField75);
+        gameBoardTracker.add(sudokuTextField76);
+        gameBoardTracker.add(sudokuTextField77);
+        gameBoardTracker.add(sudokuTextField78);
+        gameBoardTracker.add(sudokuTextField79);
+        gameBoardTracker.add(sudokuTextField80);
+        gameBoardTracker.add(sudokuTextField81);
+    }
+
+    private void transitionToGameOver() {
         //reset panel values to initial state - need a new method for this (just clear all the editable fields - remember to leave uneditable fields alone)
         //resetCoordsSets();
         //set score on game over panel and move to that panel
-        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
+        GameOverPanel gameOver = (GameOverPanel) CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
         gameOver.setScore();
         CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
         gameOver.checkForHighScore();
     }
-    
+
+    // method: checkInput
+    // purpose: Checks the currently entered solution to see if it is correct. Uses the "credit" array to track
+    //when points need to be deducted, or if they've already been deducted. 
+    private void checkInput() {
+        boolean solvedFlag = true;
+        int[] solution = CS245P1.getSudokuGame().getSolution();
+        for (int i = 0; i < solution.length; i++) {
+            boolean checkFlag = false;
+            if (!gameBoardTracker.get(i).getText().isEmpty()) {
+                if (Integer.parseInt(gameBoardTracker.get(i).getText()) != solution[i]) {
+                    checkFlag = true;
+                }
+            } else {
+                checkFlag = true;
+            }
+            
+            if(checkFlag){
+                solvedFlag = false;
+                if (credit[i]) {
+                    credit[i] = false;
+                    CS245P1.getSudokuGame().subPoints();
+                }
+            }
+            
+        }
+    }
+
     // method: initliaizeGameBoard
     // purpose: adds the default numbers from pdf to game board
     //NOTE: This is probably not needed, although we will need a method to clear all of the editable fields after the game is over in preparation of a new game
@@ -163,11 +273,6 @@ public class SudokuPanel extends javax.swing.JPanel {
 //            }
 //        }
 //    }
-    
-    private void checkInput(){
-        
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1032,8 +1137,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_sudokuTextField11ActionPerformed
 
-   
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;
     private javax.swing.JLabel jLabelUserScore;
