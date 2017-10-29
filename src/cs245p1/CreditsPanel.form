@@ -91,7 +91,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Christopher Kilian, Bronco #012122383"/>
-        <Property name="toolTipText" type="java.lang.String" value="creditsChristopher"/>
+        <Property name="toolTipText" type="java.lang.String" value="Trogdor was my idea"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="andrewNameLabel">
@@ -107,7 +107,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Andrew Tek, Bronco #009604621"/>
-        <Property name="toolTipText" type="java.lang.String" value="creditsAndrew"/>
+        <Property name="toolTipText" type="java.lang.String" value="Monkey in the middle!!!"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="nickNameLabel">
@@ -123,7 +123,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nicholas Pham, Bronco #010186410"/>
-        <Property name="toolTipText" type="java.lang.String" value="creditsNicholas"/>
+        <Property name="toolTipText" type="java.lang.String" value="What Up Pham!?"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="backButton">

@@ -72,6 +72,7 @@ public class SudokuPanel extends javax.swing.JPanel {
                 // ERROR HERE int points = CS245P1.getSudokuGame().getPoints() + CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
                 int points = CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
                 jLabelUserScore.setText("User Score: " + points);
+                jLabelSudokuScore.setText("Sudoku Score: " + CS245P1.getSudokuGame().getPoints());
             }
         };
 
@@ -80,6 +81,12 @@ public class SudokuPanel extends javax.swing.JPanel {
         timer.start();
     }
 
+    public void resetSodoku() {
+        initializeGameBoardList();
+        initializeArrays();
+        System.out.println("Called for reset");
+        
+    }
     // method: initializeArrays
     // purpose: initialize JTextField and integer arrays to calculate user inputs for later
     public void initializeArrays() {
@@ -210,6 +217,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         gameOver.setScore();
         CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
         gameOver.checkForHighScore();
+        this.resetSodoku();
     }
 
     // method: checkInput
@@ -385,14 +393,17 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField81 = new cs245p1.SudokuTextField();
         submitNumbers = new javax.swing.JButton();
         quitButton = new javax.swing.JButton();
+        jLabelSudokuScore = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(600, 400));
 
         clockLabel.setText("Clock Here");
+        clockLabel.setToolTipText("Date/Time");
         clockLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), null));
         clockLabel.setPreferredSize(new java.awt.Dimension(150, 25));
 
         jLabelUserScore.setText("User Score:");
+        jLabelUserScore.setToolTipText("Overall Score");
 
         sudokuPanel.setPreferredSize(new java.awt.Dimension(288, 288));
         sudokuPanel.setLayout(new java.awt.GridLayout(3, 3));
@@ -406,6 +417,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField1.setText("8");
+        sudokuTextField1.setToolTipText("Don't Click Me");
         sudokuTextField1.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField1.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField1.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -413,6 +425,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField2.setToolTipText("Click Me!");
         sudokuTextField2.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField2.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField2.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -420,6 +433,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField3.setToolTipText("Click Me!");
         sudokuTextField3.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField3.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField3.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -427,6 +441,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField10.setToolTipText("Click Me!");
         sudokuTextField10.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField10.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField10.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -434,6 +449,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField11.setToolTipText("Click Me!");
         sudokuTextField11.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField11.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField11.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -446,6 +462,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField12.setToolTipText("Click Me!");
         sudokuTextField12.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField12.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField12.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -453,6 +470,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField19.setToolTipText("Click Me!");
         sudokuTextField19.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField19.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField19.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -462,6 +480,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField20.setText("1");
+        sudokuTextField20.setToolTipText("Don't Click Me");
         sudokuTextField20.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField20.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField20.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -469,6 +488,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField21.setToolTipText("Click Me!");
         sudokuTextField21.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField21.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField21.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -485,6 +505,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField4.setText("4");
+        sudokuTextField4.setToolTipText("Don't Click Me");
         sudokuTextField4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField4.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField4.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -492,6 +513,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField5.setToolTipText("Click Me!");
         sudokuTextField5.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField5.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField5.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -501,6 +523,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField6.setText("6");
+        sudokuTextField6.setToolTipText("Don't Click Me");
         sudokuTextField6.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField6.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField6.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -508,6 +531,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField13.setToolTipText("Click Me!");
         sudokuTextField13.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField13.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField13.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -515,6 +539,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField14.setToolTipText("Click Me!");
         sudokuTextField14.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField14.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField14.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -522,6 +547,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField15.setToolTipText("Click Me!");
         sudokuTextField15.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField15.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField15.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -529,6 +555,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField22.setToolTipText("Click Me!");
         sudokuTextField22.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField22.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField22.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -536,6 +563,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField23.setToolTipText("Click Me!");
         sudokuTextField23.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField23.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField23.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -543,6 +571,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField24.setToolTipText("Click Me!");
         sudokuTextField24.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField24.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField24.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -557,6 +586,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField7.setToolTipText("Click Me!");
         sudokuTextField7.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField7.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField7.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -564,6 +594,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField8.setToolTipText("Click Me!");
         sudokuTextField8.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField8.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField8.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -573,6 +604,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField9.setText("7");
+        sudokuTextField9.setToolTipText("Don't Click Me");
         sudokuTextField9.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField9.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField9.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -582,6 +614,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField16.setText("4");
+        sudokuTextField16.setToolTipText("Don't Click Me");
         sudokuTextField16.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField16.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField16.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -589,6 +622,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField17.setToolTipText("Click Me!");
         sudokuTextField17.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField17.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField17.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -596,6 +630,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField18.setToolTipText("Click Me!");
         sudokuTextField18.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField18.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField18.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -605,6 +640,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField25.setText("6");
+        sudokuTextField25.setToolTipText("Don't Click Me");
         sudokuTextField25.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField25.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField25.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -614,6 +650,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField26.setText("5");
+        sudokuTextField26.setToolTipText("Don't Click Me");
         sudokuTextField26.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField26.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField26.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -621,6 +658,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField27.setToolTipText("Click Me!");
         sudokuTextField27.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField27.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField27.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -637,7 +675,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField28.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField28.setText("5");
-        sudokuTextField28.setToolTipText("");
+        sudokuTextField28.setToolTipText("Don't Click Me");
         sudokuTextField28.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField28.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField28.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -645,7 +683,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField29.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        sudokuTextField29.setToolTipText("");
+        sudokuTextField29.setToolTipText("Click Me!");
         sudokuTextField29.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField29.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField29.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -655,7 +693,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField30.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField30.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField30.setText("9");
-        sudokuTextField30.setToolTipText("");
+        sudokuTextField30.setToolTipText("Don't Click Me");
         sudokuTextField30.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField30.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField30.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -663,7 +701,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField37.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        sudokuTextField37.setToolTipText("");
+        sudokuTextField37.setToolTipText("Click Me!");
         sudokuTextField37.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField37.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField37.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -671,7 +709,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField38.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        sudokuTextField38.setToolTipText("");
+        sudokuTextField38.setToolTipText("Click Me!");
         sudokuTextField38.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField38.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField38.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -679,7 +717,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField39.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField39.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        sudokuTextField39.setToolTipText("");
+        sudokuTextField39.setToolTipText("Click Me!");
         sudokuTextField39.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField39.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField39.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -687,7 +725,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField46.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField46.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        sudokuTextField46.setToolTipText("");
+        sudokuTextField46.setToolTipText("Click Me!");
         sudokuTextField46.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField46.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField46.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -697,7 +735,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField47.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField47.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField47.setText("4");
-        sudokuTextField47.setToolTipText("");
+        sudokuTextField47.setToolTipText("Don't Click Me");
         sudokuTextField47.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField47.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField47.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -707,7 +745,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField48.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField48.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField48.setText("8");
-        sudokuTextField48.setToolTipText("");
+        sudokuTextField48.setToolTipText("Don't Click Me");
         sudokuTextField48.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField48.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField48.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -722,6 +760,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField31.setToolTipText("Click Me!");
         sudokuTextField31.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField31.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField31.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -731,6 +770,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField32.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField32.setText("3");
+        sudokuTextField32.setToolTipText("Don't Click Me");
         sudokuTextField32.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField32.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField32.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -738,6 +778,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField33.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField33.setToolTipText("Click Me!");
         sudokuTextField33.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField33.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField33.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -754,6 +795,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField41.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField41.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField41.setText("7");
+        sudokuTextField41.setToolTipText("Don't Click Me");
         sudokuTextField41.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField41.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField41.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -761,6 +803,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField42.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField42.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField42.setToolTipText("Click Me!");
         sudokuTextField42.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField42.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField42.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -768,6 +811,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField49.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField49.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField49.setToolTipText("Click Me!");
         sudokuTextField49.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField49.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField49.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -777,6 +821,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField50.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField50.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField50.setText("2");
+        sudokuTextField50.setToolTipText("Don't Click Me");
         sudokuTextField50.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField50.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField50.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -784,6 +829,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField51.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField51.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField51.setToolTipText("Click Me!");
         sudokuTextField51.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField51.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField51.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -800,6 +846,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField34.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField34.setText("7");
+        sudokuTextField34.setToolTipText("Don't Click Me");
         sudokuTextField34.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField34.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField34.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -809,6 +856,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField35.setText("8");
+        sudokuTextField35.setToolTipText("Don't Click Me");
         sudokuTextField35.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField35.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField35.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -816,6 +864,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField36.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField36.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField36.setToolTipText("Click Me!");
         sudokuTextField36.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField36.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField36.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -823,6 +872,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField43.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField43.setToolTipText("Click Me!");
         sudokuTextField43.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField43.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField43.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -830,6 +880,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField44.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField44.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField44.setToolTipText("Click Me!");
         sudokuTextField44.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField44.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField44.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -837,6 +888,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField45.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField45.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField45.setToolTipText("Click Me!");
         sudokuTextField45.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField45.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField45.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -846,6 +898,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField52.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField52.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField52.setText("1");
+        sudokuTextField52.setToolTipText("Don't Click Me");
         sudokuTextField52.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField52.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField52.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -853,6 +906,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField53.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField53.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField53.setToolTipText("Click Me!");
         sudokuTextField53.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField53.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField53.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -862,6 +916,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField54.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField54.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField54.setText("3");
+        sudokuTextField54.setToolTipText("Don't Click Me");
         sudokuTextField54.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField54.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField54.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -876,6 +931,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField55.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField55.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField55.setToolTipText("Click Me!");
         sudokuTextField55.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField55.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField55.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -885,6 +941,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField56.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField56.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField56.setText("5");
+        sudokuTextField56.setToolTipText("Don't Click Me");
         sudokuTextField56.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField56.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField56.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -894,6 +951,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField57.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField57.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField57.setText("2");
+        sudokuTextField57.setToolTipText("Don't Click Me");
         sudokuTextField57.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField57.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField57.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -901,6 +959,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField64.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField64.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField64.setToolTipText("Click Me!");
         sudokuTextField64.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField64.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField64.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -908,6 +967,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField65.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField65.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField65.setToolTipText("Click Me!");
         sudokuTextField65.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField65.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField65.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -917,6 +977,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField66.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField66.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField66.setText("1");
+        sudokuTextField66.setToolTipText("Don't Click Me");
         sudokuTextField66.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField66.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField66.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -926,6 +987,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField73.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField73.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField73.setText("3");
+        sudokuTextField73.setToolTipText("Don't Click Me");
         sudokuTextField73.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField73.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField73.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -933,6 +995,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField74.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField74.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField74.setToolTipText("Click Me!");
         sudokuTextField74.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField74.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField74.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -940,6 +1003,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField75.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField75.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField75.setToolTipText("Click Me!");
         sudokuTextField75.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField75.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField75.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -954,6 +1018,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField58.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField58.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField58.setToolTipText("Click Me!");
         sudokuTextField58.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField58.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField58.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -961,6 +1026,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField59.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField59.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField59.setToolTipText("Click Me!");
         sudokuTextField59.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField59.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField59.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -968,6 +1034,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField60.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField60.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField60.setToolTipText("Click Me!");
         sudokuTextField60.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField60.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField60.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -975,6 +1042,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField67.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField67.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField67.setToolTipText("Click Me!");
         sudokuTextField67.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField67.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField67.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -982,6 +1050,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField68.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField68.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField68.setToolTipText("Click Me!");
         sudokuTextField68.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField68.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField68.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -989,6 +1058,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField69.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField69.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField69.setToolTipText("Click Me!");
         sudokuTextField69.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField69.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField69.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -998,6 +1068,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField76.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField76.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField76.setText("9");
+        sudokuTextField76.setToolTipText("Don't Click Me");
         sudokuTextField76.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField76.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField76.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1005,6 +1076,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField77.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField77.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField77.setToolTipText("Click Me!");
         sudokuTextField77.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField77.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField77.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1014,6 +1086,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField78.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField78.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField78.setText("2");
+        sudokuTextField78.setToolTipText("Don't Click Me");
         sudokuTextField78.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField78.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField78.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1028,6 +1101,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField61.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField61.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField61.setToolTipText("Click Me!");
         sudokuTextField61.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField61.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField61.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1037,6 +1111,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField62.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField62.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField62.setText("9");
+        sudokuTextField62.setToolTipText("Don't Click Me");
         sudokuTextField62.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField62.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField62.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1044,6 +1119,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField63.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField63.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField63.setToolTipText("Click Me!");
         sudokuTextField63.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField63.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField63.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1051,6 +1127,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField70.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField70.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField70.setToolTipText("Click Me!");
         sudokuTextField70.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField70.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField70.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1065,6 +1142,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField72.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField72.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField72.setToolTipText("Click Me!");
         sudokuTextField72.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField72.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField72.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1072,6 +1150,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField79.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField79.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField79.setToolTipText("Click Me!");
         sudokuTextField79.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField79.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField79.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1079,6 +1158,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
         sudokuTextField80.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField80.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sudokuTextField80.setToolTipText("Click Me!");
         sudokuTextField80.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField80.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField80.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1088,6 +1168,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField81.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         sudokuTextField81.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         sudokuTextField81.setText("5");
+        sudokuTextField81.setToolTipText("Don't Click Me");
         sudokuTextField81.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField81.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField81.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -1096,9 +1177,12 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuPanel.add(jPanel9);
 
         submitNumbers.setText("Submit");
+        submitNumbers.setToolTipText("Warning: You will lose 10 points for each incorrect sqaure");
 
         quitButton.setText("Quit");
-        quitButton.setToolTipText("");
+        quitButton.setToolTipText("I Don't Blame You");
+
+        jLabelSudokuScore.setText("Sudoku Score:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1114,13 +1198,18 @@ public class SudokuPanel extends javax.swing.JPanel {
                         .addComponent(jLabelUserScore, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(submitNumbers)
-                .addGap(44, 44, 44)
-                .addComponent(sudokuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(quitButton)
-                .addGap(0, 69, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(submitNumbers)
+                        .addGap(44, 44, 44)
+                        .addComponent(sudokuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(quitButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelSudokuScore, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1130,7 +1219,9 @@ public class SudokuPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(clockLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelUserScore))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelSudokuScore)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(sudokuPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(submitNumbers, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -1148,6 +1239,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel clockLabel;
+    private javax.swing.JLabel jLabelSudokuScore;
     private javax.swing.JLabel jLabelUserScore;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

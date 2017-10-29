@@ -210,6 +210,7 @@ public class MainGamePanel extends javax.swing.JPanel {
         titleLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         clockLabel.setText("Clock Here");
+        clockLabel.setToolTipText("Current Date/Time");
         clockLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), null));
         clockLabel.setPreferredSize(new java.awt.Dimension(150, 25));
 
@@ -217,6 +218,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jLabelGallow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gallows1.jpg"))); // NOI18N
+        jLabelGallow.setToolTipText("Guess a Letter!");
 
         javax.swing.GroupLayout hangmanPanelLayout = new javax.swing.GroupLayout(hangmanPanel);
         hangmanPanel.setLayout(hangmanPanelLayout);
@@ -234,6 +236,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         skipButton.setFont(new java.awt.Font("Century", 1, 12)); // NOI18N
         skipButton.setText("Skip");
+        skipButton.setToolTipText("Quitter");
 
         jLabelGuessWord.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabelGuessWord.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -504,6 +507,7 @@ public class MainGamePanel extends javax.swing.JPanel {
         letterPanel.add(jButtonZ);
 
         jLabelUserScore.setText("User Score:");
+        jLabelUserScore.setToolTipText("Current Score");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

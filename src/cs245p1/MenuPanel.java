@@ -13,6 +13,7 @@
 package cs245p1;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 public class MenuPanel extends javax.swing.JPanel {
 
@@ -61,15 +62,25 @@ public class MenuPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(102, 102, 102));
         setPreferredSize(new java.awt.Dimension(600, 400));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         playButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         playButton.setText("Play");
+        playButton.setToolTipText("\"Start the game\"");
 
         highscoreButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highscoreButton.setText("Highscores");
+        highscoreButton.setToolTipText("Check Leaderboard");
 
         creditsButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         creditsButton.setText("Credits");
+        creditsButton.setToolTipText("Team Members");
+
+        jLabelLogo.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -101,6 +112,10 @@ public class MenuPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        System.out.println("Something pressed");
+    }//GEN-LAST:event_formKeyPressed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -98,12 +98,14 @@ public class GameOverPanel extends javax.swing.JPanel {
         gameOverLabel.setFont(new java.awt.Font("Century", 3, 36)); // NOI18N
         gameOverLabel.setForeground(new java.awt.Color(255, 51, 0));
         gameOverLabel.setText("Game Over");
+        gameOverLabel.setToolTipText("Thanks For Playing!");
 
         endButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         endButton.setText("End");
 
         scoreLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         scoreLabel.setText("Your Score: ");
+        scoreLabel.setToolTipText("My Grandma Could Score Higher");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

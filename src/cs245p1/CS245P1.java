@@ -37,8 +37,13 @@ public class CS245P1 {
     private static final JPanel CARDHOLDER = new JPanel(CARDLAYOUT);
     private static HangManGame currentGame;
     private static ColorGame colorGame;
-    private static Sudoku sudoku;
+    private static Sudoku sudoku = new Sudoku();
     private static Map allPanels; //allows access to panel methods anywhere in program
+    private static final KeyStroke escapeKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
+    private static final KeyStroke F1Key = KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0);
+    public static final String dispatchWindowClosingActionMapKey = 
+    "com.spodding.tackline.dispatch:WINDOW_CLOSING"; 
+    
     
     //method: CS245P1 (Constructor)
     //purpose: Initializes all the necessary components of the game, including the individual panels
@@ -47,6 +52,13 @@ public class CS245P1 {
     public CS245P1(){
         initLookAndFeel();
         JFrame mainFrame = new JFrame();
+        JFrame creditsMenu = new JFrame();
+        
+//        CreditsPanel popUpCreditsPanel = new CreditsPanel();
+//        creditsMenu.add(popUpCreditsPanel);
+//        creditsMenu.setVisible(false);
+        
+        
         currentGame = new HangManGame();
         colorGame = new ColorGame();
         allPanels = new HashMap<String,Component>();
@@ -66,7 +78,6 @@ public class CS245P1 {
         allPanels.put(COLOR_GAME, colorPanel);
         SudokuPanel sudokuPanel = new SudokuPanel();
         allPanels.put(SUDOKU, sudokuPanel);
-        
         CARDHOLDER.add(creditPanel, CREDITS_SCREEN);
         CARDHOLDER.add(gameOverPanel, GAME_OVER);
         CARDHOLDER.add(highScoresPanel, HIGH_SCORES);
@@ -118,6 +129,35 @@ public class CS245P1 {
                 // add sudoku
             }
         };
+         //Key binding for escape key
+        Action dispatchClosing = new AbstractAction() { 
+            public void actionPerformed(ActionEvent event) { 
+                mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING 
+            )); 
+            } 
+        }; 
+        JRootPane root = mainFrame.getRootPane(); 
+        root.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put( 
+            escapeKey, dispatchWindowClosingActionMapKey 
+            ); 
+        root.getActionMap().put(dispatchWindowClosingActionMapKey, dispatchClosing); 
+        
+        //Key binding for F1 Key
+            Action dispatchCredits = new AbstractAction() { 
+            public void actionPerformed(ActionEvent event) { 
+                CreditsPanel popUpCreditsPanel = new CreditsPanel();
+                popUpCreditsPanel.getBackButton().setVisible(false);
+                creditsMenu.add(popUpCreditsPanel);
+                creditsMenu.pack();
+                creditsMenu.setLocationRelativeTo(null);
+                creditsMenu.setVisible(true);
+            } 
+        }; 
+        root.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put( 
+            F1Key, dispatchWindowClosingActionMapKey 
+            ); 
+        root.getActionMap().put(dispatchWindowClosingActionMapKey, dispatchCredits); 
+        
         menuPanel.getCreditsButton().addActionListener(buttonHandler);
         menuPanel.getPlayButton().addActionListener(buttonHandler);
         menuPanel.getHighscoreButton().addActionListener(buttonHandler);

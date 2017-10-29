@@ -62,6 +62,7 @@
           <Color blue="0" green="33" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Game Over"/>
+        <Property name="toolTipText" type="java.lang.String" value="Thanks For Playing!"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="endButton">
@@ -78,6 +79,7 @@
           <Font name="Century" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Your Score: "/>
+        <Property name="toolTipText" type="java.lang.String" value="My Grandma Could Score Higher"/>
       </Properties>
     </Component>
   </SubComponents>
