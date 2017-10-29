@@ -210,16 +210,18 @@ public class ColorGamePanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(600, 400));
 
         clockLabel.setText("Clock Here");
+        clockLabel.setToolTipText("Today's Date/Time");
         clockLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), null));
         clockLabel.setPreferredSize(new java.awt.Dimension(150, 25));
 
         colorLabel.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
         colorLabel.setText("Black");
+        colorLabel.setToolTipText("Focus On The Color Of This Word");
 
         colorButtonPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonPurple.setIcon(new javax.swing.ImageIcon(getClass().getResource("/purple button image small transparent.png"))); // NOI18N
-        jButtonPurple.setToolTipText("");
+        jButtonPurple.setToolTipText("Click Me!");
         jButtonPurple.setBorder(null);
         jButtonPurple.setBorderPainted(false);
         jButtonPurple.setContentAreaFilled(false);
@@ -237,7 +239,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
         colorButtonPanel.add(jButtonPurple, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 85, 89));
 
         jButtonRed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/red button image small transparent.png"))); // NOI18N
-        jButtonRed.setToolTipText("");
+        jButtonRed.setToolTipText("Click Me!");
         jButtonRed.setBorder(null);
         jButtonRed.setBorderPainted(false);
         jButtonRed.setContentAreaFilled(false);
@@ -255,7 +257,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
         colorButtonPanel.add(jButtonRed, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 85, 89));
 
         jButtonGreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/green button image small transparent.png"))); // NOI18N
-        jButtonGreen.setToolTipText("");
+        jButtonGreen.setToolTipText("Click Me!");
         jButtonGreen.setBorder(null);
         jButtonGreen.setBorderPainted(false);
         jButtonGreen.setContentAreaFilled(false);
@@ -273,7 +275,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
         colorButtonPanel.add(jButtonGreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 85, 89));
 
         jButtonYellow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/yellow button image small transparent.png"))); // NOI18N
-        jButtonYellow.setToolTipText("");
+        jButtonYellow.setToolTipText("Click Me!");
         jButtonYellow.setBorder(null);
         jButtonYellow.setBorderPainted(false);
         jButtonYellow.setContentAreaFilled(false);
@@ -291,7 +293,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
         colorButtonPanel.add(jButtonYellow, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 85, 89));
 
         jButtonBlue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blue button image small transparent.png"))); // NOI18N
-        jButtonBlue.setToolTipText("");
+        jButtonBlue.setToolTipText("Click Me!");
         jButtonBlue.setBorder(null);
         jButtonBlue.setBorderPainted(false);
         jButtonBlue.setContentAreaFilled(false);
@@ -309,6 +311,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
         colorButtonPanel.add(jButtonBlue, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 85, 89));
 
         jLabelUserScore.setText("User Score:");
+        jLabelUserScore.setToolTipText("Current Overall Score");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

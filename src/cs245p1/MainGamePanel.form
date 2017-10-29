@@ -87,6 +87,7 @@
     <Component class="javax.swing.JLabel" name="clockLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Clock Here"/>
+        <Property name="toolTipText" type="java.lang.String" value="Current Date/Time"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder>
@@ -129,6 +130,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/gallows1.jpg"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Guess a Letter!"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -139,6 +141,7 @@
           <Font name="Century" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Skip"/>
+        <Property name="toolTipText" type="java.lang.String" value="Quitter"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="wordPanel">
@@ -495,6 +498,7 @@
     <Component class="javax.swing.JLabel" name="jLabelUserScore">
       <Properties>
         <Property name="text" type="java.lang.String" value="User Score:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Current Score"/>
       </Properties>
     </Component>
   </SubComponents>

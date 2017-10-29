@@ -123,6 +123,7 @@ public class HighScoresPanel extends javax.swing.JPanel {
 
         highScoresBackButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScoresBackButton.setText("Back");
+        highScoresBackButton.setToolTipText("Back");
         highScoresBackButton.setActionCommand("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -135,7 +136,7 @@ public class HighScoresPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(highScoresBackButton)
-                        .addGap(0, 477, Short.MAX_VALUE))
+                        .addGap(0, 502, Short.MAX_VALUE))
                     .addComponent(highScore1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
                     .addComponent(highScore2, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
                     .addComponent(highScore3, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
@@ -158,7 +159,7 @@ public class HighScoresPanel extends javax.swing.JPanel {
                 .addComponent(highScore4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(highScore5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(highScoresBackButton)
                 .addContainerGap())
         );
