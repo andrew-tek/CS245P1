@@ -39,8 +39,8 @@ public class CS245P1 {
     private static ColorGame colorGame;
     private static Sudoku sudoku = new Sudoku();
     private static Map allPanels; //allows access to panel methods anywhere in program
-    private static final KeyStroke escapeKey = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
-    private static final KeyStroke F1Key = KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0);
+    private static final KeyStroke ESCAPE_KEY = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
+    private static final KeyStroke F1_KEY = KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0);
     public static final String dispatchWindowClosingActionMapKey = 
     "com.spodding.tackline.dispatch:WINDOW_CLOSING"; 
     
@@ -138,7 +138,7 @@ public class CS245P1 {
         }; 
         JRootPane root = mainFrame.getRootPane(); 
         root.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put( 
-            escapeKey, dispatchWindowClosingActionMapKey 
+            ESCAPE_KEY, dispatchWindowClosingActionMapKey 
             ); 
         root.getActionMap().put(dispatchWindowClosingActionMapKey, dispatchClosing); 
         
@@ -154,7 +154,7 @@ public class CS245P1 {
             } 
         }; 
         root.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put( 
-            F1Key, dispatchWindowClosingActionMapKey 
+            F1_KEY, dispatchWindowClosingActionMapKey 
             ); 
         root.getActionMap().put(dispatchWindowClosingActionMapKey, dispatchCredits); 
         

@@ -4,7 +4,7 @@
  * class: CS 245 – Programming Graphical User Interfaces
  *
  * assignment: Point and Click Game – v.1.2
- * date last modified: 10/26/2017
+ * date last modified: 10/30/2017
  *
  * purpose: The panel for handling the Sudoku game operations
  *
