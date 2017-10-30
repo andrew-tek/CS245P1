@@ -85,7 +85,7 @@ public class ColorGamePanel extends javax.swing.JPanel {
         while(!buttonList.isEmpty() && !coordList.isEmpty()){
             JButton currentButton = buttonList.remove(rand.nextInt(buttonList.size())); //pick a random button
             XYCoords currentCoord = coordList.remove(rand.nextInt(coordList.size())); //pick random coordinate from current list
-            colorButtonPanel.add(currentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(currentCoord.getX(), currentCoord.getY()));
+            colorButtonPanel.add(currentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(currentCoord.getX(), currentCoord.getY())); //please note that a bug exists with Netbeans that sometimes requires a restart to see this import properly
         }
         colorButtonPanel.repaint();
 

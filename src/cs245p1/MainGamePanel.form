@@ -27,7 +27,7 @@
                   <Component id="wordPanel" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="hangmanPanel" pref="588" max="32767" attributes="0"/>
+                          <Component id="hangmanPanel" pref="576" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="titleLabel" min="-2" pref="115" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -81,6 +81,7 @@
           <Color blue="33" green="33" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Hangman"/>
+        <Property name="toolTipText" type="java.lang.String" value="The name of the game!"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
@@ -177,6 +178,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="a b s t r a c t"/>
+            <Property name="toolTipText" type="java.lang.String" value="Currently guessed letters..."/>
             <Property name="verticalAlignment" type="int" value="3"/>
           </Properties>
           <AccessibilityProperties>
@@ -190,6 +192,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="_ _ _ _ _ _ _ _"/>
+            <Property name="toolTipText" type="java.lang.String" value="The number of letters"/>
             <Property name="verticalAlignment" type="int" value="3"/>
           </Properties>
           <AccessibilityProperties>
@@ -213,6 +216,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="A"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aButtonPush"/>
@@ -224,6 +228,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="B"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBActionPerformed"/>
@@ -235,6 +240,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="C"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCActionPerformed"/>
@@ -246,6 +252,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="D"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDActionPerformed"/>
@@ -257,6 +264,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="E"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEActionPerformed"/>
@@ -268,6 +276,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="F"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFActionPerformed"/>
@@ -279,6 +288,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="G"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGActionPerformed"/>
@@ -290,6 +300,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="H"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHActionPerformed"/>
@@ -301,6 +312,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="I"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonIActionPerformed"/>
@@ -312,6 +324,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="J"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonJActionPerformed"/>
@@ -323,6 +336,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="K"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonKActionPerformed"/>
@@ -334,6 +348,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="L"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLActionPerformed"/>
@@ -345,6 +360,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMActionPerformed"/>
@@ -356,6 +372,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="N"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNActionPerformed"/>
@@ -367,6 +384,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="O"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonOActionPerformed"/>
@@ -378,6 +396,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="P"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPActionPerformed"/>
@@ -389,6 +408,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Q"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonQActionPerformed"/>
@@ -400,6 +420,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="R"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRActionPerformed"/>
@@ -411,6 +432,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="S"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSActionPerformed"/>
@@ -422,6 +444,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTActionPerformed"/>
@@ -433,6 +456,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="U"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUActionPerformed"/>
@@ -444,6 +468,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="V"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonVActionPerformed"/>
@@ -455,6 +480,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="W"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonWActionPerformed"/>
@@ -466,6 +492,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="X"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonXActionPerformed"/>
@@ -477,6 +504,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Y"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonYActionPerformed"/>
@@ -488,6 +516,7 @@
               <Font name="Century" size="10" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Z"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guess this letter..."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonZActionPerformed"/>

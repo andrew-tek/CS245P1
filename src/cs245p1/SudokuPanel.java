@@ -82,46 +82,61 @@ public class SudokuPanel extends javax.swing.JPanel {
     }
 
     public void resetSodoku() {
-        initializeGameBoardList();
+        //initializeGameBoardList();
         initializeArrays();
-        System.out.println("Called for reset");
-        
-    }
-    // method: initializeArrays
-    // purpose: initialize JTextField and integer arrays to calculate user inputs for later
-    public void initializeArrays() {
-        Arrays.fill(credit, true);
-        //fill array with "true", then re-falsify the values which are prefilled on the board (the player should not get any
-        //credit for those)
-        credit[0] = false;
-        credit[3] = false;
-        credit[5] = false;
-        credit[8] = false;
-        credit[15] = false;
-        credit[19] = false;
-        credit[24] = false;
-        credit[25] = false;
-        credit[27] = false;
-        credit[29] = false;
-        credit[31] = false;
-        credit[33] = false;
-        credit[34] = false;
-        credit[40] = false;
-        credit[46] = false;
-        credit[47] = false;
-        credit[49] = false;
-        credit[51] = false;
-        credit[53] = false;
-        credit[55] = false;
-        credit[56] = false;
-        credit[61] = false;
-        credit[65] = false;
-        credit[72] = false;
-        credit[75] = false;
-        credit[77] = false;
-        credit[80] = false;
+        for(JTextField field : gameBoardTracker){
+            if(field.isEditable()){
+                field.setText("");
+            }
+        }
+        System.out.println("Called for reset");   
     }
 
+    
+    private void transitionToGameOver() {
+        //reset panel values to initial state - need a new method for this (just clear all the editable fields - remember to leave uneditable fields alone)
+        //resetCoordsSets();
+        //set score on game over panel and move to that panel
+        GameOverPanel gameOver = (GameOverPanel) CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
+        gameOver.setScore();
+        this.resetSodoku();
+        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
+        gameOver.checkForHighScore();
+    }
+
+    // method: checkInput
+    // purpose: Checks the currently entered solution to see if it is correct. Uses the "credit" array to track
+    //when points need to be deducted, or if they've already been deducted. 
+    private void checkInput() {
+        boolean solvedFlag = true;
+        int[] solution = CS245P1.getSudokuGame().getSolution();
+        for (int i = 0; i < solution.length; i++) {
+            boolean checkFlag = false;
+            if (!gameBoardTracker.get(i).getText().isEmpty()) {
+                if (Integer.parseInt(gameBoardTracker.get(i).getText()) != solution[i]) {
+                    checkFlag = true;
+                }
+            } else {
+                checkFlag = true;
+            }
+            
+            if(checkFlag){
+                solvedFlag = false;
+                if (credit[i]) {
+                    credit[i] = false;
+                    CS245P1.getSudokuGame().subPoints();
+                }
+            }
+        }
+        
+        if(solvedFlag){
+            transitionToGameOver();
+        }else{
+            JOptionPane.showMessageDialog(null, "Your solution is incorrect, please attempt another!");
+        }
+    }
+
+    
     // method: initializeGameBoardList
     // purpose: Build the list which holds all of the sudokuTextFields on the board
     private void initializeGameBoardList() {
@@ -208,87 +223,44 @@ public class SudokuPanel extends javax.swing.JPanel {
         gameBoardTracker.add(sudokuTextField80);
         gameBoardTracker.add(sudokuTextField81);
     }
-
-    private void transitionToGameOver() {
-        //reset panel values to initial state - need a new method for this (just clear all the editable fields - remember to leave uneditable fields alone)
-        //resetCoordsSets();
-        //set score on game over panel and move to that panel
-        GameOverPanel gameOver = (GameOverPanel) CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
-        gameOver.setScore();
-        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
-        gameOver.checkForHighScore();
-        this.resetSodoku();
+    
+    
+    // method: initializeArrays
+    // purpose: initialize JTextField and integer arrays to calculate user inputs for later
+    public void initializeArrays() {
+        Arrays.fill(credit, true);
+        //fill array with "true", then re-falsify the values which are prefilled on the board (the player should not get any
+        //credit for those)
+        credit[0] = false;
+        credit[3] = false;
+        credit[5] = false;
+        credit[8] = false;
+        credit[15] = false;
+        credit[19] = false;
+        credit[24] = false;
+        credit[25] = false;
+        credit[27] = false;
+        credit[29] = false;
+        credit[31] = false;
+        credit[33] = false;
+        credit[34] = false;
+        credit[40] = false;
+        credit[46] = false;
+        credit[47] = false;
+        credit[49] = false;
+        credit[51] = false;
+        credit[53] = false;
+        credit[55] = false;
+        credit[56] = false;
+        credit[61] = false;
+        credit[65] = false;
+        credit[72] = false;
+        credit[75] = false;
+        credit[77] = false;
+        credit[80] = false;
     }
+    
 
-    // method: checkInput
-    // purpose: Checks the currently entered solution to see if it is correct. Uses the "credit" array to track
-    //when points need to be deducted, or if they've already been deducted. 
-    private void checkInput() {
-        boolean solvedFlag = true;
-        int[] solution = CS245P1.getSudokuGame().getSolution();
-        for (int i = 0; i < solution.length; i++) {
-            boolean checkFlag = false;
-            if (!gameBoardTracker.get(i).getText().isEmpty()) {
-                if (Integer.parseInt(gameBoardTracker.get(i).getText()) != solution[i]) {
-                    checkFlag = true;
-                }
-            } else {
-                checkFlag = true;
-            }
-            
-            if(checkFlag){
-                solvedFlag = false;
-                if (credit[i]) {
-                    credit[i] = false;
-                    CS245P1.getSudokuGame().subPoints();
-                }
-            }
-        }
-        
-        if(solvedFlag){
-            transitionToGameOver();
-        }else{
-            JOptionPane.showMessageDialog(null, "Your solution is incorrect, please attempt another!");
-        }
-    }
-
-    // method: initliaizeGameBoard
-    // purpose: adds the default numbers from pdf to game board
-    //NOTE: This is probably not needed, although we will need a method to clear all of the editable fields after the game is over in preparation of a new game
-//    private void initializeGameBoard() {
-//        enteredWord[0].setText("8");
-//        enteredWord[3].setText("4");
-//        enteredWord[5].setText("6");
-//        enteredWord[8].setText("7");
-//        enteredWord[15].setText("4");
-//        enteredWord[19].setText("1");
-//        enteredWord[24].setText("6");
-//        enteredWord[25].setText("5");
-//        enteredWord[27].setText("5");
-//        enteredWord[29].setText("9");
-//        enteredWord[31].setText("3");
-//        enteredWord[33].setText("7");
-//        enteredWord[34].setText("8");
-//        enteredWord[40].setText("7");
-//        enteredWord[46].setText("4");
-//        enteredWord[47].setText("8");
-//        enteredWord[49].setText("2");
-//        enteredWord[51].setText("1");
-//        enteredWord[53].setText("3");
-//        enteredWord[55].setText("5");
-//        enteredWord[56].setText("2");
-//        enteredWord[61].setText("9");
-//        enteredWord[65].setText("1");
-//        enteredWord[72].setText("3");
-//        enteredWord[75].setText("9");
-//        enteredWord[77].setText("2");
-//        enteredWord[80].setText("5");
-//        for (int j = 0; j < intEntered.length; j++) {
-//            if (enteredWord[j].getText() != null && !enteredWord[j].getText().equals("")) {
-//                intEntered[j] = Integer.parseInt(enteredWord[j].getText());
-//            }
-//        }
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -403,7 +375,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         clockLabel.setPreferredSize(new java.awt.Dimension(150, 25));
 
         jLabelUserScore.setText("User Score:");
-        jLabelUserScore.setToolTipText("Overall Score");
+        jLabelUserScore.setToolTipText("Overall score from previous games");
 
         sudokuPanel.setPreferredSize(new java.awt.Dimension(288, 288));
         sudokuPanel.setLayout(new java.awt.GridLayout(3, 3));
@@ -453,11 +425,6 @@ public class SudokuPanel extends javax.swing.JPanel {
         sudokuTextField11.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         sudokuTextField11.setMinimumSize(new java.awt.Dimension(30, 30));
         sudokuTextField11.setPreferredSize(new java.awt.Dimension(30, 30));
-        sudokuTextField11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sudokuTextField11ActionPerformed(evt);
-            }
-        });
         jPanel1.add(sudokuTextField11);
 
         sudokuTextField12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1183,6 +1150,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         quitButton.setToolTipText("I Don't Blame You");
 
         jLabelSudokuScore.setText("Sudoku Score:");
+        jLabelSudokuScore.setToolTipText("Your current possible Sudoku points");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1231,10 +1199,6 @@ public class SudokuPanel extends javax.swing.JPanel {
                 .addGap(49, 49, 49))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void sudokuTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sudokuTextField11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sudokuTextField11ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

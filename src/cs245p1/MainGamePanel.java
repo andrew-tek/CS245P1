@@ -207,6 +207,7 @@ public class MainGamePanel extends javax.swing.JPanel {
         titleLabel.setFont(new java.awt.Font("Papyrus", 3, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 51, 51));
         titleLabel.setText("Hangman");
+        titleLabel.setToolTipText("The name of the game!");
         titleLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         clockLabel.setText("Clock Here");
@@ -241,11 +242,13 @@ public class MainGamePanel extends javax.swing.JPanel {
         jLabelGuessWord.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabelGuessWord.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelGuessWord.setText("a b s t r a c t");
+        jLabelGuessWord.setToolTipText("Currently guessed letters...");
         jLabelGuessWord.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         jLabelDashedLines.setFont(new java.awt.Font("Courier New", 1, 36)); // NOI18N
         jLabelDashedLines.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelDashedLines.setText("_ _ _ _ _ _ _ _");
+        jLabelDashedLines.setToolTipText("The number of letters");
         jLabelDashedLines.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout wordPanelLayout = new javax.swing.GroupLayout(wordPanel);
@@ -274,6 +277,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonA.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonA.setText("A");
+        jButtonA.setToolTipText("Guess this letter...");
         jButtonA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aButtonPush(evt);
@@ -283,6 +287,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonB.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonB.setText("B");
+        jButtonB.setToolTipText("Guess this letter...");
         jButtonB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBActionPerformed(evt);
@@ -292,6 +297,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonC.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonC.setText("C");
+        jButtonC.setToolTipText("Guess this letter...");
         jButtonC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCActionPerformed(evt);
@@ -301,6 +307,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonD.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonD.setText("D");
+        jButtonD.setToolTipText("Guess this letter...");
         jButtonD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDActionPerformed(evt);
@@ -310,6 +317,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonE.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonE.setText("E");
+        jButtonE.setToolTipText("Guess this letter...");
         jButtonE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEActionPerformed(evt);
@@ -319,6 +327,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonF.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonF.setText("F");
+        jButtonF.setToolTipText("Guess this letter...");
         jButtonF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFActionPerformed(evt);
@@ -328,6 +337,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonG.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonG.setText("G");
+        jButtonG.setToolTipText("Guess this letter...");
         jButtonG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGActionPerformed(evt);
@@ -337,6 +347,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonH.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonH.setText("H");
+        jButtonH.setToolTipText("Guess this letter...");
         jButtonH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonHActionPerformed(evt);
@@ -346,6 +357,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonI.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonI.setText("I");
+        jButtonI.setToolTipText("Guess this letter...");
         jButtonI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonIActionPerformed(evt);
@@ -355,6 +367,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonJ.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonJ.setText("J");
+        jButtonJ.setToolTipText("Guess this letter...");
         jButtonJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonJActionPerformed(evt);
@@ -364,6 +377,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonK.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonK.setText("K");
+        jButtonK.setToolTipText("Guess this letter...");
         jButtonK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonKActionPerformed(evt);
@@ -373,6 +387,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonL.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonL.setText("L");
+        jButtonL.setToolTipText("Guess this letter...");
         jButtonL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLActionPerformed(evt);
@@ -382,6 +397,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonM.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonM.setText("M");
+        jButtonM.setToolTipText("Guess this letter...");
         jButtonM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMActionPerformed(evt);
@@ -391,6 +407,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonN.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonN.setText("N");
+        jButtonN.setToolTipText("Guess this letter...");
         jButtonN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNActionPerformed(evt);
@@ -400,6 +417,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonO.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonO.setText("O");
+        jButtonO.setToolTipText("Guess this letter...");
         jButtonO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonOActionPerformed(evt);
@@ -409,6 +427,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonP.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonP.setText("P");
+        jButtonP.setToolTipText("Guess this letter...");
         jButtonP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPActionPerformed(evt);
@@ -418,6 +437,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonQ.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonQ.setText("Q");
+        jButtonQ.setToolTipText("Guess this letter...");
         jButtonQ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonQActionPerformed(evt);
@@ -427,6 +447,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonR.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonR.setText("R");
+        jButtonR.setToolTipText("Guess this letter...");
         jButtonR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRActionPerformed(evt);
@@ -436,6 +457,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonS.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonS.setText("S");
+        jButtonS.setToolTipText("Guess this letter...");
         jButtonS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSActionPerformed(evt);
@@ -445,6 +467,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonT.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonT.setText("T");
+        jButtonT.setToolTipText("Guess this letter...");
         jButtonT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonTActionPerformed(evt);
@@ -454,6 +477,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonU.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonU.setText("U");
+        jButtonU.setToolTipText("Guess this letter...");
         jButtonU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUActionPerformed(evt);
@@ -463,6 +487,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonV.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonV.setText("V");
+        jButtonV.setToolTipText("Guess this letter...");
         jButtonV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVActionPerformed(evt);
@@ -472,6 +497,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonW.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonW.setText("W");
+        jButtonW.setToolTipText("Guess this letter...");
         jButtonW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonWActionPerformed(evt);
@@ -481,6 +507,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonX.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonX.setText("X");
+        jButtonX.setToolTipText("Guess this letter...");
         jButtonX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonXActionPerformed(evt);
@@ -490,6 +517,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonY.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonY.setText("Y");
+        jButtonY.setToolTipText("Guess this letter...");
         jButtonY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonYActionPerformed(evt);
@@ -499,6 +527,7 @@ public class MainGamePanel extends javax.swing.JPanel {
 
         jButtonZ.setFont(new java.awt.Font("Century", 1, 10)); // NOI18N
         jButtonZ.setText("Z");
+        jButtonZ.setToolTipText("Guess this letter...");
         jButtonZ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonZActionPerformed(evt);
@@ -519,7 +548,7 @@ public class MainGamePanel extends javax.swing.JPanel {
                     .addComponent(wordPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hangmanPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+                            .addComponent(hangmanPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)

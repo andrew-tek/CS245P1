@@ -71,6 +71,7 @@
           <Font name="Century" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="End"/>
+        <Property name="toolTipText" type="java.lang.String" value="Return to Main Menu"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="scoreLabel">

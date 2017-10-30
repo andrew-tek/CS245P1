@@ -72,7 +72,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="CREDITS"/>
-        <Property name="toolTipText" type="java.lang.String" value="creditsTitle"/>
+        <Property name="toolTipText" type="java.lang.String" value="Credits Title"/>
         <Property name="alignmentY" type="float" value="0.0"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
@@ -132,6 +132,7 @@
           <Font name="Century" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Back"/>
+        <Property name="toolTipText" type="java.lang.String" value="Go to Main Menu"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -100,7 +100,7 @@
     <Component class="javax.swing.JLabel" name="jLabelUserScore">
       <Properties>
         <Property name="text" type="java.lang.String" value="User Score:"/>
-        <Property name="toolTipText" type="java.lang.String" value="Overall Score"/>
+        <Property name="toolTipText" type="java.lang.String" value="Overall score from previous games"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="sudokuPanel">
@@ -236,9 +236,6 @@
                   <Dimension value="[30, 30]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sudokuTextField11ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="cs245p1.SudokuTextField" name="sudokuTextField12">
               <Properties>
@@ -2005,6 +2002,7 @@
     <Component class="javax.swing.JLabel" name="jLabelSudokuScore">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sudoku Score:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Your current possible Sudoku points"/>
       </Properties>
     </Component>
   </SubComponents>
