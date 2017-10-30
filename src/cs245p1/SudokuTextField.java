@@ -28,18 +28,29 @@ import javax.swing.text.PlainDocument;
  */
 public class SudokuTextField extends JTextField {
 
+    //method: SudokuTextField (Constructor)
+    //purpose: Default constructor which simply calls its super class constructor
     public SudokuTextField() {
         super();
     }
     
+    //method: SudokuTextField (Constructor)
+    //purpose: Constructor which takes a given number of columns and passes them to the super constructor
     public SudokuTextField(int cols) {
         super(cols);
     }
 
+    //method: createDefaultModel
+    //purpose: Builds and returns a "SudokuDocument" object
     protected Document createDefaultModel() {
         return new SudokuDocument();
     }
 
+    //inner-class: SudokuDocument
+    //purpose: This inner-class is used by the custom JTextField to define the proper operations of this subclass of JTextField.
+    //It defines a new method for "insertString" which is referenced by the SudokuTextField, allowing only a single digit 1-9 to be
+    //inserted into the field. A message will be displayed to the user if they attempt to enter a character that isn't supported (and zeroes
+    //are simply ignored).
     static class SudokuDocument extends PlainDocument {
 
         public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
@@ -47,8 +58,8 @@ public class SudokuTextField extends JTextField {
             if ((str == null) || (str.length() > 1)) {
                 return;
             }else if((this.getLength() + str.length()) <= 1){
-                if(Character.isDigit(str.charAt(0))){ //(str.length() < 1) || 
-                    if(Integer.parseInt(str) != 0){
+                if(Character.isDigit(str.charAt(0))){ //since the string can only be length 0 or 1 here, no need to check other characters
+                    if(Integer.parseInt(str) != 0){ //only insert the string if it is a digit 1-9
                         super.insertString(offs, str, a);
                     }else{
                         return;

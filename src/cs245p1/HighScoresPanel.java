@@ -3,7 +3,7 @@
 * author: Nicholas Pham, Christopher Kilian
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.1
+* assignment: Point and Click Game – v.1.2
 * date last modified: 10/18/2017
 *
 * purpose: This class builds the panel which displays the high scores

@@ -3,7 +3,7 @@
 * author: Andrew Tek
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.1
+* assignment: Point and Click Game – v.1.2
 * date last modified: 10/18/2017
 *
 * purpose: This class defines the main menu panel, from which the player can access
@@ -19,7 +19,7 @@ public class MenuPanel extends javax.swing.JPanel {
 
     //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
     
-    //method: Constructor
+    //method: MenuPanel (Constructor)
     //purpose: Set up panel and shows logo
     public MenuPanel() {
         initComponents();

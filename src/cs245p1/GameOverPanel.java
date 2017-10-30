@@ -3,8 +3,8 @@
 * author: Christopher Kilian, Nicholas Pham
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.1
-* date last modified: 10/18/2017
+* assignment: Point and Click Game – v.1.2
+* date last modified: 10/27/2017
 *
 * purpose: This class defines the panel which displays the game over screen
 * and the players score for the game
@@ -19,11 +19,12 @@ public class GameOverPanel extends javax.swing.JPanel {
 
     //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
     
-    private HighScoresList highScores = new HighScoresList();
+    private HighScoresList highScores;
     
     // method: GameOverPanel
     // purpose: constructor
     public GameOverPanel() {
+        highScores = new HighScoresList();
         initComponents();
     }
     

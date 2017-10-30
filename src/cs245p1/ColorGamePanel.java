@@ -3,7 +3,7 @@
 * author: Christopher Kilian, Andrew Tek
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.1
+* assignment: Point and Click Game – v.1.2
 * date last modified: 10/18/2017
 *
 * purpose: The panel from which the color choosing game is played is set up

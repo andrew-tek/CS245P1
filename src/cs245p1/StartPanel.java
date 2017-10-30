@@ -3,7 +3,7 @@
 * author: Andrew Tek
 * class: CS 245 – Programming Graphical User Interfaces
 *
-* assignment: Point and Click Game – v.1.1
+* assignment: Point and Click Game – v.1.2
 * date last modified: 10/04/2017
 *
 * purpose: This class defines the splash screen players see when they first load the game
@@ -15,7 +15,7 @@ public class StartPanel extends javax.swing.JPanel {
 
     //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
     
-    //method: contructor
+    //method: StartPanel (contructor)
     //purpose: Sets up panel
     public StartPanel() {
         initComponents();

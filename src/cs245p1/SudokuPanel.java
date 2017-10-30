@@ -11,7 +11,6 @@
  *************************************************************** */
 package cs245p1;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
@@ -20,32 +19,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.JTextField;
 
 public class SudokuPanel extends javax.swing.JPanel {
 
-    /**
-     * jTextField for all inputs for board game
-     * jTextField##.setToolTipText("Enter a number from 1 to 9");
-     */
+    //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
+    
     private List<JTextField> gameBoardTracker;
-    private boolean[] credit = new boolean[81];
+    private boolean[] credit;// = new boolean[81];
 
+    //method: SudokuPanel (Constructor)
+    //purpose: Sets up the Sudoku game panel, including the relevant action listeners, initial game values, etc
     public SudokuPanel() {
         initComponents();
+        credit = new boolean[81];
         initializeGameBoardList();
-        // Initialize Arrays
         initializeArrays();
 
-        //WORKING NOTE: Solution check is in place but has not been tested yet. Please run tests.
-        //ALSO NOTE: Still need a method to clear the textfields that are editable for a new game.
-        
-        // SUBMIT NUMBERS
-        // When submit is pressed, all numbers inputted will be recorded and then calculated to see if they are correct
+        //setup action listeners for local buttons
         submitNumbers.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,9 +60,7 @@ public class SudokuPanel extends javax.swing.JPanel {
                 DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy hh:mm:ss");
                 Date date = new Date();
                 clockLabel.setText(dateFormat.format(date).toString());
-
-                // Set points to points + 540 (Sudoku)
-                // ERROR HERE int points = CS245P1.getSudokuGame().getPoints() + CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
+                
                 int points = CS245P1.getColorGame().getPoints() + CS245P1.getGame().getPoints();
                 jLabelUserScore.setText("User Score: " + points);
                 jLabelSudokuScore.setText("Sudoku Score: " + CS245P1.getSudokuGame().getPoints());
@@ -81,18 +72,21 @@ public class SudokuPanel extends javax.swing.JPanel {
         timer.start();
     }
 
+    //method: resetSodoku
+    //purpose: Resets the game board for a new round (clears filled in board fields and resets the "credit" array)
     public void resetSodoku() {
-        //initializeGameBoardList();
         initializeArrays();
         for(JTextField field : gameBoardTracker){
-            if(field.isEditable()){
+            if (field.isEditable()) {
                 field.setText("");
             }
         }
-        System.out.println("Called for reset");   
+        //System.out.println("Called for reset");
     }
 
-    
+    //method: transitionToGameOver
+    //purpose: Called when the player wins the game or quits. Handles the ending of the game, resetting of the board, and movement
+    //to the "Game Over" screen
     private void transitionToGameOver() {
         //reset panel values to initial state - need a new method for this (just clear all the editable fields - remember to leave uneditable fields alone)
         //resetCoordsSets();
@@ -106,7 +100,8 @@ public class SudokuPanel extends javax.swing.JPanel {
 
     // method: checkInput
     // purpose: Checks the currently entered solution to see if it is correct. Uses the "credit" array to track
-    //when points need to be deducted, or if they've already been deducted. 
+    //when points need to be deducted, or if they've already been deducted. If the players solution is correct, the game
+    //is over and "transitionToGameOver" is called.
     private void checkInput() {
         boolean solvedFlag = true;
         int[] solution = CS245P1.getSudokuGame().getSolution();
@@ -119,8 +114,8 @@ public class SudokuPanel extends javax.swing.JPanel {
             } else {
                 checkFlag = true;
             }
-            
-            if(checkFlag){
+
+            if (checkFlag) {
                 solvedFlag = false;
                 if (credit[i]) {
                     credit[i] = false;
@@ -128,15 +123,14 @@ public class SudokuPanel extends javax.swing.JPanel {
                 }
             }
         }
-        
-        if(solvedFlag){
+
+        if (solvedFlag) {
             transitionToGameOver();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Your solution is incorrect, please attempt another!");
         }
     }
 
-    
     // method: initializeGameBoardList
     // purpose: Build the list which holds all of the sudokuTextFields on the board
     private void initializeGameBoardList() {
@@ -223,8 +217,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         gameBoardTracker.add(sudokuTextField80);
         gameBoardTracker.add(sudokuTextField81);
     }
-    
-    
+
     // method: initializeArrays
     // purpose: initialize JTextField and integer arrays to calculate user inputs for later
     public void initializeArrays() {
@@ -259,7 +252,6 @@ public class SudokuPanel extends javax.swing.JPanel {
         credit[77] = false;
         credit[80] = false;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
