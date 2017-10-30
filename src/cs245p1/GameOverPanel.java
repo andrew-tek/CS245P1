@@ -102,6 +102,7 @@ public class GameOverPanel extends javax.swing.JPanel {
 
         endButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         endButton.setText("End");
+        endButton.setToolTipText("Return to Main Menu");
 
         scoreLabel.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         scoreLabel.setText("Your Score: ");

@@ -87,7 +87,7 @@ public class HighScoresPanel extends javax.swing.JPanel {
         scoresTitle.setForeground(java.awt.Color.white);
         scoresTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoresTitle.setText("HIGH SCORES");
-        scoresTitle.setToolTipText("scoresTitle");
+        scoresTitle.setToolTipText("You're looking at the high scores!");
         scoresTitle.setAlignmentY(0.0F);
         scoresTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -95,35 +95,35 @@ public class HighScoresPanel extends javax.swing.JPanel {
         highScore1.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScore1.setForeground(java.awt.Color.white);
         highScore1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        highScore1.setToolTipText("highScore1");
+        highScore1.setToolTipText("This person is #1");
 
         highScore2.setBackground(java.awt.Color.black);
         highScore2.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScore2.setForeground(java.awt.Color.white);
         highScore2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        highScore2.setToolTipText("highScore2");
+        highScore2.setToolTipText("Second Place");
 
         highScore3.setBackground(java.awt.Color.black);
         highScore3.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScore3.setForeground(java.awt.Color.white);
         highScore3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        highScore3.setToolTipText("highScore3");
+        highScore3.setToolTipText("Third Place");
 
         highScore4.setBackground(java.awt.Color.black);
         highScore4.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScore4.setForeground(java.awt.Color.white);
         highScore4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        highScore4.setToolTipText("highScore4");
+        highScore4.setToolTipText("Fourth Place");
 
         highScore5.setBackground(java.awt.Color.black);
         highScore5.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScore5.setForeground(java.awt.Color.white);
         highScore5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        highScore5.setToolTipText("highScore5");
+        highScore5.setToolTipText("Just made it onto the list!");
 
         highScoresBackButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         highScoresBackButton.setText("Back");
-        highScoresBackButton.setToolTipText("Back");
+        highScoresBackButton.setToolTipText("Back to Main Menu");
         highScoresBackButton.setActionCommand("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -54,6 +54,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="CS 245 Project"/>
+        <Property name="toolTipText" type="java.lang.String" value="Welcome to our project!"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -66,6 +67,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Team: CAN Do"/>
+        <Property name="toolTipText" type="java.lang.String" value="The best team"/>
       </Properties>
     </Component>
   </SubComponents>

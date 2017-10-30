@@ -78,7 +78,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="HIGH SCORES"/>
-        <Property name="toolTipText" type="java.lang.String" value="scoresTitle"/>
+        <Property name="toolTipText" type="java.lang.String" value="You&apos;re looking at the high scores!"/>
         <Property name="alignmentY" type="float" value="0.0"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
@@ -95,7 +95,7 @@
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="toolTipText" type="java.lang.String" value="highScore1"/>
+        <Property name="toolTipText" type="java.lang.String" value="This person is #1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="highScore2">
@@ -110,7 +110,7 @@
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="toolTipText" type="java.lang.String" value="highScore2"/>
+        <Property name="toolTipText" type="java.lang.String" value="Second Place"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="highScore3">
@@ -125,7 +125,7 @@
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="toolTipText" type="java.lang.String" value="highScore3"/>
+        <Property name="toolTipText" type="java.lang.String" value="Third Place"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="highScore4">
@@ -140,7 +140,7 @@
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="toolTipText" type="java.lang.String" value="highScore4"/>
+        <Property name="toolTipText" type="java.lang.String" value="Fourth Place"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="highScore5">
@@ -155,7 +155,7 @@
           <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="toolTipText" type="java.lang.String" value="highScore5"/>
+        <Property name="toolTipText" type="java.lang.String" value="Just made it onto the list!"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="highScoresBackButton">
@@ -164,7 +164,7 @@
           <Font name="Century" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Back"/>
-        <Property name="toolTipText" type="java.lang.String" value="Back"/>
+        <Property name="toolTipText" type="java.lang.String" value="Back to Main Menu"/>
         <Property name="actionCommand" type="java.lang.String" value=""/>
       </Properties>
     </Component>

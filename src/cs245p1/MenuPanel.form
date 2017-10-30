@@ -89,7 +89,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelLogo">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="toolTipText" type="java.lang.String" value="Burninating the country side..."/>
       </Properties>
     </Component>
   </SubComponents>

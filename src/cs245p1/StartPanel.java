@@ -39,11 +39,13 @@ public class StartPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(250, 250, 250));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CS 245 Project");
+        jLabel2.setToolTipText("Welcome to our project!");
 
         jLabel1.setFont(new java.awt.Font("Century", 2, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(250, 250, 250));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Team: CAN Do");
+        jLabel1.setToolTipText("The best team");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

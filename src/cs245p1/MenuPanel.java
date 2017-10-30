@@ -80,7 +80,7 @@ public class MenuPanel extends javax.swing.JPanel {
         creditsButton.setText("Credits");
         creditsButton.setToolTipText("Team Members");
 
-        jLabelLogo.setToolTipText("");
+        jLabelLogo.setToolTipText("Burninating the country side...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

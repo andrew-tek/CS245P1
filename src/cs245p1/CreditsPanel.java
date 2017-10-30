@@ -56,7 +56,7 @@ public class CreditsPanel extends javax.swing.JPanel {
         creditsLabel.setForeground(java.awt.Color.white);
         creditsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         creditsLabel.setText("CREDITS");
-        creditsLabel.setToolTipText("creditsTitle");
+        creditsLabel.setToolTipText("Credits Title");
         creditsLabel.setAlignmentY(0.0F);
         creditsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         creditsLabel.setVerifyInputWhenFocusTarget(false);
@@ -84,6 +84,7 @@ public class CreditsPanel extends javax.swing.JPanel {
 
         backButton.setFont(new java.awt.Font("Century", 1, 18)); // NOI18N
         backButton.setText("Back");
+        backButton.setToolTipText("Go to Main Menu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
