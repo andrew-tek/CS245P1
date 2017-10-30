@@ -30,7 +30,7 @@ public class MainGamePanel extends javax.swing.JPanel {
     
     private static char [] word;
     private static char [] wordGuessed;
-    private static String [] gallowPaths = {"../gallows1.jpg", "../gallows2.jpg",
+    private static final String [] GALLOW_PATHS = {"../gallows1.jpg", "../gallows2.jpg",
     "../gallows3.jpg", "../gallows4.jpg", "../gallows5.jpg",
     "../gallows6.jpg", "../gallows7.jpg"};
   
@@ -67,7 +67,7 @@ public class MainGamePanel extends javax.swing.JPanel {
         jLabelDashedLines.setText(dashLines.toString());
         jLabelGuessWord.setText("");
         jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().
-                    getResource(gallowPaths[0])));
+                    getResource(GALLOW_PATHS[0])));
         enableAllLetters();
         jLabelUserScore.setText("User Score: " + CS245P1.getGame().getPoints());
     }
@@ -113,7 +113,7 @@ public class MainGamePanel extends javax.swing.JPanel {
         if (index.isEmpty()) {
             System.out.println("Letter not in word");
             jLabelGallow.setIcon(new javax.swing.ImageIcon(getClass().
-                    getResource(gallowPaths[CS245P1.getGame().getIncorrect()]))); 
+                    getResource(GALLOW_PATHS[CS245P1.getGame().getIncorrect()]))); 
             jLabelUserScore.setText("User Score: " + CS245P1.getGame().getPoints());
             if(CS245P1.getGame().getIncorrect() == 6){
                 transitionToColorGame();

@@ -28,7 +28,7 @@ public class SudokuPanel extends javax.swing.JPanel {
     //Please note: Auto-generated instance variables are automatically placed at the end of the class definition and cannot be moved
     
     private List<JTextField> gameBoardTracker;
-    private boolean[] credit;// = new boolean[81];
+    private boolean[] credit;
 
     //method: SudokuPanel (Constructor)
     //purpose: Sets up the Sudoku game panel, including the relevant action listeners, initial game values, etc
@@ -119,7 +119,7 @@ public class SudokuPanel extends javax.swing.JPanel {
                 solvedFlag = false;
                 if (credit[i]) {
                     credit[i] = false;
-                    CS245P1.getSudokuGame().subPoints();
+                    CS245P1.getSudokuGame().subPoints(); //only subtract points when this field has never been checked as incorrect before
                 }
             }
         }

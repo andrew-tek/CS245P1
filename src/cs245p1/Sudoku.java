@@ -14,7 +14,7 @@ package cs245p1;
 public class Sudoku {
 
     // Correct solution (by row) given in PDF
-    private final int[] solution = {8, 3, 5, 4, 1, 6, 9, 2, 7,
+    private final int[] SOLUTION = {8, 3, 5, 4, 1, 6, 9, 2, 7,
                                     2, 9, 6, 8, 5, 7, 4, 3, 1,
                                     4, 1, 7, 2, 9, 3, 6, 5, 8,
                                     5, 6, 9, 1, 3, 4, 7, 8, 2,
@@ -49,7 +49,7 @@ public class Sudoku {
     //method: getSolution
     //purpose: returns the stored valid solution
     public int[] getSolution() {
-        return solution;
+        return SOLUTION;
     }
 
     //method: quitGame
