@@ -128,8 +128,6 @@ public class SudokuPanel extends javax.swing.JPanel {
             transitionToGameOver();
         } else {
             JOptionPane.showMessageDialog(null, "Your solution is incorrect, please attempt another!");
-            CS245P1.getSudokuGame().resetPoints();
-            this.resetSudoku();
         }
     }
 
