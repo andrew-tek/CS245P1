@@ -74,7 +74,7 @@ public class SudokuPanel extends javax.swing.JPanel {
 
     //method: resetSodoku
     //purpose: Resets the game board for a new round (clears filled in board fields and resets the "credit" array)
-    public void resetSodoku() {
+    public void resetSudoku() {
         initializeArrays();
         for(JTextField field : gameBoardTracker){
             if (field.isEditable()) {
@@ -93,7 +93,7 @@ public class SudokuPanel extends javax.swing.JPanel {
         //set score on game over panel and move to that panel
         GameOverPanel gameOver = (GameOverPanel) CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
         gameOver.setScore();
-        this.resetSodoku();
+        this.resetSudoku();
         CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
         gameOver.checkForHighScore();
     }
@@ -128,6 +128,8 @@ public class SudokuPanel extends javax.swing.JPanel {
             transitionToGameOver();
         } else {
             JOptionPane.showMessageDialog(null, "Your solution is incorrect, please attempt another!");
+            CS245P1.getSudokuGame().resetPoints();
+            this.resetSudoku();
         }
     }
 
