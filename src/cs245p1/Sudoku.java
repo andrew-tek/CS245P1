@@ -1,6 +1,6 @@
 /** *************************************************************
  * file: Sudoku.java
- * author: Nicholas Pham
+ * author: Nicholas Pham, Christopher Kilian
  * class: CS 245 – Programming Graphical User Interfaces
  *
  * assignment: Point and Click Game – v.1.2

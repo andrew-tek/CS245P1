@@ -4,7 +4,7 @@
  * class: CS 245 – Programming Graphical User Interfaces
  *
  * assignment: Point and Click Game – v.1.2
- * date last modified: 10/30/2017
+ * date last modified: 10/31/2017
  *
  * purpose: Sets up the card holder, panels, and jFrame, along with maintaining various constants
  * needed throughout the game program.
@@ -34,12 +34,13 @@ public class CS245P1 {
     protected static final String SUDOKU = "Sudoku";
     private static final CardLayout CARDLAYOUT = new CardLayout();
     private static final JPanel CARDHOLDER = new JPanel(CARDLAYOUT);
+    private static final KeyStroke ESCAPE_KEY = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
+    private static final KeyStroke F1_KEY = KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0);
     private static HangManGame currentGame;
     private static ColorGame colorGame;
     private static Sudoku sudoku;
     private static Map<String, Component> allPanels; //allows access to panel methods anywhere in program
-    private static final KeyStroke ESCAPE_KEY = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
-    private static final KeyStroke F1_KEY = KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0);
+    
 
     //method: CS245P1 (Constructor)
     //purpose: Initializes all the necessary components of the game, including the individual panels
@@ -134,6 +135,7 @@ public class CS245P1 {
         root.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(ESCAPE_KEY, "Close Game");
 
         root.getActionMap().put("Close Game", new AbstractAction() {
+            @Override
             public void actionPerformed(ActionEvent event) {
                 mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
             }
@@ -145,6 +147,7 @@ public class CS245P1 {
                 F1_KEY, "F1 Pressed"
         );
         root.getActionMap().put("F1 Pressed", new AbstractAction() {
+            @Override
             public void actionPerformed(ActionEvent event) {
                 JFrame popUpCreditsPanel = new PopupCredits();
                 popUpCreditsPanel.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);

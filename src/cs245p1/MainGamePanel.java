@@ -6,7 +6,7 @@
 * assignment: Point and Click Game – v.1.2
 * date last modified: 10/18/2017
 *
-* purpose: This class defines the panel from which the game is actually played
+* purpose: This class defines the panel from which the Hangman game is actually played
 * along with the buttons necessary to do so, as well as the display of the word
 * and the hangman.
 *

@@ -88,8 +88,6 @@ public class SudokuPanel extends javax.swing.JPanel {
     //purpose: Called when the player wins the game or quits. Handles the ending of the game, resetting of the board, and movement
     //to the "Game Over" screen
     private void transitionToGameOver() {
-        //reset panel values to initial state - need a new method for this (just clear all the editable fields - remember to leave uneditable fields alone)
-        //resetCoordsSets();
         //set score on game over panel and move to that panel
         GameOverPanel gameOver = (GameOverPanel) CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
         gameOver.setScore();

@@ -4,7 +4,7 @@
 * class: CS 245 – Programming Graphical User Interfaces
 *
 * assignment: Point and Click Game – v.1.2
-* date last modified: 10/18/2017
+* date last modified: 10/31/2017
 *
 * purpose: The panel from which the color choosing game is played is set up
 * in this code.
@@ -100,7 +100,6 @@ public class ColorGamePanel extends javax.swing.JPanel {
         buttonWaitFlag = false; //don't let other buttons operate while button actions being processed
         CS245P1.getColorGame().roundProcessing(addPoints);
         if(CS245P1.getColorGame().checkRounds() >= 5){
-            // transitionToGameOver();
             transitionToSudoku();
         }else{
             CS245P1.getColorGame().configureLabel(colorLabel);
@@ -121,19 +120,8 @@ public class ColorGamePanel extends javax.swing.JPanel {
         randomCoords.add(coordSet6);
     }
     
-    // method: transitionToGameOver
-    // purpose: Handles the transitioning to the game over screen once a game is done. Resets coordinate
-    //values, sets the score on the game over panel, and switches to that panel.
-    private void transitionToGameOver(){
-        //reset panel values to initial state
-        resetCoordsSets();
-        //set score on game over panel and move to that panel
-        GameOverPanel gameOver = (GameOverPanel)CS245P1.getPanelMap().get(CS245P1.GAME_OVER);
-        gameOver.setScore();
-        CS245P1.getPrimaryLayout().show(CS245P1.getPrimaryCardHolder(), CS245P1.GAME_OVER);
-        gameOver.checkForHighScore();
-    }
-    
+    // method: transitionToSudoku
+    // purpose: Handles the proper transitioning from this panel to the next in the series (the Sudoku game)
     private void transitionToSudoku() {
         //reset panel values to initial state
         resetCoordsSets();
