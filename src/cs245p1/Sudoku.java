@@ -57,10 +57,4 @@ public class Sudoku {
     public void quitGame() {
         points = 0;
     }
-    
-    //method: resetPoints
-    //purpose: reset points for new Sudoku game
-    public void resetPoints() {
-        points = 540;
-    }
 }
